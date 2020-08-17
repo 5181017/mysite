@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+# URLです
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),

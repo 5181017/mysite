@@ -10,7 +10,7 @@ class Charge:
         params = {
             'date' : all.timeStamp,
             'amount' : all.addMoney,
-            'remaining_money' : sumMoney
+            'remaining_money' : all.sumMoney
         }
 
         return params

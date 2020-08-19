@@ -2,7 +2,7 @@ from polls.views.Class.Cart import Cart
 
 
 class User:
-    userId = ""          # ユーザID
+    userId = ""          # ユーザIDa
     name = ""            # 名前
     remaining_money = 0  # 残高
     address = ""         # 住所

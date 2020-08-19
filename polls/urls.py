@@ -12,7 +12,7 @@ from .views.Class import Settlement
 from .views.Class import User
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
     path('/Cart', Cart, name='cart'),
     path('/Category', Category, name='category'),
     path('/Charge', Charge, name='Charge'),

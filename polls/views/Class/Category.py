@@ -1,7 +1,5 @@
 class Category:
-    categoryId = ""
-    categoryName = ""
+    categoryId = ""    # カテゴリーID
+    categoryName = ""  # カテゴリー名
 
-    # カートの更新
-    # カートの削除
-    # カートの追加
+    # カテゴリーの取得

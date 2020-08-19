@@ -2,11 +2,11 @@ from polls.views.Class.Cart import Cart
 
 
 class User:
-    userId = ""
-    name = ""
-    remaining_money = 0
-    address = ""
-    cart = Cart()
+    userId = ""          # ユーザID
+    name = ""            # 名前
+    remaining_money = 0  # 残高
+    address = ""         # 住所
+    cart = Cart()        # カート
 
     # 認証
     # ユーザの登録

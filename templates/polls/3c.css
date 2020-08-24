@@ -1,0 +1,108 @@
+*{
+
+}
+
+html{
+  width:100%;
+  height:100%;
+}
+
+body{
+  width:100%;
+  height:100%;
+  /* background-color:rgb(47,47,47); */
+  font-family:"Meiryo";
+  overflow-x:auto;/*はみ出た要素だけ横スクロール*/
+  white-space:nowrap;/*最小画面でも折り返さずに表示する*/
+}
+
+.form{
+  width:98%;
+  min-width:1475px;
+  display:flex;
+  flex-flow:row nowrap;
+}
+
+.form2{
+  width:98%;
+  display:flex;
+  flex-flow:row nowrap;
+}
+
+
+.search{
+  height:80px;
+  font-size:30px;
+}
+
+.tb{
+  flex-basis:3000px;
+  flex-grow:1;
+  flex-shrink:1;
+}
+
+
+
+
+.a7 {
+  position: absolute; 
+  top: 125px; 
+  left: 875px;
+}
+
+.a8 {
+  position: absolute; 
+  top: 280px; 
+  left: 875px;
+}
+
+.a9 {
+  position: absolute; 
+  top: 280px; 
+  left: 1267.5px;
+}
+
+.a4 {
+  position: absolute; 
+  top: 400px; 
+  left: 875px;
+}
+
+.a5 {
+  position: absolute; 
+  top: 600px; 
+  left: 875px;
+}
+
+.a6 {
+  position: absolute; 
+  top: 750px; 
+  left: 15%;
+}
+
+.a1 {
+  position: absolute; 
+  top: 1050px; 
+  left: 15%;
+}
+
+.a2 {
+  position: absolute; 
+  top: 100px; 
+  zoom: 0.5;
+  width: 100%;
+  height: auto;
+}
+
+.test{
+  overflow:auto;
+  position: absolute; 
+  top: 125px; 
+  left: 15%;
+}
+
+/* .a3 {
+  position: absolute; 
+  top: 565px; 
+  left: 0.6%;
+} */

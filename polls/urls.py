@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Class
+from .views.Screen import screen1
 
 
 from . import views
@@ -13,11 +13,12 @@ from .views.Class import User
 
 urlpatterns = [
     # path('', views.index, name='index'),
-    path('/Cart', Cart, name='cart'),
-    path('/Category', Category, name='category'),
-    path('/Charge', Charge, name='Charge'),
-    path('/Product', Product, name='Product'),
-    path('/Review', Review, name='Review'),
-    path('/Settlement', Settlement, name='Settlement'),
-    path('/User', User, name='User'),
+    # path('/Cart', Cart, name='cart'),
+    # path('/Category', Category, name='category'),
+    # path('/Charge', Charge, name='Charge'),
+    # path('/Product', Product, name='Product'),
+    # path('/Review', Review, name='Review'),
+    # path('/Settlement', Settlement, name='Settlement'),
+    # path('/User', User, name='User'),
+    path('' , screen1.index , name="index")
 ]

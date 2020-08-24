@@ -4,7 +4,7 @@ from polls.views.Class.Product import Product
 
 class Cart:
     product = Product()  # 商品
-    quantity = 0  # 個数
+    quantity = 0         # 個数
 
     # カートの削除
     def delete_cart(self, userid, productid):

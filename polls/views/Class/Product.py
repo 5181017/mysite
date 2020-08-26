@@ -9,7 +9,5 @@ class Product:
 
     # 商品の取得
     def get_product(self, productid):
-        all = models.product.object.filter(productID=productid)
-        return all
-
-
+        data = models.product.object.filter(productID=productid)
+        return data

@@ -4,16 +4,16 @@ from polls.views.Class.User import User
 
 
 class Review:
-    product = Product()
-    user = User()
-    star = 0
-    title = ""
-    comment = ""
+    product = Product()  # 商品
+    user = User()        # ユーザ
+    star = 0             # 星
+    title = ""           # タイトル
+    comment = ""         # コメント
 
     # レビューの取得
     def get_review(self, productid):
-        all = models.Review.object.filter(productID=productid)
-        return all
+        data = models.Review.object.filter(productID=productid)
+        return data
 
     # レビューの削除
     def get_review(self, reviewid):
@@ -23,7 +23,7 @@ class Review:
     # レビューの更新
     def get_review(self, reviewid, reviewstar):
         data = models.Review.object.filter(reviewID=reviewid)
-        data.reviewstar = 'new Name'
+        data.reviewStar = reviewstar
         data.save()  # ここでUPDATEが実行される
 
     # レビューの登録

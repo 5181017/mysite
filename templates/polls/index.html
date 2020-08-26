@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="3c.css">
+    <title>Title</title>
+</head>
+ <body>
+    <div class="form">
+      <button class="search" style="width:200px; min-width:200px;">Alpha</button>
+      <form class="form2" action="http://172.20.141.82:8080/polls/" method="post">
+        <input class="search tb" type="search" placeholder="商品名を入力してください" name="productName"></input>
+        <input type="submit" value="検索" class="search" style="width:150px; min-width:150px;"></input>
+      </form>
+      <button class="search" style="width:300px; min-width:300px;">ログイン</button>
+      <button class="search" style="width:150px; min-width:150px;">カート</button>
+    </div>
+    <!-- <div>
+      <button style="width:100%;"></button>
+    </div> -->
+    <div class="form2">
+      <p class="a7" style="width:691.5px; min-width:100px;
+      height:100px; font-size:50px; text-align:center;">{{productName}}</p>
+      <p class="a8" style="width:300px; min-width:100px;
+      height:75px; font-size:25px; text-align:center;">価格</p>
+      <p class="a9" style="width:300px; min-width:100px;
+      height:75px; font-size:25px; text-align:center;">評価</p>
+      <p class="a4" style="width:691.5px; min-width:100px;
+      height:150px; font-size:50px; text-align:center;">商品の詳細</p>
+      <button class="a5" style="width:691.5px; min-width:100px;
+      height:75px; font-size:25px; text-align:center;">カートに入れる</button>
+      <p class="a6" style="width:500px; min-width:100px;
+      height:250px; font-size:25px; text-align:center;">レビューブロック</p>
+      <p class="a1" style="width:500px; min-width:100px;
+      height:250px; font-size:25px; text-align:center;">評価まとめ</p>
+      <div class="test" style="width:500px; height:550px;">
+        <img src="./download.jpg" class="a2">
+      </div>
+    </div>
+  </body>
+</html>

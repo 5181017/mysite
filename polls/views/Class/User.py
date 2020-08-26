@@ -18,8 +18,14 @@ class User:
         return ValueError
 
     # ユーザの登録
-    def register_user(self , userId , userName , userPass):
-        user = models.User.objects.filter(userID=self.userId)
+
+    def register_user(self , userID , name , pw):
+        user = models.User.objects.filter(userID=self.userID)
+        if user.exists():
+            return "すでに存在します"
+        register = models.User(userID=userID, name=name, pw=pw, money=self.remaining_money, address=self)
+        models.User.save(register)
+
         
     # ユーザの更新
     # ユーザの削除

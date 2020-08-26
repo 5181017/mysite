@@ -5,8 +5,10 @@ class Charge:
 
     # 履歴の取得
     def get_charge(self,userID):
-        all = ChargingHistory.objects.filter(userID=userID)
-
+        try :
+            all = ChargingHistory.objects.filter(userID=userID)
+        except MySQLdb.Error as e:
+            print("MySQLdb.Error: " + e)
         params = {
             'date' : all.timeStamp,
             'amount' : all.addMoney,

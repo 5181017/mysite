@@ -11,6 +11,9 @@ class Settlement:
         all = Polls_payhistory.objects.all()
         return all
     # 残高チェック
+
     # 購入
+
     # DB取得
+
     # DB更新

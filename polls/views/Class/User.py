@@ -28,11 +28,9 @@ class User:
     # ユーザの登録
     def register_user(self , userID , name , pw):
         user = models.User.objects.filter(userID=self.userID)
-
         if user.exists():
             return "すでに存在します"
-
-        register = models.User(userID= userID, name=name , pw=pw , money=self.remaining_money , address=self)
+        register = models.User(userID=userID, name=name, pw=pw, money=self.remaining_money, address=self)
         models.User.save(register)
         
     # ユーザの更新

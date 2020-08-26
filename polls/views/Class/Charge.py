@@ -1,3 +1,6 @@
+from polls.models import ChargingHistory
+
+
 class Charge:
     date = ""            # 日付
     amount = 0           # 入金額
@@ -5,14 +8,12 @@ class Charge:
 
     # 履歴の取得
     def get_charge(self,userID):
-        try :
-            all = ChargingHistory.objects.filter(userID=userID)
-        except MySQLdb.Error as e:
-            print("MySQLdb.Error: " + e)
-        params = {
-            'date' : all.timeStamp,
-            'amount' : all.addMoney,
-            'remaining_money' : all.sumMoney
-        }
-
-        return params
+        all = ChargingHistory.objects.filter(userID=userID)
+        if all.exists():
+            params = {
+                'date' : all.timeStamp,
+                'amount' : all.addMoney,
+                'remaining_money' : all.sumMoney
+            }
+            return params
+        raise ChargingHistory.DoesNotExist

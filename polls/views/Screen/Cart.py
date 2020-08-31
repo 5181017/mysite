@@ -1,8 +1,12 @@
-# -商品画像タップ-
-# カートの更新
+from polls.views.Class.Cart import Cart
 
 
-# ページに遷移
+def cart(request):
+    # カートの更新
+    productid = request.POST.get("productid", None)
+    # cart = Cart().updata_cart(productid=, quantity=, userid=)
+
+# その商品のページに遷移
 
 
 # -削除ボタン(商品ID)-
@@ -13,4 +17,4 @@
 # カートの更新
 
 
-# 08ページに遷移
+# payページに遷移

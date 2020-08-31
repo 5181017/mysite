@@ -3,7 +3,7 @@ from .views.Screen import Home, Cart, Charge, Review, Common, ProductList, Accou
     OrderHistory, Pay, Personal, ProductDetails
 
 urlpatterns = [
-    path("home", Home, name="home"),
+    path("home", Home.home, name="home"),
     path("account", Account, name="account"),
     path("cart", Cart, name="cart"),
     path("charge", Charge, name="charge"),

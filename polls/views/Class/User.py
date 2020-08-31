@@ -16,13 +16,15 @@ class User:
             self.userID = user.userID
             self.name = user.name
             self.remaining_money = user.money
-            return
+            return user
 
         raise models.User.DoesNotExist
 
     # ユーザの登録
     def register_user(self, userID, name, pw):
-        models.User.objects.get(userID=userID)  # ユーザが存在しない場合DoesNotExist(エラー)を返す。
+        user = models.User.objects.filter(userID=userID)  # ユーザが存在しない場合DoesNotExist(エラー)を返す。
+        if user.exists():
+            raise models.User.DoesNotExist
         models.User(
             userID=userID,
             name=name,

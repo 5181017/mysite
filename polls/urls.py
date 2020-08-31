@@ -1,24 +1,20 @@
 from django.urls import path
-from .views.Screen import screen1
-
-
-from . import views
-from .views.Class import Cart
-from .views.Class import Category
-from .views.Class import Charge
-from .views.Class import Product
-from .views.Class import Review
-from .views.Class import Settlement
-from .views.Class import User
+from .views.Screen import Home, Cart, Charge, Review, Common, ProductList, Account, ChargeHistory, Login, MyPage, \
+    OrderHistory, Pay, Personal, ProductDetails
 
 urlpatterns = [
-    # path('', views.index, name='index'),
-    # path('/Cart', Cart, name='cart'),
-    # path('/Category', Category, name='category'),
-    # path('/Charge', Charge, name='Charge'),
-    # path('/Product', Product, name='Product'),
-    # path('/Review', Review, name='Review'),
-    # path('/Settlement', Settlement, name='Settlement'),
-    # path('/User', User, name='User'),
-    path('' , screen1.index , name="index")
+    path("home", Home, name="home"),
+    path("account", Account, name="account"),
+    path("cart", Cart, name="cart"),
+    path("charge", Charge, name="charge"),
+    path("chargehistory", ChargeHistory, name="chargehistory"),
+    path("productlist", ProductList.productlist, name="productlist"),
+    path("product", Common, name="common"),
+    path("login", Login, name="login"),
+    path("mypage", MyPage, name="maypage"),
+    path("orderhistory", OrderHistory, name="orderhistory"),
+    path("pay", Pay, name="pay"),
+    path("personal", Personal, name="personal"),
+    path("productdetails", ProductDetails, name="productdetails"),
+    path("review", Review, "review")
 ]

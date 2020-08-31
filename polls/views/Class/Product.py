@@ -7,7 +7,7 @@ class Product:
     image = ""       # 画像
     categoryID = ""  # カテゴリーID
 
-    # 商品の取得
-    def get_product(self, productid):
-        data = models.product.object.filter(productID=productid)
+    # 指定されたカテゴリーIDの商品を取得
+    def get_product(self, categoryid):
+        data = models.product.object.filter(categoryid=categoryid)
         return data

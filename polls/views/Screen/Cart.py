@@ -30,4 +30,9 @@ def cart(request):
             request.session["cart"] = cart
             params = {"cart": cart}
             # Payページに遷移
-            return render(request, "polls/pay.html", params)
+            if "logo" in request.POST:
+                return render(request, "polls/home.html", params)
+            elif "cart" in request.POST:
+                return render(request, "polls/cart.html", params)
+            elif "sarch" in request.POST:
+                return render(request, "polls/productlist.html", params)

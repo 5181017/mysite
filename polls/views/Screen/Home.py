@@ -9,7 +9,3 @@ def home(request):
     request.session["category"] = category
     params = {"category": category}
     return render(request, "polls/home.html", params)
-
-# 例 def get(request): 取得するとき
-#       str = request.session.get("category")
-#       return str

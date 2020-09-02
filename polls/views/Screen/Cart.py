@@ -1,20 +1,33 @@
+from django.http import request
+from django.shortcuts import render
+
+from polls import models
 from polls.views.Class.Cart import Cart
 
 
 def cart(request):
-    # カートの更新
-    productid = request.POST.get("productid", None)
-    # cart = Cart().updata_cart(productid=, quantity=, userid=)
+    if request.method == "GET":
+        userid = request.session["userid"]
+        cart = Cart.get_cart(userid)
+        request.session["cart"] = cart
+        params = {"cart": cart}
+        # Payページに遷移
+        return render(request, "polls/cart.html", params)
 
-# その商品のページに遷移
+    elif request.method == "POST":
+        # 渡された値を取得
+        productid = request.POST.get("productid", None)
+        quantity = request.POST.get("quantity", None)
+        userid = request.POST.get("userid", None)
+        btn = request.POST.get("deletebtn", None)
+        if "delete_btn" in btn:
+            Cart.delete_cart(userid, productid)
 
-
-# -削除ボタン(商品ID)-
-# カートリストから商品を削除する
-
-
-# -レジに進むボタン-
-# カートの更新
-
-
-# payページに遷移
+        elif "pay_btn" in request.POST:
+            # カートの更新
+            Cart().update_cart(userid, productid, quantity)
+            cart = Cart.get_cart(userid)
+            request.session["cart"] = cart
+            params = {"cart": cart}
+            # Payページに遷移
+            return render(request, "polls/pay.html", params)

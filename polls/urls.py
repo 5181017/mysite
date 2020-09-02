@@ -4,8 +4,8 @@ from .views.Screen import Home, Cart, Charge, Review, Common, ProductList, Accou
 
 urlpatterns = [
     path("home", Home.home, name="home"),
-    path("account", Account, name="account"),
-    path("cart", Cart, name="cart"),
+    path("account", Account.account, name="account"),
+    path("cart", Cart.cart, name="cart"),
     path("charge", Charge, name="charge"),
     path("chargehistory", ChargeHistory, name="chargehistory"),
     path("productlist", ProductList.productlist, name="productlist"),

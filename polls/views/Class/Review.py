@@ -18,17 +18,17 @@ class Review:
         raise models.Review.DoesNotExist
 
     # レビューの削除
-    def get_review(self, reviewid):
+    def delete_review(self, reviewid):
         data = models.Review.object.filter(reviewID=reviewid)
         data.delete()  # DELETEが実行される
 
     # レビューの更新
-    def get_review(self, reviewid, reviewstar):
+    def update_review(self, reviewid, reviewstar):
         data = models.Review.object.filter(reviewID=reviewid)
         data.reviewStar = reviewstar
         data.save()  # ここでUPDATEが実行される
 
     # レビューの登録
-    def get_review(self, userid, reviewstar, title, comment):
+    def register_review(self, userid, reviewstar, title, comment):
         data = models.Review(userID=userid, reviewStar=reviewstar, title=title, comment=comment)
         data.save()  # INSERTが実行される

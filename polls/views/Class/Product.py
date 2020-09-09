@@ -1,4 +1,5 @@
 from polls import models
+from polls.models import Products
 
 
 class Product:

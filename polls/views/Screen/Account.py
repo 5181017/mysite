@@ -1,14 +1,10 @@
 # -登録ボタン-
 # ユーザ登録(エラー表示)
-from django.shortcuts import redirect, render
-
-from polls import models
-from polls.views.Class.User import User
 
 
-def account(request):
-    if request.method == "GET":
-        return redirect("pools/account.html")
+# 前のページに遷移
+
+
 
     elif request.method == "POST":
         userid = request.POST.get("userid", None)
@@ -36,3 +32,4 @@ def account(request):
         else:
             params = {"errmsg": "再入力パスワードが違います"}
             return render(request, "polls/account.html", params)
+

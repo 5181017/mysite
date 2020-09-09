@@ -9,9 +9,11 @@ class Settlement:
     date = ""            # 日付
 
     # 履歴取得
-    def get_settlement(self):
-        data = Settlement.objects.all()
-        return data
+    def get_settlement(self, userid):
+        data = models.PayHistory.objects.filter(userID=userid)
+        if data.exist():
+            return data
+        raise models.PayHistory.DoesNotExist
 
     # 残高チェック
     def get_remaining_money(self, userid, total):

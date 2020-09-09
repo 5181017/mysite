@@ -13,7 +13,9 @@ class Review:
     # レビューの取得
     def get_review(self, productid):
         data = models.Review.object.filter(productID=productid)
-        return data
+        if data.exists():
+            return data
+        raise models.Review.DoesNotExist
 
     # レビューの削除
     def delete_review(self, reviewid):

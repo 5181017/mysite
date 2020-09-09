@@ -11,11 +11,13 @@ def review(request , product_id):
         product_id = request.GET.get("product_id")
         product = Product().get_product(product_id)
         #画像処理
-        product_img = product.get('image')
-        params = {
+        product_img = product.image
 
+        params = {
+            "product_name" : product.productName,
+            "product_img" : product.image,
         }
-        return render(request , 'polls/review.html')
+        return render(request , 'polls/review.html' , params)
     elif request.method == "POST":
         rv = Review()
         reviewstar = request.POST["reviewstar"]

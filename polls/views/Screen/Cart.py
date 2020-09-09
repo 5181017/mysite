@@ -11,23 +11,28 @@ def cart(request):
         cart = Cart.get_cart(userid)
         request.session["cart"] = cart
         params = {"cart": cart}
-        # Payページに遷移
         return render(request, "polls/cart.html", params)
 
     elif request.method == "POST":
         # 渡された値を取得
-        productid = request.POST.get("productid", None)
-        quantity = request.POST.get("quantity", None)
+        productlist = request.POST.getlist("checkbox", None)
         userid = request.POST.get("userid", None)
         btn = request.POST.get("deletebtn", None)
+        quantity = []
+        for productid  in  productlist:
+            quantity.append(request.POST.get(productid, None))
+
         if "delete_btn" in btn:
-            Cart.delete_cart(userid, productid)
+            Cart.delete_cart(userid, productlist)
 
         elif "pay_btn" in request.POST:
             # カートの更新
-            Cart().update_cart(userid, productid, quantity)
+            for i in range(len(productlist)):
+                Cart().update_cart(userid, productlist[i], quantity[i])
             cart = Cart.get_cart(userid)
-            request.session["cart"] = cart
+            request.session["productid"] = cart.productid
+            request.session["productid"] = cart.quantity
+
             params = {"cart": cart}
             # Payページに遷移
             if "logo" in request.POST:

@@ -15,6 +15,10 @@ def account(request):
         name = request.POST.get("name", None)
         pw = request.POST.get("password", None)
         repw = request.POST.get("repassword", None)
+
+        p = {
+            "userid" : request.POST.get()
+        }
         if pw.equal(repw):
             try:
                 User().register_user(userid, name, pw)

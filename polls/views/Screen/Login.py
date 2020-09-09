@@ -1,11 +1,31 @@
-# ユーザインスタンス作成
-
 # -ログインボタン-
 # ログイン処理(エラー表示)
+from django.shortcuts import redirect, render
+
+from polls import models
+from polls.views.Class.User import User
 
 
-# 前のページに遷移
+def login(request):
+    if request.method == "GET":
+        return redirect("pools/login.html")
 
-
-# -登録ボタン-
-# 05画面に遷移
+    elif request.method == "POST":
+        userid = request.POST.get("userid", None)
+        pw = request.POST.get("password", None)
+        try:
+            user = User().auth(userid, pw)
+            if isinstance(user, str):
+                request.session["errmsg"] = user
+                params = {"errmsg": user}
+                return render(request, "polls/login.html", params)
+            else:
+                request.session["userid"] = user.userid
+                params = {"userid": userid}
+                return render(request, "polls/home.html", params)
+        except models.User.DoesNotExist:  # 登録できないエラー
+            params = {"errmsg": "ユーザーIDが違います。"}
+            return render(request, "polls/login.html", params)
+        except Exception:
+            params = {"errmsg": "DBに接続できませんでした"}
+            return render(request, "polls/exception.html", params)

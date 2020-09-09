@@ -11,14 +11,14 @@ class User:
 
     # 認証
     def auth(self, userID, pw):
-        user = models.User.objects.filter(userID=userID, pw=pw)
+        user = models.User.objects.get(userID=userID)
+        user = user.filter(pw=pw)
         if user.exists():
-            self.userID = user.userID
-            self.name = user.name
-            self.remaining_money = user.money
-            return
+            return user
+        else:
+            errmsg = "パスワードが違います。"
+            return errmsg
 
-        raise models.User.DoesNotExist
 
     # ユーザの登録
     def register_user(self, userID, name, pw):

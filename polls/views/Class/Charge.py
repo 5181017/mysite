@@ -1,3 +1,4 @@
+from polls import models
 from polls.models import ChargingHistory
 
 
@@ -7,13 +8,13 @@ class Charge:
     remaining_money = 0  # 残高
 
     # 履歴の取得
-    def get_charge(self,userID):
+    def get_chargehistory(self, userID):
         all = ChargingHistory.objects.filter(userID=userID)
         if all.exists():
             params = {
-                'date' : all.timeStamp,
-                'amount' : all.addMoney,
-                'remaining_money' : all.sumMoney
+                'date': all.timeStamp,
+                'amount': all.addMoney,
+                'remaining_money': all.sumMoney
             }
             return params
-        raise ChargingHistory.DoesNotExist
+        raise models.ChargingHistory.DoesNotExist

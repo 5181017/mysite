@@ -1,21 +1,20 @@
 # レビュー情報登録
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from polls.views.Class.Product import Product
 from polls.views.Class.Review import Review
 
 
 def review(request , product_id):
-    #画像を載せる
+    #TODO
+    # 画像を載せる
     if request.method == "GET":
-        product_id = request.GET.get("product_id")
+        # product_id = request.GET.get("product_id")
         product = Product().get_product(product_id)
-        #画像処理
-        product_img = product.image
 
         params = {
             "product_name" : product.productName,
-            "product_img" : product.image,
+            "product_img" : product.imageURL,
         }
         return render(request , 'polls/review.html' , params)
     elif request.method == "POST":
@@ -23,5 +22,6 @@ def review(request , product_id):
         reviewstar = request.POST["reviewstar"]
         title = request.POST["title"]
         comment = request.POST["commnet"]
-        userid = request.session['user']        #useridだけをとる
-        rv.register_review(userid , reviewstar , title , comment)
+        user_id = request.session['user']        #useridだけをとる
+        rv.register_review(user_id , reviewstar , title , comment)
+        return redirect("/product/" + product_id)

@@ -1,4 +1,3 @@
-# 注文履歴の取得
 from django.shortcuts import redirect, render
 
 from polls.views.Class.Settlement import Settlement

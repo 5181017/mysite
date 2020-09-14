@@ -17,7 +17,7 @@ def personal(request):
         params = {
             "user" : user_obj
         }
-        return render(request , "polls/personal.html" , params)
+        return render(request, "polls/personal.html", params)
 
     elif request.method == "POST":
         new_user_name = request.POST.get["userName"]

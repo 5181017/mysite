@@ -16,7 +16,7 @@ def review(request , product_id):
             "product_name" : product.productName,
             "product_img" : product.imageURL,
         }
-        return render(request , 'polls/review.html' , params)
+        return render(request, 'polls/review.html', params)
     elif request.method == "POST":
         rv = Review()
         reviewstar = request.POST["reviewstar"]

@@ -8,7 +8,7 @@ from polls.views.Class.User import User
 
 def account(request):
     if request.method == "GET":
-        return redirect("pools/account.html")
+        return render(request , "polls/account.html")
 
     elif request.method == "POST":
         userid = request.POST.get("userid", None)
@@ -16,17 +16,16 @@ def account(request):
         pw = request.POST.get("password", None)
         repw = request.POST.get("repassword", None)
 
-        p = {
-            "userid" : request.POST.get()
-        }
-        if pw.equal(repw):
+        # p = {
+        #     "userid" : request.POST.get()
+        # }
+        if pw == repw:
             try:
                 User().register_user(userid, name, pw)
                 user = User().auth(userid, pw)
                 # 前のページに遷移
-                request.session["userid"] = user.userid
-                params = {"userid": userid}
-                return render(request, "polls/home.html", params)
+                request.session["userid"] = user.values("userID").get()
+                return redirect("/polls/home")
             except models.User.DoesNotExist:  # 登録できないエラー
                 params = {"errmsg": "既にそのIDは存在しています"}
                 return render(request, "polls/account.html", params)

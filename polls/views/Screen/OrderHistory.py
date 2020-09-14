@@ -1,13 +1,12 @@
-# 注文履歴の取得
+from django.shortcuts import redirect, render
+
+from polls.views.Class.Settlement import Settlement
 
 
-# -画像タップ/商品名タップ-
-# 03画面に遷移
-
-
-# -レビューボタン-
-# 04画面に遷移
-
-
-# -再注文-
-# カートに追加
+def orderhistory(request):
+    id = request.POST.get("userid", None)
+    list = Settlement().get_settlement(id)
+    # 前のページに遷移
+    request.session["productlist"] = list
+    params = {"productlist": list}
+    return render(request, "polls/home.html", params)

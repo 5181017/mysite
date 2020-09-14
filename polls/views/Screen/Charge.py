@@ -1,5 +1,3 @@
-# -チャージボタン-
-# チャージ(数字チェック)
 from django.shortcuts import render, redirect
 from polls.views.Class.Charge import Charge
 

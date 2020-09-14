@@ -1,5 +1,3 @@
-# -登録ボタン-
-# ユーザ登録(エラー表示)
 from django.shortcuts import redirect, render
 
 from polls import models
@@ -19,6 +17,7 @@ def account(request):
         # p = {
         #     "userid" : request.POST.get()
         # }
+
         if pw == repw:
             try:
                 User().register_user(userid, name, pw)

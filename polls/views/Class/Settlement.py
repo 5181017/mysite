@@ -17,8 +17,10 @@ class Settlement:
 
     # 残高チェック
     def get_remaining_money(self, userid, total):
-        money = data = models.User.objects.filter(userID=userid).values("money")
-        return money - total >= 0
+        money = models.User.objects.filter(userID=userid).values("money")
+        if money - total >= 0:
+            return True
+        return False
 
     # 購入
     def buy(self, total, userid, products):

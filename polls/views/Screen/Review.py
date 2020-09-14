@@ -1,4 +1,3 @@
-# レビュー情報登録
 from django.shortcuts import render, redirect
 
 from polls.views.Class.Product import Product

@@ -10,4 +10,4 @@ def productlist(request):
     product = Product().get_product(category)
     request.session["product"] = product
     params = {"product": product}
-    return render(request, "polls/productlist.html", params)
+    return render(request, "polls/productList.html", params)

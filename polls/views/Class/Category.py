@@ -1,4 +1,4 @@
-from polls.models import Category
+from polls import models
 
 
 class Category:
@@ -7,5 +7,5 @@ class Category:
 
     # カテゴリーの取得
     def get_category(self):
-        data = Category.objects.all()
+        data = models.Category.objects.all()
         return data

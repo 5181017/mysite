@@ -17,7 +17,7 @@ class User:
     # ユーザの登録
     def register_user(self, userID, name, pw):
         user = models.User.objects.filter(userID=userID)  # ユーザが存在しない場合DoesNotExist(エラー)を返す。
-        user.get()
+        # user.get()
         if user.exists():
             raise models.User.DoesNotExist
         models.User(

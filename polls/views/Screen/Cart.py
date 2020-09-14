@@ -43,3 +43,4 @@ def cart(request):
             return render(request, "polls/cart.html")
         elif "sarch" in request.POST:
             return render(request, "polls/productlist.html")
+

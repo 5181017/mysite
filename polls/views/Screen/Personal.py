@@ -1,11 +1,3 @@
-# ユーザのインスタンスを渡す
-
-
-# -変更ボタン-
-# ユーザの更新
-
-# -確認ボタン-
-# 10画面に遷移
 from django.shortcuts import redirect, render
 
 from polls.views.Class.User import User

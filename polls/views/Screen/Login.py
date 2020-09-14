@@ -1,5 +1,3 @@
-# -ログインボタン-
-# ログイン処理(エラー表示)
 from django.shortcuts import redirect, render
 
 from polls import models

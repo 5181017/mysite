@@ -1,28 +1,25 @@
-# -登録ボタン-
-# ユーザ登録(エラー表示)
+from django.shortcuts import redirect, render
+
+from polls import models
+from polls.views.Class.User import User
 
 
-# 前のページに遷移
-
-
+def account(request):
+    if request.method == "GET":
+        return redirect("polls/account.html")
 
     elif request.method == "POST":
         userid = request.POST.get("userid", None)
         name = request.POST.get("name", None)
         pw = request.POST.get("password", None)
         repw = request.POST.get("repassword", None)
-
-        p = {
-            "userid" : request.POST.get()
-        }
-        if pw.equal(repw):
+        if pw == repw:
             try:
                 User().register_user(userid, name, pw)
                 user = User().auth(userid, pw)
                 # 前のページに遷移
                 request.session["userid"] = user.userid
-                params = {"userid": userid}
-                return render(request, "polls/home.html", params)
+                return render(request, "polls/home.html")
             except models.User.DoesNotExist:  # 登録できないエラー
                 params = {"errmsg": "既にそのIDは存在しています"}
                 return render(request, "polls/account.html", params)
@@ -32,4 +29,3 @@
         else:
             params = {"errmsg": "再入力パスワードが違います"}
             return render(request, "polls/account.html", params)
-

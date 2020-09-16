@@ -11,6 +11,8 @@ def charge(request):
         money = request.POST.get("money", None)
         if money.isdigit():
             Charge.charge_money(userid, money)
+            params = {"msg": "チャージが完了しました。"}
+            return render(request, "polls/charge.html", params)
         else:
             params = {"errmsg": "数字を入力して下さい。"}
             return render(request, "polls/charge.html", params)

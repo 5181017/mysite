@@ -3,9 +3,9 @@ from polls.models import Products
 
 
 class Product:
-    productid = ""  # 商品ID
-    price = 0  # 値段
-    image = ""  # 画像
+    productid = ""   # 商品ID
+    price = 0        # 値段
+    image = ""       # 画像
     categoryid = ""  # カテゴリーID
 
     # 指定されたカテゴリーIDの商品を取得

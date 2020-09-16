@@ -6,17 +6,13 @@ from polls.views.Class.User import User
 
 def account(request):
     if request.method == "GET":
-        return render(request , "polls/account.html")
+        return render(request, "polls/account.html")
 
     elif request.method == "POST":
         userid = request.POST.get("userid", None)
         name = request.POST.get("name", None)
         pw = request.POST.get("password", None)
         repw = request.POST.get("repassword", None)
-
-        # p = {
-        #     "userid" : request.POST.get()
-        # }
 
         if pw == repw:
             try:

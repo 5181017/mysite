@@ -6,11 +6,11 @@ from polls.views.Class.Settlement import Settlement
 
 def pay(request):
     if request.method == "GET":
-        buylist = request.POST.get("buylist", None)  # 購入商品IDリスト
-        buypro = []  # 購入商品リスト
+        buylist = request.POST.get("buylist", None)    # 購入商品IDリスト
+        buypro = []                                    # 購入商品リスト
         quantity = request.POST.get("quantity", None)  # 購入商品個数リスト
-        total = 0
-        price = []
+        total = 0                                      # 合計金額
+        price = []                                     # 値段
         i = 0
         for buyid in buylist:
             buypro.append(Product().get_one_product(buyid))
@@ -24,18 +24,15 @@ def pay(request):
         params = {
             "total": total,
             "price": price,
-            "buyprolist": buypro
+            "buyproList": buypro
         }
 
         return render(request, "polls/cart.html", params)
 
     elif request.method == "POST":
-        userid = request.POST.get("userid", None)
-        buylist = request.POST.get("buylist", None)  # 購入商品IDリスト
-        buypro = []  # 購入商品リスト
-        total = request.POST.get("total", None)
-        for buyid in buylist:
-            buypro.append(Product().get_one_product(buyid))
+        userid = request.POST.get("userid", None)      # userID
+        buylist = request.POST.get("buylist", None)    # 購入商品IDリスト
+        total = request.POST.get("total", None)        # 合計金額
         # 購入処理
         if Settlement().get_remaining_money(userid, total):
             Settlement.buy(total, userid, buylist)

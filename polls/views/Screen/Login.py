@@ -14,13 +14,11 @@ def login(request):
         try:
             user = User().auth(userid, pw)
             if isinstance(user, str):
-                request.session["errmsg"] = user
                 params = {"errmsg": user}
                 return render(request, "polls/login.html", params)
             else:
                 request.session["userid"] = user.userid
-                params = {"userid": userid}
-                return render(request, "polls/home.html", params)
+                return render(request, "polls/home.html")
         except models.User.DoesNotExist:  # 登録できないエラー
             params = {"errmsg": "ユーザーIDが違います。"}
             return render(request, "polls/login.html", params)

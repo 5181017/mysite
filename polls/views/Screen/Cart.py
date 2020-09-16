@@ -1,7 +1,4 @@
-from django.http import request
-from django.shortcuts import render
-
-from polls import models
+from django.shortcuts import render, redirect
 from polls.views.Class.Cart import Cart
 
 
@@ -16,13 +13,13 @@ def cart(request):
         # 値を取得
         buylist = request.POST.getlist("checkbox", None)
         userid = request.POST.get("userid", None)
-        btn = request.POST.get("deletebtn", None)
+        btn = request.POST.get("delete_btn", None)
         quantity = []
         for productid in buylist:
             quantity.append(request.POST.get(productid, None))
 
         if "delete_btn" in btn:
-            Cart.delete_cart(userid, buylist)  # TODO別のパラメータ？
+            Cart.delete_cart(userid, btn)
 
         elif "pay_btn" in request.POST:
             # カートの更新
@@ -42,5 +39,5 @@ def cart(request):
         elif "cart" in request.POST:
             return render(request, "polls/cart.html")
         elif "sarch" in request.POST:
-            return render(request, "polls/productlist.html")
-
+            param = {request.POST.get("searchWord")}
+            return render(request, "polls/productList.html", param)

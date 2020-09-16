@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if errmsg %}
+        {{ errmsg }}
+    {% endif %}
+    {% if userid %}
+        {{ userid }}
+    {% endif %}
+    <form action="/polls/account" method="post">
+        {% csrf_token %}
+        <div>
+            ID
+            <input type="text" name="userid">
+        </div>
+        <div>
+            名前
+            <input type="text" name="name">
+        </div>
+        <div>
+            パスワード
+            <input type="text" name="password">
+        </div>
+        <div>
+            再入力
+            <input type="text" name="repassword">
+        </div>
+        <div>
+            <input type="submit" value="登録">
+        </div>
+    </form>
+</body>
+</html>

@@ -3,6 +3,11 @@ from polls.views.Class.Cart import Cart
 
 
 class User:
+    userid = ""     # ユーザーID
+    name = ""       # 名前
+    money = 0       # 残高
+    address = ""    # 住所
+    cart = Cart()   # カート
 
     # 認証
     def auth(self, userID, pw):

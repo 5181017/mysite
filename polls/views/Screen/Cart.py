@@ -14,7 +14,7 @@ def cart(request):
         # この段階で画像、商品名、値段が必要
         for proId in cartList.values("productID"):
             urlList.append(Product.get_imageurl(proId))
-            priceList.append(Product.get_price(proId))
+            priceList.append(Product.get_one_product(proId).price)
             nameList.append(Product.get_one_product(proId).productName)
         params = {
             "urlList": urlList,

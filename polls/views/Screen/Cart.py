@@ -6,6 +6,14 @@ from polls.views.Class.Product import Product
 
 def cart(request):
     if request.method == "GET":
+
+        if 'userid' in request.session:
+            userid = request.session["userid"]
+            cart = Cart.get_cart(userid)
+            params = {"cart": cart}
+        else:
+            params = {}
+
         userid = request.session["userid"]
         urlList = []
         priceList = []
@@ -21,6 +29,7 @@ def cart(request):
             "priceList": priceList,
             "nameList": nameList
         }
+
         return render(request, "polls/cart.html", params)
 
     elif request.method == "POST":

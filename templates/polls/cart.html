@@ -5,6 +5,11 @@
     <title>Title</title>
 </head>
 <body>
+    {% for c in cart %}
+        <input type="checkbox" value="{{ c.productID }}">
+        <img>
 
+        <div>{{ c.quatity }}</div>
+    {% endfor %}
 </body>
 </html>

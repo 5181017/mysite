@@ -4,9 +4,12 @@ from polls.views.Class.Cart import Cart
 
 def cart(request):
     if request.method == "GET":
-        userid = request.session["userid"]
-        cart = Cart.get_cart(userid)
-        params = {"cart": cart}
+        if 'userid' in request.session:
+            userid = request.session["userid"]
+            cart = Cart.get_cart(userid)
+            params = {"cart": cart}
+        else:
+            params = {}
         return render(request, "polls/cart.html", params)
 
     elif request.method == "POST":

@@ -6,8 +6,8 @@ from polls.views.Class.User import User
 
 def login(request):
     if request.method == "GET":
-        return redirect("pools/login.html")
-
+        # return redirect("/polls/login")
+        return render(request , "polls/login.html")
     elif request.method == "POST":
         userid = request.POST.get("userid", None)
         pw = request.POST.get("password", None)

@@ -11,24 +11,25 @@ def cart(request):
             userid = request.session["userid"]
             cart = Cart.get_cart(userid)
             params = {"cart": cart}
+
+
+            userid = request.session["userid"]
+            urlList = []
+            priceList = []
+            nameList = []
+            cartList = Cart.get_cart(userid)
+            # この段階で画像、商品名、値段が必要
+            for proId in cartList.values("productID"):
+                urlList.append(Product.get_imageurl(proId))
+                priceList.append(Product.get_price(proId))
+                nameList.append(Product.get_one_product(proId).productName)
+            params = {
+                "urlList": urlList,
+                "priceList": priceList,
+                "nameList": nameList
+            }
         else:
             params = {}
-
-        userid = request.session["userid"]
-        urlList = []
-        priceList = []
-        nameList = []
-        cartList = Cart.get_cart(userid)
-        # この段階で画像、商品名、値段が必要
-        for proId in cartList.values("productID"):
-            urlList.append(Product.get_imageurl(proId))
-            priceList.append(Product.get_price(proId))
-            nameList.append(Product.get_one_product(proId).productName)
-        params = {
-            "urlList": urlList,
-            "priceList": priceList,
-            "nameList": nameList
-        }
 
         return render(request, "polls/cart.html", params)
 

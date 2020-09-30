@@ -1,0 +1,109 @@
+*{
+
+}
+
+html{
+  width:100%;
+  height:100%;
+}
+
+body{
+  width:98%;
+  height:98%;
+  /* background-color:rgb(47,47,47); */
+  font-family:"Meiryo";
+  overflow-x:auto;/*はみ出た要素だけ横スクロール*/
+  white-space:nowrap;/*最小画面でも折り返さずに表示する*/
+}
+
+.form{
+  width:98%;
+  min-width:1475px;
+  display:flex;
+  flex-flow:row nowrap;
+}
+
+.immutable_form{
+  height:80px;
+  font-size:30px;
+}
+
+.searchBox{
+  flex-basis:3000px;
+  flex-grow:1;
+  flex-shrink:1;
+}
+
+.search_form{
+  width:98%;
+  display:flex;
+  flex-flow:row nowrap;
+}
+
+.mainForm{
+  display: flex;
+  overflow-x:auto;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 82%;
+}
+
+.itemForm{
+  display: flex;
+  flex-flow:row nowrap;
+  width: 97%;
+  height: 200px;
+  margin-top: 15px;
+  background-color: #ccc;
+}
+
+.checkForm{
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+  align-self: center;
+  background-color: azure;
+}
+
+.checkBox{
+  width: 50px;
+  height: 50px;
+}
+
+.element{
+  flex-grow: 3;
+  flex-shrink: 3;
+}
+
+.verticalForm{
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.priceQuantity{
+  height: 45%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+
+.money_form{
+  width:98%;
+  display:flex;
+  flex-flow:row nowrap;
+}
+
+.buy_form_move{
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: right;
+  flex-flow:row nowrap;
+}
+
+.move_form{
+  height:80px;
+  font-size:15px;
+}

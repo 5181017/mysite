@@ -1,0 +1,142 @@
+*{
+
+}
+
+html{
+  width:100%;
+  height:100%;
+}
+
+body{
+  width:98%;
+  height:98%;
+  /* background-color:rgb(47,47,47); */
+  font-family:"Meiryo";
+  overflow-x:auto;/*はみ出た要素だけ横スクロール*/
+  white-space:nowrap;/*最小画面でも折り返さずに表示する*/
+}
+
+.form{
+  width:98%;
+  min-width:1475px;
+  display:flex;
+  flex-flow:row nowrap;
+}
+
+.immutable_form{
+  height:80px;
+  font-size:30px;
+}
+
+.searchBox{
+  flex-basis:3000px;
+  flex-grow:1;
+  flex-shrink:1;
+}
+
+.search_form{
+  width:98%;
+  display:flex;
+  flex-flow:row nowrap;
+}
+
+
+.main_form{
+  display: flex;
+  /* flex-direction: column; */
+  flex-flow: column nowrap;
+  align-items: center;
+  font-size: 40px;
+  height: 600px;
+  /* background-color: #ccc; */
+}
+
+.inputForm{
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  font-size:30px;
+  margin-top: 150px;
+  margin-right: 40px;
+}
+
+.input{
+  width:500px;
+  height:50px;
+  font-size: 30px;
+}
+
+
+
+
+.buttonForm{
+  flex-grow: 1;  
+  /* 親に対してどれくらい大きくなるか */
+  flex-shrink: 1;
+  /* 親に対してどれくらい小さくなるか */
+  position: relative;
+}
+
+.errorForm{
+  flex-grow: 2;
+  flex-shrink: 2;
+  align-items: center;
+  /* background-color: gray; */
+}
+
+/* .errorLabel{
+  flex-grow:1;
+  flex-shrink:1;
+  background-color: #ccc;
+} */
+
+.buttonStyle{
+  font-size: 30px;
+  width: 250px;
+  height: 70px;
+  margin-top:50px;
+}
+
+
+
+
+
+
+
+.productName{
+ font-size: 45px;
+ position:absolute;
+ top: 700px;
+ left: 35%;
+}
+
+.stars{
+  position: absolute;
+  top: 800px;
+  left: 30%;
+}
+
+.reviewTitle{
+  position: absolute;
+  top: 840px;
+  left: 30%;
+}
+
+.textArea{
+  position: absolute;
+  top: 880px;
+  left: 30%;
+}
+
+.post{
+  position: absolute;
+  top: 1400px;
+  left: 30%;
+}
+
+/* .a3 {
+  position: absolute; 
+  top: 565px; 
+  left: 0.6%;
+} */
+

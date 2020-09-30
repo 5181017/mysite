@@ -5,8 +5,7 @@ from polls.views.Class.Product import Product
 
 # 商品のインスタンスを渡す　セッション
 def productlist(request):
-    category=request.GET.get("category", None)
-    # if category 条件
+    category = request.GET.get("sarchCategory", None)
     product = Product().get_product(category)
     request.session["product"] = product
     params = {"product": product}

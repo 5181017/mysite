@@ -19,8 +19,9 @@ def home(request):
             return render(request, "polls/home.html")
         elif "cart" in request.POST:
             if not request.session.exists("userid"):
-                param = {"ログインしてください。"}
+                param = {"err": "ログインしてください。"}
                 return render(request, "polls/login.html", param)
             return render(request, "polls/cart.html")
         elif "sarch" in request.POST:
             return render(request, "polls/productList.html")
+    return redirect("pools.productList.html")

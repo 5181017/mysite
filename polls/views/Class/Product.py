@@ -10,7 +10,7 @@ class Product:
 
     # 指定されたカテゴリーIDの商品を取得
     def get_product(self, categoryid):
-        data = models.Products.object.filter(categoryid=categoryid)
+        data = models.Products.objects.filter(categoryid=categoryid)
         return data
 
     # 特定の商品を取得

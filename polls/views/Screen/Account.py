@@ -24,9 +24,12 @@ def account(request):
             except models.User.DoesNotExist:  # 登録できないエラー
                 params = {"errmsg": "既にそのIDは存在しています"}
                 return render(request, "polls/account.html", params)
-            except Exception:
+            except Exception as e:
                 params = {"errmsg": "DBに接続できませんでした"}
-                return render(request, "polls/exception.html", params)
+                print(e)
+                # return render(request, "polls/exception.html", params)
+                return render(request , "polls/account.html" , params)
+
         else:
             params = {"errmsg": "再入力パスワードが違います"}
             return render(request, "polls/account.html", params)

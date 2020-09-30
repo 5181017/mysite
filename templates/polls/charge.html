@@ -1,10 +1,61 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="ja">
+  <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href= "{% static 'polls/css/charge.css' %}">
+  </head>
+  <body>
+    <div class="form">
+      <button class="immutable_form" style="width:200px; min-width:200px;">Alpha</button>
+      <!-- <form class="form2" action="http://172.20.141.82:8080/polls/" method="post"> -->
+      <form class="search_form" action="file:///D:/Users/5181025/FrontEND/htmlひな形/3p.html" method="post">
+        {% csrf_token %}
+        <input class="immutable_form searchBox" type="search" placeholder="商品名を入力してください" name="productName"></input>
+        <input class="immutable_form" type="submit" value="検索"style="width:150px; min-width:150px;"></input>
+      </form>
+      <button class="immutable_form" style="width:300px; min-width:300px;">ログイン</button>
+      <button class="immutable_form" style="width:150px; min-width:150px;">カート</button>
+    </div>
 
-</body>
+    <div class="chargeMoney_form">
+        <input type="button" class="chargeMoney_options" onclick="btn5000()" value="5000">
+        <input type="button" class="chargeMoney_options" onclick="btn10000()"value="10000">
+    </div>
+    <div class="chargeMoney_form">
+      <input type="button" class="chargeMoney_options" onclick="btn1000()" value="1000">
+      <input type="button" class="chargeMoney_options" onclick="btn3000()" value="3000">
+  </div>
+
+  <div class="dummy_form"></div>
+
+  <form class="inputMoney_form" name="moneyForm" action="file:///D:/Users/5181025/FrontEND/htmlひな形/9p.html/" method="post">
+    <button class="inputMoney_Signboard" type="button">自由枠</button>
+    <input class="inputMoney_spaces" type="number" placeholder=0 name="holder" span id="nums">
+    <input class="inputMoney_button" type="submit" value="チャージ"></input>
+  </form>
+
+  </body>
+
+
+
+
+  <script>
+    function btn1000(){
+      var num = document.moneyForm.holder.value;
+      document.moneyForm.holder.value = Number(num) + 1000;
+    }
+    function btn3000(){
+      var num = document.moneyForm.holder.value;
+      document.moneyForm.holder.value = Number(num) + 3000;
+    }
+    function btn5000(){
+      var num = document.moneyForm.holder.value;
+      document.moneyForm.holder.value = Number(num) + 5000;
+    }
+    function btn10000(){
+      var num = document.moneyForm.holder.value;
+      document.moneyForm.holder.value = Number(num) + 10000;
+    }
+  </script>
 </html>

@@ -52,6 +52,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
@@ -83,7 +85,7 @@ DATABASES = {
         'NAME'      : 'django',
         'USER'      : 'python',
         'PASSWORD'  : 'python',
-        'HOST'      : '172.20.141.4',
+        'HOST'      : '172.20.141.17',
         'PORT'      : '3306'
     }
 }

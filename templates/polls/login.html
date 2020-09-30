@@ -1,10 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="ja">
+  <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/login.css' %}">
+  </head>
+  <body>
+    <div class="form">
+      <button class="immutable_form" style="width:200px; min-width:200px;">Alpha</button>
+      <!-- <form class="form2" action="http://172.20.141.82:8080/polls/" method="post"> -->
+      <form class="search_form" action="file:///D:/Users/5181025/FrontEND/htmlひな形/3p.html" method="post">
+        {% csrf_token %}
+        <input class="immutable_form searchBox" type="search" placeholder="商品名を入力してください" name="productName"></input>
+        <input class="immutable_form" type="submit" value="検索"style="width:150px; min-width:150px;"></input>
+      </form>
+      <button class="immutable_form" style="width:300px; min-width:300px;">ログイン</button>
+      <button class="immutable_form" style="width:150px; min-width:150px;">カート</button>
+    </div>
 
-</body>
+    <div class="main_form">
+      <div class="inputForm">
+        ユーザーID　　：
+        <input class="input" type="text">
+      </div>
+      <div class="inputForm">
+        パスワード　　：
+        <input class="input" type="password">
+      </div>
+    </div>
+
+    <div style="display: flex; flex-flow:row nowrap; height: 200px; margin-top: 30px;">
+      <div class="buttonForm">
+        <input type="button" class="buttonStyle" style="position: absolute; right: 0px;" value="登録はこちら">
+        <!-- <input type="button" class="buttonStyle" style="position: absolute; right: 0px;" value="ログインはこちら"></button> -->
+      </div>
+      <div class="errorForm" style="text-align:center;">
+        {{errorCode}}
+      </div>
+      <div class="buttonForm">
+        <!-- <input class="buttonStyle" style="position: absolute; left: 0px;" type="submit" value="登録"> -->
+        <input type="submit" class="buttonStyle" style="position: absolute; left: 0px;" value="ログイン"></button>
+      </div>
+    </div>
+
+
+  </body>
 </html>

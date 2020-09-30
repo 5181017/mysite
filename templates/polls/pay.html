@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-
+    <div class="form">
+      <button class="search" style="width:200px; min-width:200px;">Alpha</button>
+      <form class="form2" action="http://172.20.141.82:8080/polls/" method="post">
+        <input class="search tb" type="search" placeholder="商品名を入力してください" name="productName"></input>
+        <input type="submit" value="検索" class="search" style="width:150px; min-width:150px;"></input>
+      </form>
+      <button class="search" style="width:150px; min-width:150px;">カート</button>
+    </div>
+    <div>
+        {% for c in category %}
+        {{ c.categoryName }}
+        {% endfor %}
+    </div>
 </body>
 </html>

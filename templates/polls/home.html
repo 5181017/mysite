@@ -16,7 +16,10 @@
       </form>
       <button class="immutable_form" style="width:300px; min-width:300px;">ログイン</button>
       <button class="immutable_form" style="width:150px; min-width:150px;">カート</button>
-    
+        {% for c in category %}
+            {{ c }}
+        {% endfor %}
+
       <button class="category_button category_book">本</button>
       <button class="category_button category_game">ゲーム</button>
       <button class="category_button category_music">ミュージック</button>

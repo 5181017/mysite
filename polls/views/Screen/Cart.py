@@ -6,21 +6,35 @@ from polls.views.Class.Product import Product
 
 def cart(request):
     if request.method == "GET":
-        userid = request.session["userid"]
-        urlList = []
-        priceList = []
-        nameList = []
-        cartList = Cart.get_cart(userid)
-        # この段階で画像、商品名、値段が必要
-        for proId in cartList.values("productID"):
-            urlList.append(Product.get_imageurl(proId))
-            priceList.append(Product.get_price(proId))
-            nameList.append(Product.get_one_product(proId).productName)
-        params = {
-            "urlList": urlList,
-            "priceList": priceList,
-            "nameList": nameList
-        }
+
+        if 'userid' in request.session:
+            userid = request.session["userid"]
+            cart = Cart.get_cart(userid)
+            params = {"cart": cart}
+
+
+            userid = request.session["userid"]
+            urlList = []
+            priceList = []
+            nameList = []
+            cartList = Cart.get_cart(userid)
+
+            list = [] #追加
+            # この段階で画像、商品名、値段が必要
+            for proId in cartList.values("productID"):
+                urlList.append(Product.get_imageurl(proId))
+                priceList.append(Product.get_price(proId))
+                nameList.append(Product.get_one_product(proId).productName)
+
+                list = [Product.get_imageurl(proId) , Product.get_price(proId) ,Product.get_one_product(proId).productName] #追加
+            # params = {
+            #     "urlList": urlList,
+            #     "priceList": priceList,
+            #     "nameList": nameList
+            # }
+            params = {"list" : list} #追加
+        else:
+            params = {}
         return render(request, "polls/cart.html", params)
 
     elif request.method == "POST":

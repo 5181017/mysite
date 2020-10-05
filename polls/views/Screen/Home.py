@@ -4,6 +4,9 @@ from polls.views.Class.Category import Category
 
 
 # カテゴリのインスタンスを渡す セッション
+from polls.views.Class.Product import Product
+
+
 def home(request):
     if request.method == "GET":
         category = Category().get_category()
@@ -12,16 +15,28 @@ def home(request):
 
     if request.method == "POST":
         btn = request.POST.get("category_btn", None)
-        if "category_btn" in btn:
-            param = {"sarchCategory": btn}
+        category = Category().get_category()
+        if "category_btn" in request.POST:
+            product = Product().get_product(btn)
+            param = {
+                "product": product,
+                "sarchCategory": btn,
+                "category": category
+            }
             return render(request, "polls/productList.html", param)
-        elif "logo" in request.POST:
-            return render(request, "polls/home.html")
-        elif "cart" in request.POST:
+
+        if "logo" in request.POST:
+            return redirect("/polls/home")
+
+        if "login" in request.POST:
+            return redirect("/polls/login")
+
+        if "cart" in request.POST:
             if not request.session.exists("userid"):
-                param = {"err": "ログインしてください。"}
-                return render(request, "polls/login.html", param)
+                return redirect("/polls/login")
             return render(request, "polls/cart.html")
-        elif "sarch" in request.POST:
+
+        if "sarch" in request.POST:
             return render(request, "polls/productList.html")
-    return redirect("pools.productList.html")
+
+    return redirect("/polls/home")

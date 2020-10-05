@@ -16,5 +16,5 @@ urlpatterns = [
     path("pay", Pay.pay, name="pay"),
     path("personal", Personal.personal, name="personal"),
     path("productdetails", ProductDetails.product_details, name="productdetails"),
-    # path("<int:product_id>/review", Review, name="review")
+    # path("review/<int:product_id>", Review, name="review")
 ]

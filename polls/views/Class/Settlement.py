@@ -30,6 +30,5 @@ class Settlement:
         data.save()  # ここでUPDATEが実行される
 
         # カートから削除
-        cart = Cart()
-        for i in 1:
-            cart.delete_cart(userid, products[i])
+        for i in range(len(products)):
+            Cart().delete_cart(userid, products[i])

@@ -16,9 +16,9 @@ def pay(request):
             buypro.append(Product().get_one_product(buyid))
 
         # 合計金額の計算 total
-        for id in buylist:
-            total = total + Product().get_price(id) * quantity[i]
-            price = Product().get_price(id) * quantity[i]
+        for proId in buylist:
+            total = total + Product().get_price(proId) * quantity[i]
+            price = Product().get_price(proId) * quantity[i]
             i += 1
 
         params = {
@@ -30,12 +30,12 @@ def pay(request):
         return render(request, "polls/cart.html", params)
 
     elif request.method == "POST":
-        userid = request.POST.get("userid", None)      # userID
-        buylist = request.POST.get("buylist", None)    # 購入商品IDリスト
+        userId = request.POST.get("userid", None)      # userID
+        buyList = request.POST.get("buylist", None)    # 購入商品IDリスト
         total = request.POST.get("total", None)        # 合計金額
         # 購入処理
-        if Settlement().get_remaining_money(userid, total):
-            Settlement.buy(total, userid, buylist)
+        if Settlement().get_remaining_money(userId, total):
+            Settlement.buy(total, userId, buyList)
             return render(request, "polls/home.html")
         else:
             errmsg = "残高が足りません。チャージしてください。"

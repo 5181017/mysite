@@ -35,7 +35,6 @@ def cart(request):
             params = {"list" : list} #追加
         else:
             params = {}
-
         return render(request, "polls/cart.html", params)
 
     elif request.method == "POST":

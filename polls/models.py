@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Category(models.Model):
-    categoryID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    categoryID = models.CharField(primary_key=True, max_length=10)
     categoryName = models.CharField(max_length=50)
 
     # def __str__(self):
@@ -12,7 +12,7 @@ class Category(models.Model):
 
 
 class User(models.Model):
-    userID = models.IntegerField()
+    userID = models.CharField(primary_key=True, max_length=15)
     name = models.CharField(max_length=50)
     pw = models.CharField(max_length=50)
     money = models.IntegerField(default=0)
@@ -20,7 +20,7 @@ class User(models.Model):
 
 
 class Products(models.Model):
-    productID = models.IntegerField()
+    productID = models.CharField(primary_key=True, max_length=15)
     productName = models.CharField(max_length=255)
     price = models.IntegerField()
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -39,7 +39,7 @@ class Cart(models.Model):
 
 
 class PayHistory(models.Model):
-    paymentID = models.IntegerField()
+    paymentID = models.CharField(primary_key=True, max_length=10)
     productID = models.ForeignKey(Products, on_delete=models.CASCADE)
     userID = models.ForeignKey(User, on_delete=models.CASCADE)
     price = models.IntegerField()
@@ -49,7 +49,7 @@ class PayHistory(models.Model):
 
 
 class ChargingHistory(models.Model):
-    chargeID = models.IntegerField()
+    chargeID = models.CharField(primary_key=True, max_length=10)
     userID = models.ForeignKey(User, on_delete=models.CASCADE)
     timeStamp = models.DateTimeField(auto_now=True)
     addMoney = models.IntegerField()
@@ -57,7 +57,7 @@ class ChargingHistory(models.Model):
 
 
 class Review(models.Model):
-    reviewID = models.IntegerField()
+    reviewID = models.CharField(primary_key=True, max_length=10)
     productID = models.ForeignKey(Products, on_delete=models.CASCADE)
     userID = models.ForeignKey(User, on_delete=models.CASCADE)
     reviewStar = models.IntegerField()

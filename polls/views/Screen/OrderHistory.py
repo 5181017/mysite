@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from polls.views.Class.Settlement import Settlement
 
 
 def orderhistory(request):
+    # ログインしているか確認する
+    if not request.session.exists("userid"):
+        return redirect("/polls/login")
+
     if request.method == "GET":
         id = request.POST.get("userid", None)
         list = Settlement().get_settlement(id)

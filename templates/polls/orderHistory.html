@@ -1,27 +1,12 @@
+{% extends "polls/menu.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/orderHistory.css' %}">
-  </head>
-  <body>
-    <div class="form">
-      <button class="immutable_form" style="width:200px; min-width:200px;">Alpha</button>
-      <!-- <form class="form2" action="http://172.20.141.82:8080/polls/" method="post"> -->
-      <form class="search_form" action="file:///D:/Users/5181025/FrontEND/htmlひな形/3p.html" method="post">
-        {% csrf_token %}
-        <input class="immutable_form searchBox" type="search" placeholder="商品名を入力してください" name="productName"></input>
-        <input class="immutable_form" type="submit" value="検索"style="width:150px; min-width:150px;"></input>
-      </form>
-      <button class="immutable_form" style="width:300px; min-width:300px;">ログイン</button>
-      <button class="immutable_form" style="width:150px; min-width:150px;">カート</button>
-    </div>
 
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/orderHistory.css' %}">
+{% endblock %}
+
+{% block menu %}
     <div class="mainForm">
-
-
-
       <div class="itemForm">
         <div class="element">
           <div class="image_margin" style="background-color: white;">{{image}}</div>
@@ -111,10 +96,6 @@
           </div>
         </div>
       </div>
-      
-
-
-
     </div>
 
     <div class="money_form">
@@ -123,6 +104,4 @@
         <input class="move_form" type="submit" value="購入に進む"style="width:150px; min-width:150px;"></input>
       </form>
     </div>
-    
-  </body>
-</html>
+{% endblock %}

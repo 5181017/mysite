@@ -11,13 +11,9 @@ class User:
 
     # 認証
     def auth(self, userID, pw):
-        user = models.User.objects.get(userID=userID)
-        user = user.filter(pw=pw)
-        if user.exists():
-            return user
-        else:
-            errmsg = "パスワードが違います。"
-            return errmsg
+        user = models.User.objects.filter(userID=userID)
+        user = user.get(pw=pw)
+        return user
 
     # ユーザの登録
     def register_user(self, userID, name, pw):

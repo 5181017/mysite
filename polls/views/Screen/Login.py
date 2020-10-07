@@ -6,11 +6,13 @@ from polls.views.Class.User import User
 
 def login(request):
     if request.method == "GET":
-        # return redirect("/polls/login")
-        return render(request , "polls/login.html")
+        return render(request, "polls/login.html")
+
     elif request.method == "POST":
-        userid = request.POST.get("userid", None)
-        pw = request.POST.get("password", None)
+        userid = request.POST.get("id", None)
+        pw = request.POST.get("pw", None)
+        if "login_btn" in request.POST:
+            return redirect("/polls/home")
         try:
             user = User().auth(userid, pw)
             if isinstance(user, str):

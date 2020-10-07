@@ -12,8 +12,8 @@ urlpatterns = [
     path("orderHistory", OrderHistory.orderhistory, name="orderHistory"),
     path("pay", Pay.pay, name="pay"),
     path("personal", Personal.personal, name="personal"),
-    # path("productList", ProductList.productlist, name="productList"), # いらない
-    # path("<int:product_id>/review", Review, name="review"),
+    # path("productList", ProductList.productlist, name="productList"),
+    # path("review/<str:product_id>", Review, name="review"),
     path("myPage", MyPage.mypage, name="myPage"),  # htmlない
-    path("productDetails", ProductDetails.product_details, name="productDetails")  # htmlない
+    path("productDetails/<str:product_id>", ProductDetails.product_details, name="productDetails")  # htmlない
 ]

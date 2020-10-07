@@ -14,7 +14,7 @@ class Product:
         return data
 
     # 特定の商品を取得
-    def get_one_product(self, productid):
+    def get_one_product(productid):
         data = models.Products.objects.get(productID=productid)
         return data
 

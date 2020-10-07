@@ -10,12 +10,15 @@ class Review:
     title = ""           # タイトル
     comment = ""         # コメント
 
-    # レビューの取得
-    def get_review(self, productid):
-        data = models.Review.object.filter(productID=productid)
-        if data.exists():
-            return data
-        raise models.Review.DoesNotExist
+    # 商品ごとのレビューの取得
+    def get_review(productid):
+        data = models.Review.objects.filter(productID=productid)
+        return data
+
+    def get_one_review(self , reviewid):
+        data = models.Review.objects.get(reviewID=reviewid)
+        return data
+
 
     # レビューの削除
     def delete_review(self, reviewid):

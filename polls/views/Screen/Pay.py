@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from polls.views.Class.Product import Product
 from polls.views.Class.Settlement import Settlement
 
 
 def pay(request):
+    # ログインしているか確認する
+    if not request.session.exists("userid"):
+        return redirect("/polls/login")
+
     if request.method == "GET":
         buylist = request.POST.get("buylist", None)    # 購入商品IDリスト
         buypro = []                                    # 購入商品リスト

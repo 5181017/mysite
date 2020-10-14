@@ -3,6 +3,10 @@ from polls.views.Class.Charge import Charge
 
 
 def charge(request):
+    # ログインしているか確認する
+    if not request.session.exists("userid"):
+        return redirect("/polls/login")
+
     if request.method == "GET":
         return render(request , "polls/charge.html")
 

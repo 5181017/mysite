@@ -22,7 +22,7 @@
     <div>
       {% for p in product %}
         <div>
-            {{ p.productName }}
+            <a href="productList/{{ p.productID }}" style="margin-left: 30%">{{ p.productName }}</a>
             <!-- productDetailsへ -->
         </div>
       {% endfor %}

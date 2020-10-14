@@ -5,6 +5,10 @@ from polls.views.Class.Product import Product
 
 
 def cart(request):
+    #ログインしているか確認する
+    if not request.session.exists("userid"):
+        return redirect("/polls/login")
+
     if request.method == "GET":
 
         if 'userid' in request.session:

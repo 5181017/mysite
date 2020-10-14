@@ -1,0 +1,18 @@
+{% extends "polls/menu.html" %}
+{% load static %}
+{% block style %}<link rel="stylesheet" type="text/css" href="{% static 'polls/css/productDetails.css' %}">{% endblock %}
+{% block menu %}
+    <div class="form">
+    
+    <div class="main_form">
+      <p class="productName">{{product.productName}}</p>
+      <p class="price">{{product.price}}</p>
+      <p class="reviewStars">{{review.reviewStars}}</p>
+      <button class="addCart">カートに入れる</button>
+      <p class="all_reviewStars">評価まとめ</p>
+      <p class="addReview">レビュー作成</p>
+      <div class="image_form">
+        <img src="./download.jpg" class="image">
+      </div>
+    </div>
+{% endblock %}

@@ -4,6 +4,10 @@ from polls.views.Class.User import User
 
 
 def personal(request):
+    # ログインしているか確認する
+    if not request.session.exists("userid"):
+        return redirect("/polls/login")
+
     if request.method == "GET":
         userid = request.session["userid"]
         user = User().get_user(userid)

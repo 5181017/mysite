@@ -5,6 +5,10 @@ from polls.views.Class.Review import Review
 
 
 def review(request, product_id):
+    # ログインしているか確認する
+    if not request.session.exists("userid"):
+        return redirect("/polls/login")
+
     # TODO画像を載せる
     if request.method == "GET":
         # product_id = request.GET.get("product_id")

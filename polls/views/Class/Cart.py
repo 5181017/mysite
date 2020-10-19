@@ -22,6 +22,6 @@ class Cart:
         data.save()  # ここでUPDATEが実行される
 
     # カートの取得
-    def get_cart(self, userid):
+    def get_cart(userid):
         data = models.Cart.objects.filter(userID=userid)
         return data

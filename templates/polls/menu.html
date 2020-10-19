@@ -15,8 +15,8 @@
             <input class="immutable_form searchBox" type="search" placeholder="商品名を入力してください" name="productName">
             <input class="immutable_form" type="submit" value="検索"style="width:150px; min-width:150px;">
         </form>
-        <form action="login" method="post">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">ログイン</button></form>
-        <form action="cart" method="post">{% csrf_token %}<button class="immutable_form" name="cart" style="width:150px; min-width:150px;">カート</button></form>
+        <form action="login" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">ログイン</button></form>
+        <form action="cart" method="get">{% csrf_token %}<button class="immutable_form" name="cart" style="width:150px; min-width:150px;">カート</button></form>
     </div>
 
     {% block menu %}

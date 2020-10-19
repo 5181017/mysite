@@ -10,33 +10,30 @@ def cart(request):
         return redirect("/polls/login")
 
     if request.method == "GET":
-
         if 'userid' in request.session:
-            userid = request.session["userid"]
-            cart = Cart.get_cart(userid)
-            params = {"cart": cart}
+            # userid = request.session["userid"]
+            # cart = Cart.get_cart(userid)
+            # params = {"cart": cart}
 
 
             userid = request.session["userid"]
-            urlList = []
-            priceList = []
-            nameList = []
             cartList = Cart.get_cart(userid)
+            print(cartList)
 
             list = [] #追加
             # この段階で画像、商品名、値段が必要
             for proId in cartList.values("productID"):
-                urlList.append(Product.get_imageurl(proId))
-                priceList.append(Product.get_price(proId))
-                nameList.append(Product.get_one_product(proId).productName)
+                product = Product()
+                product.productid = proId
+                # product.image = product.get_imageurl(proId)
+                product.image = ""
+                product.price = product.get_price(proId)
+                product.name = product.get_one_product(proId).productName
+                print(proId)
 
-                list = [Product.get_imageurl(proId) , Product.get_price(proId) ,Product.get_one_product(proId).productName] #追加
-            # params = {
-            #     "urlList": urlList,
-            #     "priceList": priceList,
-            #     "nameList": nameList
-            # }
+                list.append(product)
             params = {"list" : list} #追加
+            print(list)
         else:
             params = {}
         return render(request, "polls/cart.html", params)

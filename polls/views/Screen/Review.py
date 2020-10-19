@@ -6,7 +6,7 @@ from polls.views.Class.Review import Review
 
 def review(request, product_id):
     # ログインしているか確認する
-    if not request.session.exists("userid"):
+    if not "userid" in request.session:
         return redirect("/polls/login")
 
     # TODO画像を載せる

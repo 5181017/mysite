@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def mypage(request):
+    #ログインしているか確認する
+    if not "userid" in request.session:
+        return redirect("/polls/login")
+
     if request.method == 'POST':
         # -ホーム-
         if "logo" in request.POST:

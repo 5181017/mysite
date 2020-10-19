@@ -11,16 +11,18 @@ def login(request):
     elif request.method == "POST":
         userid = request.POST.get("id", None)
         pw = request.POST.get("pw", None)
-        if "login_btn" in request.POST:
-            return redirect("/polls/home")
+        # if "login_btn" in request.POST:
+        #     return redirect("/polls/home")
         try:
             user = User().auth(userid, pw)
-            if isinstance(user, str):
-                params = {"errmsg": user}
-                return render(request, "polls/login.html", params)
-            else:
-                request.session["userid"] = user.userid
-                return render(request, "polls/home.html")
+            # if isinstance(user, str):
+            #     params = {"errmsg": user}
+            #     return render(request, "polls/login.html", params)
+            # else:
+            print(";lakdjfs;lakjds;fljads;lfja;sdlfj;")
+            request.session["userid"] = user.userID
+                # return render(request, "polls/home.html")
+            return redirect("/polls/home")
         except models.User.DoesNotExist:  # 登録できないエラー
             params = {"errmsg": "ユーザーIDが違います。"}
             return render(request, "polls/login.html", params)

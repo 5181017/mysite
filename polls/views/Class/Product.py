@@ -6,7 +6,8 @@ class Product:
     productid = ""   # 商品ID
     price = 0        # 値段
     image = ""       # 画像
-    categoryid = ""  # カテゴリーID
+    name = ""
+    # categoryid = ""  # カテゴリーID
 
     # 指定されたカテゴリーIDの商品を取得
     def get_product(self, categoryid):

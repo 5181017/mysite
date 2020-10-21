@@ -5,13 +5,13 @@ from polls.views.Class.User import User
 
 class Review:
     product = Product()  # 商品
-    user = User()        # ユーザ
+    # user = User()        # ユーザ
     star = 0             # 星
     title = ""           # タイトル
     comment = ""         # コメント
 
     # 商品ごとのレビューの取得
-    def get_review(productid):
+    def get_review(self , productid):
         data = models.Review.objects.filter(productID=productid)
         return data
 
@@ -32,6 +32,8 @@ class Review:
         data.save()  # ここでUPDATEが実行される
 
     # レビューの登録
-    def register_review(self, userid, reviewstar, title, comment):
-        data = models.Review(userID=userid, reviewStar=reviewstar, title=title, comment=comment)
+    def register_review(self, reviewid , userid, productid , reviewstar, title, comment):
+        user = User().get_user(userid)
+        product = Product().get_one_product(productid)
+        data = models.Review(reviewID=reviewid , userID=user, productID=product , reviewStar=reviewstar, title=title, comment=comment)
         data.save()  # INSERTが実行される

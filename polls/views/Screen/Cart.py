@@ -27,13 +27,12 @@ def cart(request):
                 product.productid = proId
                 # product.image = product.get_imageurl(proId)
                 product.image = ""
-                product.price = product.get_price(proId)
-                product.name = product.get_one_product(proId).productName
-                print(proId)
-
+                product.price = int(product.get_price(proId['productID']))
+                product.name = product.get_one_product(proId['productID']).productName
                 list.append(product)
+
             params = {"list" : list} #追加
-            print(list)
+
         else:
             params = {}
         return render(request, "polls/cart.html", params)

@@ -12,26 +12,29 @@
           <img src="./a.jpg" class="image">
         </div>
         <div>
-          <label class="productName">{productName}</label>
+          <label class="productName">{{ product.productName }}</label>
         </div>
       </div>
-
-      <div class="review_form">
-        <div class="stars">
-          評価
-          <button>☆</button><button>☆</button><button>☆</button><button>☆</button><button>☆</button>
-        </div>
-        <div class="reviewTitle">
-          レビュータイトル
-          <input type="text">
-        </div>
-        <div class="textArea">
-          <textarea style="  width: 500px; height: 500px;" placeholder="レビュー内容"></textarea>
-          <!-- 大体1300文字 -->
-        </div>
-        <div class="post">
-          <input type="submit">
-        </div>
-      </div>
+       <form action="review" method="post">
+           {% csrf_token %}
+           <input type="hidden" value="{{ product.productID }}" name="productid">
+          <div class="review_form">
+            <div class="stars">
+              評価
+{#              <button>☆</button><button>☆</button><button>☆</button><button>☆</button><button>☆</button>#}
+            </div>
+            <div class="reviewTitle">
+              レビュータイトル
+              <input type="text" name="title">
+            </div>
+            <div class="textArea">
+              <textarea style="  width: 500px; height: 500px;" placeholder="レビュー内容" name="commnet"></textarea>
+              <!-- 大体1300文字 -->
+            </div>
+            <div class="post">
+              <input type="submit">
+            </div>
+          </div>
+       </form>
     </div>
 {% endblock %}

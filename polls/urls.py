@@ -13,7 +13,7 @@ urlpatterns = [
     path("pay", Pay.pay, name="pay"),
     path("personal", Personal.personal, name="personal"),
     # path("productList", ProductList.productlist, name="productList"),
-    # path("review/<str:product_id>", Review, name="review"),
+    path("review/<str:product_id>", Review.review , name="review"),
     path("myPage", MyPage.mypage, name="myPage"),  # htmlない
     path("productDetails/<str:product_id>", ProductDetails.product_details, name="productDetails")  # htmlない
 ]

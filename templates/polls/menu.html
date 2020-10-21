@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/template.css' %}">
     {% block style %}
     {% endblock %}
 </head>
@@ -15,7 +16,11 @@
             <input class="immutable_form searchBox" type="search" placeholder="商品名を入力してください" name="productName">
             <input class="immutable_form" type="submit" value="検索"style="width:150px; min-width:150px;">
         </form>
-        <form action="login" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">ログイン</button></form>
+        {% if 'userid' in request.session %}
+            <form action="myPage" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">マイページ</button></form>
+        {% else %}
+            <form action="login" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">ログイン</button></form>
+        {% endif %}
         <form action="cart" method="get">{% csrf_token %}<button class="immutable_form" name="cart" style="width:150px; min-width:150px;">カート</button></form>
     </div>
 

@@ -1,0 +1,74 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    /* color: white; */
+    font-family:"Meiryo";
+  }
+  
+  html{
+    width:100%;
+    height:100%;
+    /* background-image: url("./背景.png");
+    background-size: 100% 100%; */
+  }
+  
+  button{
+    border-width: 0ch;
+    background-color: gray;
+  }
+  
+  button:hover{
+    border: 1px solid;
+  }
+  
+  input{
+    border-width: 0ch;
+  }
+  
+  input:hover{
+    border: 1px solid;
+  }
+  
+  body{
+    width:100%;
+    height:100%;
+    overflow-x:auto;/*はみ出た要素だけ横スクロール*/
+    white-space:nowrap;/*最小画面でも折り返さずに表示する*/
+  }
+  
+  .title{
+    background-image: url("./タイトル.png");
+    background-size: 100% 100%;
+  }
+  
+  .wakusen{
+    border: 1px solid white;
+  }
+  
+  .form{
+    width:100%;
+    min-width:1475px;
+    display:flex;
+    flex-flow:row nowrap;
+    background-color: gray;
+  }
+  
+  .immutable_form{
+    height:80px;
+    font-size:30px;
+    margin-top: 0.5ch;
+    margin-bottom: 0.5ch;
+  }
+  
+  .searchBox{
+    flex-basis:3000px;
+    flex-grow:1;
+    flex-shrink:1;
+  }
+  
+  .search_form{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+  }

@@ -8,6 +8,10 @@ from polls.views.Class.Product import Product
 
 
 def home(request):
+    # ログインしているユーザ（テスト用）
+    request.session['userid'] = "1"
+
+
     if request.method == "GET":
         category = Category().get_category()
         param = {"category": category}

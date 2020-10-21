@@ -15,12 +15,12 @@ class Product:
         return data
 
     # 特定の商品を取得
-    def get_one_product(productid):
+    def get_one_product(self , productid):
         data = models.Products.objects.get(productID=productid)
         return data
 
     # 特定の商品の値段を取得
-    def get_price(self, productid):
+    def get_price(self , productid):
         data = models.Products.objects.get(productID=productid)
         return data.price
 

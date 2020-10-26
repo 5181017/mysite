@@ -18,10 +18,11 @@
 
   <div class="dummy_form"></div>
 
-  <form class="inputMoney_form" name="moneyForm" action="file:///D:/Users/5181025/FrontEND/htmlひな形/9p.html/" method="post">
+  <form class="inputMoney_form" name="moneyForm" action="charge" method="post">
+    {% csrf_token %}
     <button class="inputMoney_Signboard" type="button">自由枠</button>
     <input class="inputMoney_spaces" type="number" placeholder=0 name="holder" span id="nums">
-    <input class="inputMoney_button" type="submit" value="チャージ"></input>
+    <input class="inputMoney_button" type="submit" value="チャージ">
   </form>
 
   <script>
@@ -40,6 +41,11 @@
     function btn10000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 10000;
+    }
+
+
+    if(msg){
+        alert(msg);
     }
   </script>
 {% endblock %}

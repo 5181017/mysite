@@ -5,7 +5,7 @@ from polls.views.Class.Charge import Charge
 
 def chargehistory(request):
     # ログインしているか確認する
-    if not request.session.exists("userid"):
+    if not "userid" in request.session:
         return redirect("/polls/login")
 
     if request.method == "GET":

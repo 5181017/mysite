@@ -6,11 +6,15 @@
     
     <div class="main_form">
       <p class="productName">{{product.productName}}</p>
-      <p class="price">{{product.price}}</p>
+      <p class="price">{{product.price}}円</p>
       <p class="reviewStars">{{review.reviewStars}}</p>
-      <button class="addCart">カートに入れる</button>
+        <form action="productDetails" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ product.productID }}" name="productid">
+            <input type="submit" class="addCart" value="カートに入れる">
+        </form>
       <p class="all_reviewStars">評価まとめ</p>
-      <p class="addReview">レビュー作成</p>
+        <a href="/polls/review/{{ product.productID }}" class="addReview"><button style="font-size: 25px; padding: 10px;">レビュー作成</button></a>
       <div class="image_form">
         <img src="./download.jpg" class="image">
       </div>

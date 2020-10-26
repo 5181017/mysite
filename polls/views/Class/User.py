@@ -38,9 +38,9 @@ class User:
 
     # ユーザの取得
     def get_user(self, userID):
-        user = models.User.objects.filter(userID=userID)
-        if user.exists() and user.count() == 1:
-            return user
+        user = models.User.objects.get(userID=userID)
+        # if user.exists() and user.count() == 1:
+        return user
 
     # チャージ
     def charge_money(self, userID, money):

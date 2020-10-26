@@ -16,6 +16,7 @@ def home(request):
     if request.method == "POST":
         btn = request.POST.get("category_btn", None)
         category = Category().get_category()
+
         if "category_btn" in request.POST:
             product = Product().get_product(btn)
             param = {
@@ -32,9 +33,9 @@ def home(request):
             return redirect("/polls/login")
 
         if "cart" in request.POST:
-            if not request.session.exists("userid"):
-                return redirect("/polls/login")
-            return render(request, "polls/cart.html")
+            if 'userid' in request.session:
+                return render(request, "polls/cart.html")
+            return redirect("/polls/login")
 
         if "sarch" in request.POST:
             return render(request, "polls/productList.html")

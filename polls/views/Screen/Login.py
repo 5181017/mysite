@@ -15,12 +15,13 @@ def login(request):
             return redirect("/polls/home")
         try:
             user = User().auth(userid, pw)
-            if isinstance(user, str):
-                params = {"errmsg": user}
-                return render(request, "polls/login.html", params)
-            else:
-                request.session["userid"] = user.userid
-                return render(request, "polls/home.html")
+            if 'userid' in request.session:
+                print("useridセッションが既にあります")
+                return redirect("/polls/home")
+            request.session["userid"] = user.userID
+            print("useridセッション作成")
+            return redirect("/polls/home")
+
         except models.User.DoesNotExist:  # 登録できないエラー
             params = {"errmsg": "ユーザーIDが違います。"}
             return render(request, "polls/login.html", params)

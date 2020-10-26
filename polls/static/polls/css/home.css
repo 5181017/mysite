@@ -7,6 +7,15 @@ html{
   height:100%;
 }
 
+button{
+  border-width: 0ch;
+  background-color: whitesmoke;
+}
+
+input{
+  border-width: 0ch;
+}
+
 body{
   width:98%;
   height:98%;
@@ -21,6 +30,7 @@ body{
   display:flex;
   flex-flow:row nowrap;
   font-size:0;
+  background-color: whitesmoke;
 }
 
 .search_form{
@@ -32,6 +42,8 @@ body{
 .immutable_form{
   height:80px;
   font-size:30px;
+  margin-top: 0.5ch;
+  margin-bottom: 0.5ch;
 }
 
 .category_button{

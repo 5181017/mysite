@@ -1,48 +1,3 @@
-*{
-
-}
-
-html{
-  width:100%;
-  height:100%;
-}
-
-body{
-  width:98%;
-  height:98%;
-  /* background-color:rgb(47,47,47); */
-  font-family:"Meiryo";
-  overflow-x:auto;/*はみ出た要素だけ横スクロール*/
-  white-space:nowrap;/*最小画面でも折り返さずに表示する*/
-}
-
-.form{
-  width:98%;
-  min-width:1475px;
-  display:flex;
-  flex-flow:row nowrap;
-}
-
-.immutable_form{
-  height:80px;
-  font-size:30px;
-}
-
-.searchBox{
-  flex-basis:3000px;
-  flex-grow:1;
-  flex-shrink:1;
-}
-
-.search_form{
-  width:98%;
-  display:flex;
-  flex-flow:row nowrap;
-}
-
-
-
-
 .chargeMoney_form{
   width:100%;
   height: 30%;
@@ -87,14 +42,13 @@ body{
 .inputMoney_Signboard{
   font-size: large;
   text-align: center;
-  border: 0.1px solid;
   width: 10%;
   height: 46%;
   max-height: 150px;
   min-width: 150px;
   min-height: 25px;
   margin-left: auto;
-  background-color: gainsboro;
+  background-color: whitesmoke;
 }
 
 .inputMoney_spaces{

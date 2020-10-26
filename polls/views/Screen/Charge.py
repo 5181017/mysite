@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from polls.views.Class.Charge import Charge
+from polls.views.Class.User import User
 
 
 def charge(request):
@@ -11,10 +12,10 @@ def charge(request):
         return render(request , "polls/charge.html")
 
     elif request.method == "POST":
-        userid = request.POST.get("userid", None)
-        money = request.POST.get("holder", None)
+        userid = request.session["userid"]
+        money = request.POST["holder"]
         if money.isdigit():
-            Charge.charge_money(userid, money)
+            User().charge_money(userid, int(money))
             params = {"msg": "チャージが完了しました。"}
             return render(request, "polls/charge.html", params)
         else:

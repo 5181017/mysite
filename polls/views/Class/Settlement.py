@@ -11,7 +11,7 @@ class Settlement:
     # 履歴取得
     def get_settlement(self, userid):
         data = models.PayHistory.objects.filter(userID=userid)
-        if data.exist():
+        if data.exists():
             return data
         raise models.PayHistory.DoesNotExist
 

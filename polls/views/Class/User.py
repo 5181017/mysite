@@ -30,7 +30,11 @@ class User:
 
     # ユーザの更新
     def update_user(self, userID, name, address):
-        models.User.objects.get(userID=userID).update(name=name, address=address)  # ユーザが存在しない場合DoesNotExist(エラー)を返す。
+        user = models.User.objects.get(userID=userID) # ユーザが存在しない場合DoesNotExist(エラー)を返す。
+        user.name = name
+        user.address = address
+        user.save()
+
 
     # ユーザの削除
     def delete_user(self, userID):
@@ -49,3 +53,4 @@ class User:
             money = user.money + money
             user.money = money
             user.save()
+

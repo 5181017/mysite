@@ -49,7 +49,6 @@ class PayHistory(models.Model):
 
 
 class ChargingHistory(models.Model):
-    chargeID = models.CharField(primary_key=True, max_length=10)
     userID = models.ForeignKey(User, on_delete=models.CASCADE)
     timeStamp = models.DateTimeField(auto_now=True)
     addMoney = models.IntegerField()

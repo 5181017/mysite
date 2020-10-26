@@ -51,11 +51,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-
 ROOT_URLCONF = 'mysite.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,13 +69,9 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE'    : 'django.db.backends.mysql',
@@ -89,7 +82,6 @@ DATABASES = {
         'PORT'      : '3306'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

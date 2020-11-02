@@ -6,19 +6,20 @@
 {% endblock %}
 
 {% block menu %}
-    <form class="personal_information_form" action="" accept-charset="UTF-8" method="post" name="Former">
+    <form class="personal_information_form" action="personal" accept-charset="UTF-8" method="post" name="Former">
+    {% csrf_token %}
       <div class="Input_form" name="seimei">
-        <input type="text" class="mame_form_options" placeholder="姓" id="sei">
-        <input type="text" class="mame_form_options" placeholder="名" id="mei">
+        <input type="text" name="userName" class="mame_form_options" placeholder="姓" id="sei" value="{{ user.name }}" style="text-align:left">
+{#        <input type="text" class="mame_form_options" placeholder="名" id="mei" value="">#}
       </div>
 
-      <div class="Input_form">
-        <input type="number" class="postal_form_options" placeholder="郵便番号 例: 0000000" id="yubin">
-        <input type="text" class="postal_form_options" placeholder="県名" id="kenn">
-      </div>
+{#      <div class="Input_form">#}
+{#        <input type="number" class="postal_form_options" placeholder="郵便番号 例: 0000000" id="yubin">#}
+{#        <input type="text" class="postal_form_options" placeholder="県名" id="kenn">#}
+{#      </div>#}
 
       <div class="Input_form">
-        <input type="text" class="address_form_options" placeholder="例: 千代田区千代田１−１ ※実在の住所は入れないで下さい" id="jusyo">
+        <input type="text" name="address" class="address_form_options" placeholder="例: 千代田区千代田１−１ ※実在の住所は入れないで下さい" id="jusyo" value="{{ user.address }}" style="text-align: left">
       </div>
 
       <div class="Input_form">
@@ -27,7 +28,7 @@
       </div>
 
       <div class="Input_form" name="tester">
-        <input type="text" class="address_form_options" name="test" id="target">
+        <input type="text" class="address_form_options" name="test" id="target" onclick="jsonTest()">
       </div>
     </form>
 

@@ -48,12 +48,17 @@ class PayHistory(models.Model):
     timeStamp = models.DateTimeField(auto_now=True)
 
 
-class ChargingHistory(models.Model):
-    chargeID = models.CharField(primary_key=True, max_length=10)
-    userID = models.ForeignKey(User, on_delete=models.CASCADE)
-    timeStamp = models.DateTimeField(auto_now=True)
-    addMoney = models.IntegerField()
-    sumMoney = models.IntegerField()
+class PollsCharginghistory(models.Model):
+    userid = models.OneToOneField(User, models.DO_NOTHING, db_column='userID', primary_key=True)  # Field name made lowercase.
+    timestamp = models.DateTimeField(db_column='timeStamp')  # Field name made lowercase.
+    addmoney = models.IntegerField(db_column='addMoney', blank=True, null=True)  # Field name made lowercase.
+    summoney = models.IntegerField(db_column='sumMoney', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'polls_charginghistory'
+        unique_together = (('userid', 'timestamp'),)
+
 
 
 class Review(models.Model):

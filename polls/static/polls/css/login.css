@@ -1,31 +1,63 @@
 *{
-
+  margin: 0px;
+  padding: 0px;
+  /* color: white; */
+  font-family:"Meiryo";
 }
 
 html{
   width:100%;
   height:100%;
+  /* background-image: url("./背景.png");
+  background-size: 100% 100%; */
+}
+
+button{
+  border-width: 0ch;
+  background-color: gray;
+}
+
+button:hover{
+  border: 1px solid;
+}
+
+input{
+  border-width: 0ch;
+}
+
+input:hover{
+  border: 1px solid;
 }
 
 body{
-  width:98%;
-  height:98%;
-  /* background-color:rgb(47,47,47); */
-  font-family:"Meiryo";
+  width:100%;
+  height:100%;
   overflow-x:auto;/*はみ出た要素だけ横スクロール*/
   white-space:nowrap;/*最小画面でも折り返さずに表示する*/
 }
 
+.title{
+  background-image: url("./タイトル.png");
+  background-size: 100% 100%;
+}
+
+.wakusen{
+  border: 1px solid white;
+}
+
 .form{
-  width:98%;
+  width:100%;
   min-width:1475px;
   display:flex;
   flex-flow:row nowrap;
+  background-color: gray;
 }
 
 .immutable_form{
   height:80px;
   font-size:30px;
+  margin-top: 0.5ch;
+  margin-bottom: 0.5ch;
 }
 
 .searchBox{
@@ -35,26 +67,20 @@ body{
 }
 
 .search_form{
-  width:98%;
+  width:100%;
   display:flex;
   flex-flow:row nowrap;
 }
 
-
 .main_form{
   display: flex;
-  /* flex-direction: column; */
   flex-flow: column nowrap;
   align-items: center;
   font-size: 40px;
-  height: 600px;
-  /* background-color: #ccc; */
+  height: 400px;
 }
 
 .inputForm{
-  flex-grow: 1;
-  flex-shrink: 1;
-  display: flex;
   font-size:30px;
   margin-top: 150px;
   margin-right: 40px;
@@ -64,42 +90,36 @@ body{
   width:500px;
   height:50px;
   font-size: 30px;
+  border: 0.1px solid;
 }
 
 
-
-
-.buttonForm{
-  flex-grow: 1;  
-  /* 親に対してどれくらい大きくなるか */
-  flex-shrink: 1;
-  /* 親に対してどれくらい小さくなるか */
-  position: relative;
-}
 
 .errorForm{
-  flex-grow: 2;
-  flex-shrink: 2;
+  display: flex;
+  position: absolute;
   align-items: center;
-  /* background-color: gray; */
+  font-size: 30px;
+  left: 41%;
 }
-
-/* .errorLabel{
-  flex-grow:1;
-  flex-shrink:1;
-  background-color: #ccc;
-} */
 
 .buttonStyle{
   font-size: 30px;
-  width: 250px;
-  height: 70px;
-  margin-top:50px;
+  width: 650px;
+  height: 50px;
+  margin:75px;
+  margin-top:250px;
+  background-color: gray;
 }
 
-
-
-
+.topButtonForm{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+}
 
 
 
@@ -133,10 +153,3 @@ body{
   top: 1400px;
   left: 30%;
 }
-
-/* .a3 {
-  position: absolute; 
-  top: 565px; 
-  left: 0.6%;
-} */
-

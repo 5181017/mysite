@@ -7,6 +7,7 @@ class Product:
     price = 0        # 値段
     image = ""       # 画像
     name = ""
+    quantity = 0
     # categoryid = ""  # カテゴリーID
 
     # 指定されたカテゴリーIDの商品を取得

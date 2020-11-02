@@ -3,6 +3,7 @@ from polls.views.Class.Charge import Charge
 from polls.views.Class.User import User
 
 
+
 def charge(request):
     # ログインしているか確認する
     if not "userid" in request.session:

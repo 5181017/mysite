@@ -1,5 +1,7 @@
+import datetime
+
 from polls import models
-from polls.views.Class.Cart import Cart
+# from polls.views.Class.Cart import Cart
 
 
 class User:
@@ -7,7 +9,7 @@ class User:
     name = ""       # 名前
     money = 0       # 残高
     address = ""    # 住所
-    cart = Cart()   # カート
+    # cart = Cart()   # カート
 
     # 認証
     def auth(self, userID, pw):
@@ -49,15 +51,18 @@ class User:
     # チャージ
     def charge_money(self, userID, money):
         user = models.User.objects.get(userID=userID)
+        add_money = money
         if money >= 0:
             money = user.money + money
             user.money = money
             user.save()
 
         # チャージ履歴の更新
-        history = models.PollsCharginghistory.objects.get(userID=userID)
-        history.addmoney = money
-        history.summoney = user.money
-        history.save()
+
+        models.PollsCharginghistory(
+            userid=userID,
+            addmoney=add_money,
+            summoney=money
+        ).save()
 
 

@@ -6,7 +6,8 @@ class Product:
     productid = ""   # 商品ID
     price = 0        # 値段
     image = ""       # 画像
-    categoryid = ""  # カテゴリーID
+    name = ""
+    # categoryid = ""  # カテゴリーID
 
     # 指定されたカテゴリーIDの商品を取得
     def get_product(self, categoryid):
@@ -14,12 +15,12 @@ class Product:
         return data
 
     # 特定の商品を取得
-    def get_one_product(productid):
+    def get_one_product(self , productid):
         data = models.Products.objects.get(productID=productid)
         return data
 
     # 特定の商品の値段を取得
-    def get_price(self, productid):
+    def get_price(self , productid):
         data = models.Products.objects.get(productID=productid)
         return data.price
 

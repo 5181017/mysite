@@ -11,95 +11,24 @@
         {% for item in list %}
           <div class="itemForm">
             <div class="checkForm">
-              <input class="checkBox" type="checkbox"/>
+              <input class="checkBox" type="checkbox" value={{ item.productid.productID}} id="box"/>
             </div>
             <div class="element">
-              <div style="width: 100%; height: 100%; background-color: aquamarine;">{{ item.price }}</div>
+              <div style="width: 100%; height: 100%; background-color: aquamarine;">画像</div>
             </div>
             <div class="element">
               <div style="width: 100%; height: 100%; background-color: aqua;">{{ item.name }}</div>
             </div>
             <div class="element" style="background-color: aquamarine;">
               <div class="verticalForm">
-                <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
+                <div class="priceQuantity" style="background-color: thistle;">{{ item.quantity }}</div>
                 <div class="priceQuantity" style="background-color: tan;">{{ item.price }}円</div>
               </div>
             </div>
           </div>
         {% endfor %}
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
     </div>
+
 
     <div class="money_form">
       <form class="buy_form_move" action="file:///D:/Users/5181025/FrontEND/htmlひな形/9p.html" method="post">
@@ -107,4 +36,9 @@
         <input class="move_form" type="submit" value="購入に進む"style="width:150px; min-width:150px;"></input>
       </form>
     </div>
+
+    <script>
+        var checkBox = document.for
+    </script>
 {% endblock %}
+

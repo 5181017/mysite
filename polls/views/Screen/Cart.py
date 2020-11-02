@@ -5,22 +5,18 @@ from polls.views.Class.Product import Product
 
 
 def cart(request):
-    #ログインしているか確認する
+    # ログインしているか確認する
     if not "userid" in request.session:
         return redirect("/polls/login")
 
     if request.method == "GET":
         if 'userid' in request.session:
-            # userid = request.session["userid"]
-            # cart = Cart.get_cart(userid)
-            # params = {"cart": cart}
-
 
             userid = request.session["userid"]
-            cartList = Cart.get_cart(userid)
+            cartList = Cart().get_cart(userid)
             print(cartList)
 
-            list = [] #追加
+            list = []  # 追加
             # この段階で画像、商品名、値段が必要
             for proId in cartList.values("productID"):
                 product = Product()
@@ -29,9 +25,10 @@ def cart(request):
                 product.image = ""
                 product.price = int(product.get_price(proId['productID']))
                 product.name = product.get_one_product(proId['productID']).productName
+                product.quantity =Cart().get_product(userid , proId).quantity
                 list.append(product)
 
-            params = {"list" : list} #追加
+            params = {"list": list}  # 追加
 
         else:
             params = {}

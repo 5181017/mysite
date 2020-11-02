@@ -35,6 +35,6 @@ def product_details(request, product_id):
     if request.method == "POST":
         userid = request.session["userid"]
         productid = request.POST["productid"]
-        Cart().insert_cart(userid , productid)
-        return redirect("/polls/productDetails" + productid)
+        Cart().insert_cart(userid , productid , 1)
+        return redirect("/polls/productDetails/" + productid)
 

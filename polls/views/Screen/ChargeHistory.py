@@ -9,10 +9,10 @@ def chargehistory(request):
         return redirect("/polls/login")
 
     if request.method == "GET":
-        userid = request.POST.get("userid", None)
+        userid = request.session["userid"]
         charge = Charge().get_chargehistory(userid)
         params = {"charge": charge}
-        return render(request, "pools/chargeHistory.html", params)
+        return render(request, "polls/chargeHistory.html", params)
 
     elif request.method == "POST":
         # 各ページに遷移
@@ -20,5 +20,5 @@ def chargehistory(request):
             return render(request, "polls/home.html")
         elif "cart" in request.POST:
             return render(request, "polls/cart.html")
-        elif "sarch" in request.POST:
+        elif "search" in request.POST:
             return render(request, "polls/productList.html")

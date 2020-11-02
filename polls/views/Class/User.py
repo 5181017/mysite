@@ -54,3 +54,10 @@ class User:
             user.money = money
             user.save()
 
+        # チャージ履歴の更新
+        history = models.PollsCharginghistory.objects.get(userID=userID)
+        history.addmoney = money
+        history.summoney = user.money
+        history.save()
+
+

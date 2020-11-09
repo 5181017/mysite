@@ -12,31 +12,27 @@
         <input type="text" class="mame_form_options" placeholder="名" id="mei">
       </div>
 
+
       <div class="Input_form">
-        <input type="number" class="postal_form_options" placeholder="郵便番号 例: 0000000" id="yubin">
-        <input type="text" class="postal_form_options" placeholder="県名" id="kenn">
+        <div class="name_form">
+          <label>〒</label>
+          <input type="text" class="postal_form_options" placeholder="※個人情報不可" id="yubin">
+        </div>
+
+        <div class="name_form"></div>
       </div>
 
       <div class="Input_form">
-        <input type="text" class="address_form_options" placeholder="例: 千代田区千代田１−１ ※実在の住所は入れないで下さい" id="jusyo">
+        <div class="address_form">
+          <label style="writing-mode: vertical-rl; text-align: center; height: 22.5px;">住所</label>
+          <input type="text" class="address_form_options" placeholder="※個人情報不可" id="jusyo">
+        </div>
       </div>
 
       <div class="Input_form">
-        <input class="button_form_options" type="submit" value="変更"
-        style="width:150px; min-width:150px;" onclick="jsonTest()"></input>
+        <input class="button_form_options" type="submit" value="変更"></input>
       </div>
 
-      <div class="Input_form" name="tester">
-        <input type="text" class="address_form_options" name="test" id="target">
-      </div>
     </form>
-
-  <script>
-    function jsonTest(){
-      let seimei = document.getElementById("sei").value + " " + document.getElementById("mei").value;
-      let postal = document.getElementById("yubin").value;
-      let address = document.getElementById("kenn").value + " " + document.getElementById("jusyo").value;
-      document.getElementById("target").value = seimei + postal + address;
-    }
-  </script>
+  </body>
 {% endblock %}

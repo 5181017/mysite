@@ -1,53 +1,9 @@
-*{
-
-}
-
-html{
-  width:100%;
-  height:100%;
-}
-
-body{
-  width:98%;
-  height:98%;
-  /* background-color:rgb(47,47,47); */
-  font-family:"Meiryo";
-  overflow-x:auto;/*はみ出た要素だけ横スクロール*/
-  white-space:nowrap;/*最小画面でも折り返さずに表示する*/
-}
-
-.form{
-  width:98%;
-  min-width:1475px;
-  display:flex;
-  flex-flow:row nowrap;
-}
-
-.immutable_form{
-  height:80px;
-  font-size:30px;
-}
-
-.searchBox{
-  flex-basis:3000px;
-  flex-grow:1;
-  flex-shrink:1;
-}
-
-.search_form{
-  width:98%;
-  display:flex;
-  flex-flow:row nowrap;
-}
-
-
-
 .personal_information_form{
   width:100%;
   height: 88%;
   display:flex;
   flex-flow:column nowrap;
-  background-color: gray;
+  background-color: whitesmoke;
 }
 
 
@@ -61,7 +17,17 @@ body{
   margin-top: 6.5%;
 }
 
-.mame_form_options{
+.name_form{
+  text-align: right;
+  width: 100%;
+  max-width: 400px;
+  max-height: 100px;
+  min-width: 250px;
+  min-height: 50px;
+  margin: auto;
+}
+
+.name_form_options{
   text-align: right;
   font-size: large;
   width: 30%;
@@ -83,15 +49,20 @@ body{
   margin: auto;
 }
 
+.address_form{
+  text-align: right;
+  width: 80%;
+  margin-left: 15%;
+}
+
 .address_form_options{
   text-align: right;
   font-size: large;
   width: 100%;
-  max-width: 1050px;
+  max-width: 1500px;
   max-height: 100px;
-  min-width: 508px;
+  min-width: 500px;
   min-height: 50px;
-  margin: auto;
 }
 
 .button_form_options{

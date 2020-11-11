@@ -6,32 +6,47 @@
 {% endblock %}
 
 {% block menu %}
-    <form class="personal_information_form" action="" accept-charset="UTF-8" method="post" name="Former">
+   <form class="personal_information_form" action="" accept-charset="UTF-8" method="post" name="Former">
       <div class="Input_form" name="seimei">
-        <input type="text" class="mame_form_options" placeholder="姓" id="sei">
-        <input type="text" class="mame_form_options" placeholder="名" id="mei">
+        <div class="name_form">
+          <label>姓</label>
+          <input type="text" class="name_form_options waku"　id="sei">
+        </div>
+
+        <div class="name_form">
+          <label>名</label>
+          <input type="text" class="name_form_options waku"　id="mei">
+        </div>
+
       </div>
 
+      <div class="wakusen"></div>
 
       <div class="Input_form">
         <div class="name_form">
           <label>〒</label>
-          <input type="text" class="postal_form_options" placeholder="※個人情報不可" id="yubin">
+          <input type="text" class="postal_form_options waku" placeholder="※個人情報不可" id="yubin">
         </div>
 
         <div class="name_form"></div>
       </div>
 
+      <div class="wakusen"></div>
+
       <div class="Input_form">
         <div class="address_form">
           <label style="writing-mode: vertical-rl; text-align: center; height: 22.5px;">住所</label>
-          <input type="text" class="address_form_options" placeholder="※個人情報不可" id="jusyo">
+          <input type="text" class="address_form_options waku" placeholder="※個人情報不可" id="jusyo">
         </div>
       </div>
+
+      <div class="wakusen"></div>
 
       <div class="Input_form">
         <input class="button_form_options" type="submit" value="変更"></input>
       </div>
+
+      <div class="wakusen"></div>
 
     </form>
   </body>

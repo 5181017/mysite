@@ -3,7 +3,6 @@
   height: 88%;
   display:flex;
   flex-flow:column nowrap;
-  background-color: whitesmoke;
 }
 
 
@@ -74,4 +73,16 @@
   min-width: 100px;
   min-height: 50px;
   margin-left: 80%;
+}
+
+.wakusen{
+  background-color: black;
+  height: 1px;
+  width: 80%;
+  margin: auto;
+  margin-top: 1%;
+}
+
+.waku{
+  border: 1px solid;
 }

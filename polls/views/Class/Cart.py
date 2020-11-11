@@ -20,7 +20,7 @@ class Cart:
 
     # カートの更新
     def update_cart(self, userid, productid, quantity):
-        data = models.Cart.objects.get(userID=userid, productID=productid, quantity=quantity)
+        data = models.Cart.objects.get(userID=userid, productID=productid)
         data.quantity = quantity
         data.save()  # ここでUPDATEが実行される
 
@@ -30,5 +30,5 @@ class Cart:
         return data
 
     def get_product(self , userid , product):
-        data = models.Cart.objects.get(userID=userid , productID=product["productID"])
+        data = models.Cart.objects.get(userID=userid , productID=product)
         return data

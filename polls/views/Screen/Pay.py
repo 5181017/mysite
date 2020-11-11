@@ -6,42 +6,21 @@ from polls.views.Class.Settlement import Settlement
 
 def pay(request):
     # ログインしているか確認する
-    if not request.session.exists("userid"):
-        return redirect("/polls/login")
+    # if not request.session.exists("userid"):
+    #     return redirect("/polls/login")
 
-    if request.method == "GET":
-        buylist = request.POST.get("buylist", None)    # 購入商品IDリスト
-        buypro = []                                    # 購入商品リスト
-        quantity = request.POST.get("quantity", None)  # 購入商品個数リスト
-        total = 0                                      # 合計金額
-        price = []                                     # 値段
-        i = 0
-        for buyid in buylist:
-            buypro.append(Product().get_one_product(buyid))
+    # userId = request.POST.get("userid", None)      # userID
+    userId = request.session["userid"]
+    buyList = request.POST.getlist("buylist")    # 購入商品IDリスト
+    total = request.POST["total_money"]        # 合計金額
 
-        # 合計金額の計算 total
-        for proId in buylist:
-            total = total + Product().get_price(proId) * quantity[i]
-            price = Product().get_price(proId) * quantity[i]
-            i += 1
+    print(request.POST)
 
-        params = {
-            "total": total,
-            "price": price,
-            "buyproList": buypro
-        }
-
-        return render(request, "polls/cart.html", params)
-
-    elif request.method == "POST":
-        userId = request.POST.get("userid", None)      # userID
-        buyList = request.POST.get("buylist", None)    # 購入商品IDリスト
-        total = request.POST.get("total", None)        # 合計金額
-        # 購入処理
-        if Settlement().get_remaining_money(userId, total):
-            Settlement.buy(total, userId, buyList)
-            return render(request, "polls/home.html")
-        else:
-            errmsg = "残高が足りません。チャージしてください。"
-            params = {"errmsg": errmsg}
-            return render(request, "polls/charge.html", params)
+    # 購入処理
+    if Settlement().get_remaining_money(userId, total):
+        Settlement().buy(total, userId, buyList)
+        return render(request, "polls/home.html")
+    else:
+        errmsg = "残高が足りません。チャージしてください。"
+        params = {"errmsg": errmsg}
+        return render(request, "polls/charge.html", params)

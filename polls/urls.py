@@ -15,5 +15,5 @@ urlpatterns = [
     # path("productList", ProductList.productlist, name="productList"),
     path("review/<str:product_id>", Review.review , name="review"),
     path("myPage", MyPage.mypage, name="myPage"),  # htmlない
-    path("productDetails/<str:product_id>", ProductDetails.product_details, name="productDetails")  # htmlない
+    path("productDetails/<str:product_id>", ProductDetails.product_details, name="productDetails"),
 ]

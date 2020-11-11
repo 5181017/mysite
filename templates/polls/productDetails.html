@@ -3,7 +3,6 @@
 {% block style %}<link rel="stylesheet" type="text/css" href="{% static 'polls/css/productDetails.css' %}">{% endblock %}
 {% block menu %}
     <div class="form">
-    
     <div class="main_form">
       <p class="productName">{{product.productName}}</p>
       <p class="price">{{product.price}}円</p>
@@ -11,12 +10,16 @@
         <form action="productDetails" method="post">
             {% csrf_token %}
             <input type="hidden" value="{{ product.productID }}" name="productid">
-            <input type="submit" class="addCart" value="カートに入れる">
+            {% if "userid" in request.session and product.productID in cart%}
+                <input type="submit" class="addCart" value="カートに入れる">
+            {% else %}
+                <input type="submit" class="addCart" value="カートに入れる" disabled>
+            {% endif %}
         </form>
       <p class="all_reviewStars">評価まとめ</p>
         <a href="/polls/review/{{ product.productID }}" class="addReview"><button style="font-size: 25px; padding: 10px;">レビュー作成</button></a>
       <div class="image_form">
-        <img src="./download.jpg" class="image">
+        <img src="#" class="image">
       </div>
     </div>
     </div>

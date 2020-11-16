@@ -28,3 +28,10 @@ class Product:
     def get_imageurl(self, productid):
         data = models.Products.objects.get(productID=productid)
         return data.imageURL
+
+    #検索結果を取得
+    def get_find(self , name):
+        data = models.Products.objects.filter(productName__contains=name)
+        if data.exists():
+            return data
+        raise models.Products.DoesNotExist

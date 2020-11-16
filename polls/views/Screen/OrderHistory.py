@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from polls import models
+from polls.views.Class.Product import Product
 from polls.views.Class.Settlement import Settlement
 
 
@@ -12,7 +13,14 @@ def orderhistory(request):
     if request.method == "GET":
         id = request.session["userid"]
         try:
-            list = Settlement().get_settlement(id)
+            list = []
+            history = Settlement().get_settlement(id)
+            for d in history:
+                product = Product().get_one_product(d.productID.productID)
+
+                list.append([d.timeStamp.strftime("%Y年%m月%d日"), product.productName])
+                print(list[0][0])
+
             # 前のページに遷移
             params = {"productlist": list}
         except models.PayHistory.DoesNotExist:

@@ -41,7 +41,10 @@ def home(request):
 
         return render(request, "polls/productList.html", param)
     except models.Products.DoesNotExist:
-        return render(request , "polls/exception.html" , "商品が見つかりませんでした。")
+        params = {
+            "msg" : "商品が見つかりませんでした。"
+        }
+        return render(request , "polls/home.html" , params)
     except Exception:
         return render(request , "polls/exception.html" , "DB接続できませんでした。")
 

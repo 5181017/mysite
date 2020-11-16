@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 
+from polls import models
 from polls.views.Class.User import User
 
 
@@ -9,11 +10,16 @@ def personal(request):
         return redirect("/polls/login")
 
     if request.method == "GET":
-        userid = request.session["userid"]
-        user = User().get_user(userid)
+        try:
+            userid = request.session["userid"]
+            user = User().get_user(userid)
+        except models.User.DoesNotExist as e:
+            print(e)
+            return redirect("/polls/exeption")
+        except Exception as e:
+            print(e)
+            return redirect("/polls/exeption")
         params = {
-            # "userName": user.values("name"),
-            # "address": user.values("address")
             "user" : user
         }
 

@@ -11,7 +11,7 @@ def review(request, product_id):
 
     # TODO画像を載せる
     if request.method == "GET":
-        # product_id = request.GET.get("product_id")
+        
         product = Product().get_one_product(product_id)
 
         params = {

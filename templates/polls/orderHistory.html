@@ -7,14 +7,15 @@
 
 {% block menu %}
     <div class="mainForm">
+    {% for p in productlist %}
       <div class="itemForm">
         <div class="element">
           <div class="image_margin" style="background-color: white;">{{image}}</div>
         </div>
         <div class="element">
           <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: white;">{{date}}</div>
-            <div class="priceQuantity" style="background-color: white;">{{productName}}</div>
+            <div class="priceQuantity" style="background-color: white;">{{ p.0 }}</div>
+            <div class="priceQuantity" style="background-color: white;">{{ p.1 }}</div>
           </div>
         </div>
         <div class="element">
@@ -24,78 +25,7 @@
           </div>
         </div>
       </div>
-
-      <div class="itemForm">
-        <div class="element">
-          <div class="image_margin" style="background-color: white;">{{image}}</div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: white;">{{date}}</div>
-            <div class="priceQuantity" style="background-color: white;">{{productName}}</div>
-          </div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <button class="priceQuantity">レビュー</button>
-            <button class="priceQuantity">再注文</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="element">
-          <div class="image_margin" style="background-color: white;">{{image}}</div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: white;">{{date}}</div>
-            <div class="priceQuantity" style="background-color: white;">{{productName}}</div>
-          </div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <button class="priceQuantity">レビュー</button>
-            <button class="priceQuantity">再注文</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="element">
-          <div class="image_margin" style="background-color: white;">{{image}}</div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: white;">{{date}}</div>
-            <div class="priceQuantity" style="background-color: white;">{{productName}}</div>
-          </div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <button class="priceQuantity">レビュー</button>
-            <button class="priceQuantity">再注文</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="element">
-          <div class="image_margin" style="background-color: white;">{{image}}</div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: white;">{{date}}</div>
-            <div class="priceQuantity" style="background-color: white;">{{productName}}</div>
-          </div>
-        </div>
-        <div class="element">
-          <div class="verticalForm">
-            <button class="priceQuantity">レビュー</button>
-            <button class="priceQuantity">再注文</button>
-          </div>
-        </div>
-      </div>
+    {% endfor %}
     </div>
 
     <div class="money_form">

@@ -10,19 +10,18 @@
 <body>
 
     <div class="form">
-        <form >{% csrf_token %}<button class="immutable_form" name="logo" style="width:200px; min-width:200px;">Alpha</button></form>
-        <form action="home" method="post">{% csrf_token %}<button class="immutable_form wakusen" name="logo" style="width:150px; min-width:150px; ">ホーム</button></form>
-        <form class="search_form" action="file:///D:/Users/5181025/FrontEND/htmlひな形/3p.html" method="post">
+        <form action="/polls/home" method="get">{% csrf_token %}<button class="immutable_form" name="logo" style="width:200px; min-width:200px;">Alpha</button></form>
+        <form class="search_form" action="/polls/home" method="post">
             {% csrf_token %}
-            <input class="immutable_form searchBox" type="search" placeholder="商品名を入力してください" name="productName">
-            <input class="immutable_form" type="submit" value="検索"style="width:150px; min-width:150px; background-color: #050D67; border: 1px solid white;">
+            <input class="immutable_form searchBox" type="search" placeholder="商品名を入力してください" name="search">
+            <input name="search_btn" class="immutable_form" type="submit" value="検索"style="width:150px; min-width:150px; background-color: gray; border: 1px solid white;" >
         </form>
         {% if 'userid' in request.session %}
-            <form action="myPage" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">マイページ</button></form>
+            <form action="/polls/myPage" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">マイページ</button></form>
         {% else %}
-            <form action="login" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">ログイン</button></form>
+            <form action="/polls/login" method="get">{% csrf_token %}<button class="immutable_form" name="login" style="width:300px; min-width:300px;">ログイン</button></form>
         {% endif %}
-        <form action="cart" method="get">{% csrf_token %}<button class="immutable_form" name="cart" style="width:150px; min-width:150px;">カート</button></form>
+        <form action="/polls/cart" method="get">{% csrf_token %}<button class="immutable_form" name="cart" style="width:150px; min-width:150px;">カート</button></form>
     </div>
 
     <div class="listForm">

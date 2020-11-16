@@ -9,7 +9,7 @@ class Charge:
 
     # 履歴の取得
     def get_chargehistory(self, userid):
-        all = PollsCharginghistory.objects.filter(userID=userid)
+        all = PollsCharginghistory.objects.filter(userid=userid)
         if all.exists():
             return all
         raise models.PollsChargingHistory.DoesNotExist

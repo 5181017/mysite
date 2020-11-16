@@ -13,12 +13,6 @@ class Charge:
     def get_chargehistory(self, userID):
         all = PollsCharginghistory.objects.filter(userid=userID)
         if all.exists():
-            # params = {
-            #     'date': all.timeStamp,
-            #     'amount': all.addMoney,
-            #     'remaining_money': all.sumMoney
-            # }
-            # return params
             return all
         raise models.PollsChargingHistory.DoesNotExist
 

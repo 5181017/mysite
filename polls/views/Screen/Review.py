@@ -11,7 +11,7 @@ def review(request, product_id):
 
     # TODO画像を載せる
     if request.method == "GET":
-        
+
         product = Product().get_one_product(product_id)
 
         params = {
@@ -20,7 +20,6 @@ def review(request, product_id):
         return render(request, 'polls/review.html', params)
     elif request.method == "POST":
         rv = Review()
-        # reviewstar = request.POST["reviewstar"]
         reviewstar = 4
         productid = request.POST["productid"]
         title = request.POST["title"]

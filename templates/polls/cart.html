@@ -6,105 +6,99 @@
 {% endblock %}
 
 {% block menu %}
-
+<form action="cart" method="post">
+    {% csrf_token %}
     <div class="mainForm">
         {% for item in list %}
           <div class="itemForm">
-            <div class="checkForm">
-              <input class="checkBox" type="checkbox"/>
-            </div>
+              <input name="checkbox" class="checkBox" type="checkbox" value="{{ item.productid.productID}}" onchange='calcMoney();'>
             <div class="element">
-              <div style="width: 100%; height: 100%; background-color: aquamarine;">{{ item.price }}</div>
+              <div style="width: 100%; height: 100%; background-color: aquamarine;">画像</div>
             </div>
             <div class="element">
               <div style="width: 100%; height: 100%; background-color: aqua;">{{ item.name }}</div>
             </div>
             <div class="element" style="background-color: aquamarine;">
               <div class="verticalForm">
-                <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
+
+                  <input name="{{ item.productid.productID}}" id="{{ item.productid.productID}}" type="hidden" value="{{ item.quantity }}">
+                  <div class="priceQuantity" style="background-color: thistle;">
+                      <div style="display: flex; margin-left: 50%; margin-right: 50%; margin-top:30px; ">
+                      <div id="minus" style="background: gray; font-size: 30px; padding: 5px; cursor: pointer;" onclick="quantityMinus('{{ item.productid.productID}}')">-</div>
+                        <div name="name_{{ item.productid.productID}}">{{ item.quantity }}</div>
+                      <div id="plus" style="background: gray; font-size: 30px;padding: 5px; cursor: pointer;" onclick="quantityPlus('{{ item.productid.productID}}')">+</div>
+                      </div>
+                  </div>
+
+                  <input name="money" type="hidden" value="{{ item.price }}">
                 <div class="priceQuantity" style="background-color: tan;">{{ item.price }}円</div>
               </div>
             </div>
           </div>
         {% endfor %}
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="itemForm">
-        <div class="checkForm">
-          <input class="checkBox" type="checkbox"/>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aquamarine;">ここに画像</div>
-        </div>
-        <div class="element">
-          <div style="width: 100%; height: 100%; background-color: aqua;">ここに商品名</div>
-        </div>
-        <div class="element" style="background-color: aquamarine;">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: thistle;">ここに数量調整</div>
-            <div class="priceQuantity" style="background-color: tan;">ここに価格</div>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <div class="money_form">
-      <form class="buy_form_move" action="file:///D:/Users/5181025/FrontEND/htmlひな形/9p.html" method="post">
-        <input class="move_form" type="search" placeholder="商品名を入力してください" name="productName"></input>
-        <input class="move_form" type="submit" value="購入に進む"style="width:150px; min-width:150px;"></input>
-      </form>
+
+    <div class="money_form" name="moneyForm">
+      <div class="buy_form_move">
+        <input name="total_money" class="move_form" type="text" placeholder="合計" id="sumMoney" value="0"></input>
+        <input name="pay_btn" class="move_form" type="submit" value="購入に進む"style="width:150px; min-width:150px;"></input>
+      </div>
     </div>
+    </form>
+
+
+    <script>
+    {#金額の計算#}
+
+
+        function calcMoney(){
+            var checkBox = document.getElementsByName("checkbox")
+            var sumMoney = document.getElementById("sumMoney")
+            var money = document.getElementsByName("money")
+            var quantity
+
+            var total = 0
+
+            for(let i = 0; i < checkBox.length; i++){
+                quantity = document.getElementById(checkBox[i].value).value
+                 total = (parseInt(money[i].value , 10) * quantity) + total
+                if(!checkBox[i].checked){
+                    total = total - parseInt(money[i].value , 10) * quantity
+                }
+            }
+            sumMoney.value = String(total)
+        }
+
+        
+        function quantityMinus( product_id) {
+            var quantity_div = document.getElementsByName("name_" + product_id)
+            var quantity_input = document.getElementById(product_id)
+            var quantity = quantity_input.value
+
+            quantity = String(parseInt(quantity, 10) - 1)
+            quantity = Math.max(1 , quantity)
+
+            quantity_input.value = quantity
+            quantity_div[0].innerHTML = quantity
+
+            calcMoney(quantity)
+        }
+
+        function quantityPlus(product_id) {
+            var quantity_div = document.getElementsByName("name_" + product_id)
+            var quantity_input = document.getElementById(product_id)
+            var quantity = quantity_input.value
+
+            quantity = String(parseInt(quantity, 10) + 1)
+            quantity = Math.max(1 , quantity)
+
+            quantity_input.value = quantity
+            quantity_div[0].innerHTML = quantity
+
+            calcMoney(quantity)
+        }
+
+    </script>
 {% endblock %}
+

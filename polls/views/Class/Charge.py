@@ -1,7 +1,5 @@
-from datetime import datetime
-
 from polls import models
-from polls.models import PollsCharginghistory, User
+from polls.models import PollsCharginghistory
 
 
 class Charge:
@@ -10,10 +8,9 @@ class Charge:
     remaining_money = 0  # 残高
 
     # 履歴の取得
-    def get_chargehistory(self, userID):
-        all = PollsCharginghistory.objects.filter(userid=userID)
+    def get_chargehistory(self, userid):
+        all = PollsCharginghistory.objects.filter(userID=userid)
         if all.exists():
             return all
         raise models.PollsChargingHistory.DoesNotExist
-
 

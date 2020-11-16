@@ -24,6 +24,20 @@
         <form action="/polls/cart" method="get">{% csrf_token %}<button class="immutable_form" name="cart" style="width:150px; min-width:150px;">カート</button></form>
     </div>
 
+    <div class="listForm">
+        <div class="categoryList">
+          <button class="category_button">本</button>
+          <button class="category_button">ゲーム</button>
+          <button class="category_button">ミュージック</button>
+          <button class="category_button">パソコン</button>
+          <button class="category_button">衣服</button>
+          <button class="category_button">家具</button>
+          <button class="category_button">食品</button>
+          <button class="category_button">ペット用品</button>
+          <button class="category_button">アウトドア</button>
+        </div>
+    </div>
+
     {% block menu %}
     {% endblock %}
 </body>

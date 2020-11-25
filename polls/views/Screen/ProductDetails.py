@@ -14,11 +14,15 @@ def product_details(request, product_id):
             params = {
                 "product": product,
                 "review": review,
-                "cart" : ""
+                "productIdList" : ""
             }
             if "userid" in request.session:
                 userid =request.session["userid"]
-                params.update({"cart" : Cart().get_cart(userid)})
+                cart = Cart().get_cart(userid)
+                productIdList = []
+                for c in cart:
+                    productIdList.append(c.productID.productID)
+                params.update({"productIdList": productIdList})
 
             return render(request, "polls/productDetails.html", params)
         except models.User.DoesNotExist as e:

@@ -1,7 +1,6 @@
 *{
     margin: 0px;
     padding: 0px;
-    color: white;
     font-family:"Meiryo";
   }
 
@@ -56,6 +55,7 @@
     font-size:30px;
     margin-top: 0.5ch;
     margin-bottom: 0.5ch;
+    color: white;
   }
   
   .searchBox{
@@ -90,4 +90,5 @@
   width:200px;
   min-width:100px;
   font-size:16px;
+    color: white;
 }

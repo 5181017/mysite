@@ -10,7 +10,7 @@
         <form action="productDetails" method="post">
             {% csrf_token %}
             <input type="hidden" value="{{ product.productID }}" name="productid">
-            {% if "userid" in request.session and product.productID in cart%}
+            {% if "userid" in request.session and not product.productID in productIdList %}
                 <input type="submit" class="addCart" value="カートに入れる">
             {% else %}
                 <input type="submit" class="addCart" value="カートに入れる" disabled>

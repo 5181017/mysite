@@ -19,7 +19,7 @@ def pay(request):
     # 購入処理
     if Settlement().get_remaining_money(userId, total):
         Settlement().buy(total, userId, buyList)
-        return render(request, "polls/home.html")
+        return redirect("/polls/home")
     else:
         errmsg = "残高が足りません。チャージしてください。"
         params = {"errmsg": errmsg}

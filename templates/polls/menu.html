@@ -26,15 +26,15 @@
 
     <div class="listForm">
         <div class="categoryList">
-          <button class="category_button">本</button>
-          <button class="category_button">ゲーム</button>
-          <button class="category_button">ミュージック</button>
-          <button class="category_button">パソコン</button>
-          <button class="category_button">衣服</button>
-          <button class="category_button">家具</button>
-          <button class="category_button">食品</button>
-          <button class="category_button">ペット用品</button>
-          <button class="category_button">アウトドア</button>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=1><input type="submit" class="category_button category_book" value="自動車、オートバイ"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=10><input type="submit" class="category_button category_music" value="本、雑誌"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=2><input type="submit" class="category_button category_pc" value="ファッション"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=3><input type="submit" class="category_button category_clothes" value="時計、アクセサリー"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=4><input type="submit" class="category_button category_furniture" value="スポーツ、レジャー"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=5><input type="submit" class="category_button category_food" value="家電、AV、カメラ"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=6><input type="submit" class="category_button category_pets" value="コンピューター"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=7><input type="submit" class="category_button category_outdoor" value="おもちゃ、ゲーム"></form>
+            <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="8"><input type="submit" class="category_button category_game" value="ホビー、カルチャー"></form>
         </div>
     </div>
 

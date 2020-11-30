@@ -23,12 +23,16 @@
               評価
 {#              <button>☆</button><button>☆</button><button>☆</button><button>☆</button><button>☆</button>#}
             </div>
+            <div style="position: absolute;top: 820px;left: 30%; color: red;">{{ title_msg }}</div>
             <div class="reviewTitle">
+
               レビュータイトル
-              <input type="text" name="title">
+              <input type="text" name="title" value="{{ title }}" maxlength="50">
             </div>
+
             <div class="textArea">
-              <textarea style="  width: 500px; height: 500px;" placeholder="レビュー内容" name="commnet"></textarea>
+                <p style="color: red;">{{ msg }}</p>
+              <textarea style="  width: 500px; height: 500px;" placeholder="レビュー内容" name="commnet">{{ comment }}</textarea>
               <!-- 大体1300文字 -->
             </div>
             <div class="post">

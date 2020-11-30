@@ -33,7 +33,6 @@ def cart(request):
         else:
             params = {}
         return render(request, "polls/cart.html", params)
-
     elif request.method == "POST":
         # 値を取得
         buylist = request.POST.getlist("checkbox")

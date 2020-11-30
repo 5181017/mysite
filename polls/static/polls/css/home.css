@@ -9,7 +9,6 @@ html{
 
 button{
   border-width: 0ch;
-  background-color: whitesmoke;
 }
 
 input{
@@ -46,71 +45,5 @@ body{
   margin-bottom: 0.5ch;
 }
 
-.category_button{
-  height:80px;
-  width:300px; 
-  min-width:300px;
-  font-size:30px;
-  border-radius:20px;
-}
 
-.searchBox{
-  flex-basis:800px;
-  flex-grow:1;
-  flex-shrink:1;
-}
-
-.category_book {
-  position: absolute; 
-  top: 200px; 
-  left: 3%;
-}
-
-.category_game {
-  position: absolute; 
-  top: 200px; 
-  left: 40%;
-}
-
-.category_music {
-  position: absolute; 
-  top: 200px; 
-  left: 77%;
-}
-
-.category_pc {
-  position: absolute; 
-  top: 400px; 
-  left: 3%;
-}
-
-.category_clothes {
-  position: absolute; 
-  top: 400px; 
-  left: 40%;
-}
-
-.category_furniture {
-  position: absolute; 
-  top: 400px; 
-  left: 77%;
-}
-
-.category_food {
-  position: absolute; 
-  top: 600px; 
-  left: 3%;
-}
-
-.category_pets {
-  position: absolute; 
-  top: 600px; 
-  left: 40%;
-}
-
-.category_outdoor {
-  position: absolute; 
-  top: 600px; 
-  left: 77%;
-}
 

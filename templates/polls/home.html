@@ -6,15 +6,4 @@
 {% endblock %}
 
 {% block menu %}
-
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.0.categoryID }}"><input type="submit" class="category_button category_book" value="{{ category.0.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.1.categoryID }}"><input type="submit" class="category_button category_game" value="{{ category.1.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.2.categoryID }}"><input type="submit" class="category_button category_music" value="{{ category.2.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.3.categoryID }}"><input type="submit" class="category_button category_pc" value="{{ category.3.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.4.categoryID }}"><input type="submit" class="category_button category_clothes" value="{{ category.4.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.5.categoryID }}"><input type="submit" class="category_button category_furniture" value="{{ category.5.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.6.categoryID }}"><input type="submit" class="category_button category_food" value="{{ category.6.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.7.categoryID }}"><input type="submit" class="category_button category_pets" value="{{ category.7.categoryName }}"></form>
-<form action="home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="{{ category.8.categoryID }}"><input type="submit" class="category_button category_outdoor" value="{{ category.8.categoryName }}"></form>
-
 {% endblock %}

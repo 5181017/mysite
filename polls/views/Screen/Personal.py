@@ -26,8 +26,17 @@ def personal(request):
 
     elif request.method == "POST":
         userid = request.session["userid"]
-        new_user_name = request.POST["userName"]
+        first_name = request.POST["first-name"]
+        last_name = request.POST["last-name"]
         new_user_address = request.POST["address"]
+        new_user_name = first_name + " " + last_name
+
+        #ここから
+        if not new_user_name.isalnum() or not new_user_address.isalnum():
+            params = {
+                "msg" : "特殊文字を使用しないでください"
+            }
+            return render(request, "polls/personal.html" , params)
         User().update_user(userid, new_user_name, new_user_address)
         user = User().get_user(userid)
         params = {"user" : user}

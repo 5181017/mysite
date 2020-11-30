@@ -20,7 +20,9 @@ def home(request):
 
         if request.method == "POST":
             product = ""
+            flg = ""
             category = Category().get_category()
+
             print(request.POST)
             if "category_btn" in request.POST:
                 btn = request.POST.get("category_btn", None)
@@ -28,14 +30,16 @@ def home(request):
 
             elif "search_btn" in request.POST:
                 text = request.POST.get("search")
-                product = Product().get_find(text)
-                print(text)
-                print(request.POST)
-                print("lakjfd;lkajds;flajsdflj")
+                if text.isalnum():
+                    product = Product().get_find(text)
+                    flg = "0"
+                else:
+                    flg = "1"
 
             param = {
                 "product": product,
-                "category": category
+                "category": category,
+                "flg" : flg
             }
 
 

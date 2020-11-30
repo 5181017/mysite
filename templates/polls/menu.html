@@ -9,7 +9,11 @@
 
 </head>
 <body>
-
+    {% if flg == "1" %}
+        <script>
+            alert( "該当するものがありません。" )
+        </script>
+    {% endif %}
     <div class="form">
         <form action="/polls/home" method="get">{% csrf_token %}<button class="immutable_form" name="logo" style="width:200px; min-width:200px;">Alpha</button></form>
         <form class="search_form" action="/polls/home" method="post">

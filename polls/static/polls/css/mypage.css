@@ -1,9 +1,10 @@
 .chargeMoney_form{
-  width:100%;
+  width:85%;
   height: 40%;
   min-width:1100px;
   display:flex;
   flex-flow:row nowrap;
+    margin-left:210px;
 }
 
 .chargeMoney_options{

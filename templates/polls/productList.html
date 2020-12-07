@@ -9,14 +9,16 @@
 
 
         <div class="listbox">
-          {% for p in product %}
+          <div class="vert">
+            {% for p in product %}
             <div class="vert">
-                <div class="textopt">
-                    <a href="productDetails/{{ p.productID }}">{{ p.productName }}</a>
-                </div>
-                <img class="imgsize" src="download1.jpg" id="imgSample">
+              <button class="imgsize" src="{{ img }}" id="imgSample" onclick="location.href='productDetails/{{ p.productID }}'"></button>
+              <div class="textopt">
+                  <a href="productDetails/{{ p.productID }}">{{ p.productName }}</a>
+              </div>
             </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
 
 

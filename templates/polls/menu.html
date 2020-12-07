@@ -8,7 +8,11 @@
     {% endblock %}
 </head>
 <body>
-
+    {% if flg == "1" %}
+        <script>
+            alert( "該当するものがありません。" )
+        </script>
+    {% endif %}
     <div class="form">
         <form action="/polls/home" method="get">{% csrf_token %}<button class="immutable_form" name="logo" style="width:200px; min-width:200px;">Alpha</button></form>
         <form class="search_form" action="/polls/home" method="post">
@@ -35,6 +39,7 @@
             <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=6><input type="submit" class="category_button category_pets" value="コンピューター"></form>
             <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value=7><input type="submit" class="category_button category_outdoor" value="おもちゃ、ゲーム"></form>
             <form action="/polls/home" method="post">{% csrf_token %}<input type="hidden" name="category_btn" value="8"><input type="submit" class="category_button category_game" value="ホビー、カルチャー"></form>
+            <form action="/polls/logout" method="get">{% csrf_token %}<input type="hidden" name="category_btn"><input type="submit" class="category_button category_game" value="ログアウト"></form>
         </div>
     </div>
 

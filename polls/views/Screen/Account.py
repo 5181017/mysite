@@ -1,3 +1,4 @@
+from django.db import DataError
 from django.shortcuts import redirect, render
 
 from polls import models
@@ -24,6 +25,10 @@ def account(request):
             except models.User.DoesNotExist:  # 登録できないエラー
                 params = {"errmsg": "既にそのIDは存在しています"}
                 return render(request, "polls/account.html", params)
+            except DataError as e:
+                print(e)
+                params = {"errmsg": "長い"}
+                return render(request , "polls/account.html" , params)
             except Exception as e:
                 params = {"errmsg": "DBに接続できませんでした"}
                 print(e)

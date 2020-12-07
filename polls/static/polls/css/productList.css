@@ -1,48 +1,35 @@
-*{
-
+.listbox{
+    margin-left:210px;
+    display:flex;
 }
 
-html{
-  width:100%;
-  height:100%;
-}
-
-body{
-  width:98%;
-  height:98%;
-  /* background-color:rgb(47,47,47); */
-  font-family:"Meiryo";
-  overflow-x:auto;/*はみ出た要素だけ横スクロール*/
-  white-space:nowrap;/*最小画面でも折り返さずに表示する*/
-}
-
-.form{
-  width:98%;
+.hori{
   display:flex;
-  flex-flow:row nowrap;
-  font-size:0;
+  flex-direction: low;
 }
 
-.search_form{
-  width:98%;
-  display:flex;
-  flex-flow:row nowrap;
+.vert{
+  float: left;
+  padding: 5px;
 }
 
-.immutable_form{
-  height:80px;
-  font-size:30px;
+.textopt{
+  margin-left:10px;
+  /* オーバーした要素を非表示にする*/
+  overflow: hidden;
+  /* 改行を半角スペースに変換することで、1行にする */
+  white-space: nowrap;
+  /* 幅を指定しないとテキストの長さによって要素の幅が変わるため指定 */
+  width: 240px;
+  /* オーバーしたテキストを３点リーダーにする */
+  text-overflow: ellipsis;
 }
 
-.category_button{
-  height:30px;
-  width:200px; 
-  min-width:100px;
-  font-size:10px;
-}
+.imgsize{
+    height: 240px;
+    width:240px;
+    margin-left:10px;
+    background-repeat:no-repeat;
+    background-color: transparent;
 
-.searchBox{
-  flex-basis:800px;
-  flex-grow:1;
-  flex-shrink:1;
 }

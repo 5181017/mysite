@@ -2,9 +2,10 @@
 {% load static %}
 {% block style %}<link rel="stylesheet" type="text/css" href="{% static 'polls/css/productDetails.css' %}">{% endblock %}
 {% block menu %}
+    <p class="productName">"{{product.productName}}"</p>
     <div class="form">
     <div class="main_form">
-      <p class="productName">{{product.productName}}</p>
+
       <p class="price">{{product.price}}円</p>
       <p class="reviewStars">{{review.reviewStars}}</p>
         <form action="productDetails" method="post">
@@ -24,4 +25,8 @@
       </div>
     </div>
     </div>
+
+    {% for r in review %}
+        <p>{{ r }}</p>
+    {% endfor %}
 {% endblock %}

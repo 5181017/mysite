@@ -2,8 +2,9 @@
   display: flex;
   overflow-x:auto;
   flex-flow: column nowrap;
-  width: 100%;
+  width: 85%;
   height: 82%;
+  margin-left: 210px;
 }
 
 .itemForm{
@@ -12,15 +13,13 @@
   width: 97%;
   height: 200px;
   margin-top: 15px;
-  background-color: #ccc;
+  background-color: aqua;
 }
 
 .checkForm{
-  flex-grow: 1;
-  flex-shrink: 1;
+  width: 50px;
   text-align: center;
   align-self: center;
-  background-color: azure;
 }
 
 .checkBox{
@@ -29,8 +28,16 @@
 }
 
 .element{
-  flex-grow: 3;
-  flex-shrink: 3;
+  max-width:200px;
+  max-height:200px;
+  min-width:200px;
+  min-height:200px;
+}
+
+.ele2{
+display:flex;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .verticalForm{
@@ -41,8 +48,12 @@
 
 .priceQuantity{
   height: 45%;
+  width:100%;
   margin-top: 5px;
   margin-bottom: 5px;
+  display: flex;
+  text-align: center;
+  align-self: center;
 }
 
 
@@ -64,4 +75,25 @@
 .move_form{
   height:80px;
   font-size:15px;
+}
+
+.quantSize{
+    font-size:30px;
+    width:50px;
+}
+
+.counter{
+    background: gray;
+    width:30px;
+    height:30px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.plusminus{
+    display: flex;
+    margin:auto;
+    align-self:center;
+    align-items:center;
+    font-size: 30px;
 }

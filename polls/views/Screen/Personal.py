@@ -13,6 +13,9 @@ def personal(request):
         try:
             userid = request.session["userid"]
             user = User().get_user(userid)
+            name = user.name.split(" ")
+            first_name , last_name = name[0] , name[1]
+
         except models.User.DoesNotExist as e:
             print(e)
             return redirect("/polls/exeption")
@@ -20,7 +23,10 @@ def personal(request):
             print(e)
             return redirect("/polls/exeption")
         params = {
-            "user" : user
+            "first_name" : first_name,
+            "last_name" : last_name,
+            "address" : user.address,
+            "toast_flg" : "0"
         }
 
 
@@ -31,14 +37,27 @@ def personal(request):
         new_user_address = request.POST["address"]
         new_user_name = first_name + " " + last_name
 
-        #ここから
-        if not new_user_name.isalnum() or not new_user_address.isalnum():
-            params = {
-                "msg" : "特殊文字を使用しないでください"
-            }
-            return render(request, "polls/personal.html" , params)
+        params = {
+            "msg": "",
+            "first_name" : "",
+            "last_name" : "",
+            "address" : "",
+            "toast_flg" : "0"
+        }
+
+        if not (new_user_name.isalnum() or new_user_address.isalnum()):
+            params["msg"] = "特殊文字を使用しないでください"
+            user = User().get_user(userid)
+            name = user.name.split(" ")
+            params["first_name"], params["last_name"] = name[0], name[1]
+            params["address"] = user.address
+            return render(request, "polls/personal.html", params)
+
         User().update_user(userid, new_user_name, new_user_address)
         user = User().get_user(userid)
-        params = {"user" : user}
+        name = user.name.split(" ")
+        params["address"] = user.address
+        params["first_name"], params["last_name"] = name[0], name[1]
+        params["toast_flg"] = "1"
 
     return render(request, "polls/personal.html", params)

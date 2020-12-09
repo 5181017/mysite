@@ -1,3 +1,5 @@
+import re
+
 from django.shortcuts import render, redirect
 
 from polls import models
@@ -21,24 +23,25 @@ def review(request, product_id):
         return render(request, 'polls/review.html', params)
     elif request.method == "POST":
         rv = Review()
-        reviewstar = 4
         productid = request.POST["productid"]
         title = request.POST["title"]
         comment = request.POST["commnet"]
+        review = request.POST["review"]
         user_id = request.session['userid']  # useridだけをとる
         product = Product().get_one_product(productid)
         params = {
-            "reviewstar": reviewstar,
+            "review": review,
             "product": product,
             "title": title,
             "comment": comment,
         }
-        if not comment.isalnum():
+        check_comment = re.sub("。|、|（|）" , "" , str(comment))
+        if not check_comment.isalnum() and not check_comment.isalpha():
             params["msg"] = "特殊文字を使用しないでください"
             return render(request , "polls/review.html" , params)
         try:
             reviewid = ("000" + user_id + productid + str(datetime.datetime.today().strftime("%M%S")))[-10:]
-            rv.register_review(reviewid ,user_id , productid , reviewstar, title, comment)
+            rv.register_review(reviewid ,user_id , productid , review, title, comment)
         except models.Review.DoesNotExist as e:
             print(e)
             return render(request, 'polls/review.html', params)

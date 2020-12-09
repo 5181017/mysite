@@ -9,7 +9,7 @@
     <div>
       <div class="main_form">
         <div class="image_form">
-          <img src="./a.jpg" class="image">
+          <img src="{% static 'polls/images/download1.jpg' %}">
         </div>
         <div>
           <label class="productName">{{ product.productName }}</label>
@@ -21,8 +21,7 @@
           <div class="review_form">
             <div class="stars">
               評価
-{#              <button>☆</button><button>☆</button><button>☆</button><button>☆</button><button>☆</button>#}
-            </div>
+              <button>☆</button><button>☆</button><button>☆</button><button>☆</button><button>☆</button>
             <div style="position: absolute;top: 820px;left: 30%; color: red;">{{ title_msg }}</div>
             <div class="reviewTitle">
 

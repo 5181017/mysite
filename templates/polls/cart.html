@@ -14,17 +14,17 @@
               <div class="checkForm">
                   <input name="checkbox" class="checkBox" type="checkbox" value="{{ item.productid.productID}}" onchange='calcMoney();checkChecked()'>
               </div>
-            <div class="element ">
-              <img src="{{ img }}" style="width: 100%; height: 100%; background-color: aquamarine;"></img>
+            <div class="element">
+              <img src="{% static 'polls/images/download1.jpg' %}" class="image">
             </div>
             <div class="plusminus " >
-              <div class=" textopt"style="height:100%; width:100%; text-align: center; vertical-align:middle; background-color: aqua;">{{ item.name }}</div>
+              <div class=" textopt"style="height:100%; width:100%; text-align: center; vertical-align:middle;  background-color:red;">{{ item.name }}</div>
             </div>
-            <div class="element" style="background-color: aquamarine;">
+            <div class="element" style="">
               <div class="verticalForm">
 
                   <input name="{{ item.productid.productID}}" id="{{ item.productid.productID}}" type="hidden" value="{{ item.quantity }}">
-                  <div class="priceQuantity" style="background-color: thistle;">
+                  <div class="priceQuantity" style="">
                       <div class="plusminus">
                           <div id="minus"  class="counter" onclick="quantityMinus('{{ item.productid.productID}}')">-</div>
                             <div name="name_{{ item.productid.productID}}" class="quantSize">{{ item.quantity }}</div>
@@ -38,16 +38,18 @@
             </div>
           </div>
         {% endfor %}
-    </div>
 
-
-    <div class="money_form" name="moneyForm">
+    <div style="margin-top: 15px;" name="moneyForm">
       <div class="buy_form_move">
         <input name="total_money" class="move_form" type="text" placeholder="合計" id="sumMoney" value="0" style="border: 1px solid black;">
         <input id="pay-btn" name="pay_btn" class="move_form" type="submit" value="購入に進む"style="width:150px; min-width:150px;" disabled>
       </div>
     </div>
-    </form>
+    </div>
+
+
+
+  </form>
 
 
     <script>

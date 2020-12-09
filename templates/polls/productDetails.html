@@ -4,26 +4,25 @@
 {% block menu %}
     <p class="productName">"{{product.productName}}"</p>
     <div class="form">
-    <div class="main_form">
+      <div class="main_form">
 
-      <p class="price">{{product.price}}円</p>
-      <p class="reviewStars">{{review.reviewStars}}</p>
-        <form action="productDetails" method="post">
-            {% csrf_token %}
-            <input type="hidden" value="{{ product.productID }}" name="productid">
-            {% if "userid" in request.session and not product.productID in productIdList %}
+        <p class="price">{{product.price}}円</p>
+        <p class="reviewStars">{{review.reviewStars}}</p>
+          <form action="productDetails" method="post">
+              {% csrf_token %}
+              <input type="hidden" value="{{ product.productID }}" name="productid">
+              {% if "userid" in request.session and not product.productID in productIdList %}
                 <input type="submit" class="addCart" value="カートに入れる">
-            {% else %}
+              {% else %}
                 <input type="submit" class="addCart" value="カートに入れる" disabled>
-            {% endif %}
-        </form>
-      <p class="all_reviewStars">評価まとめ</p>
+              {% endif %}
+          </form>
+        <p class="all_reviewStars">評価まとめ</p>
         <a href="/polls/review/{{ product.productID }}" class="addReview"><button style="font-size: 25px; padding: 10px; color: white;">レビュー作成</button></a>
-      <div class="image_form">
-
-<!--        <img src="./download.jpg" class="image">-->
+        <div class="image_form" style="margin-top: 80px; margin-left: 200px;">
+            <img src="{% static 'polls/images/download1.jpg' %}" class="image">
+        </div>
       </div>
-    </div>
     </div>
 
     {% for r in review %}

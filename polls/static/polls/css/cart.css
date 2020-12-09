@@ -1,6 +1,6 @@
 .mainForm{
   display: flex;
-  overflow-x:auto;
+  /* overflow-x:auto; */
   flex-flow: column nowrap;
   width: 85%;
   height: 82%;
@@ -13,8 +13,8 @@
   width: 97%;
   height: 200px;
   margin-top: 15px;
-  background-color: aqua;
-  border: 2px solid black;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid black;
 }
 
 .checkForm{
@@ -30,9 +30,12 @@
 
 .element{
   max-width:200px;
-  max-height:200px;
+  max-height:199px;
   min-width:200px;
-  min-height:200px;
+  min-height:199px;
+  overflow:auto;
+  background-color: white;
+  
 }
 
 .ele2{
@@ -60,13 +63,15 @@ display:flex;
 
 
 .money_form{
-  width:98%;
+  width:85%;
   display:flex;
   flex-flow:row nowrap;
+  margin-top: 15px;
+  margin-left: 175px;
 }
 
 .buy_form_move{
-  width: 100%;
+  width: 97%;
   flex-grow: 1;
   flex-shrink: 1;
   text-align: right;
@@ -104,4 +109,10 @@ display:flex;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   overflow: hidden;
+}
+
+.image {
+  zoom: 0.5;
+  width: 100%;
+  height: auto;
 }

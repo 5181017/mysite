@@ -17,6 +17,7 @@
   }
 
 .ele2{
+
   flex-grow: 1;
   flex-shrink: 1;
 }
@@ -40,6 +41,7 @@
   margin-bottom: 5px;
   margin-left: 10px;
   height: 95%; 
+  overflow-y: auto;
 }
 
 
@@ -65,4 +67,17 @@
 .move_form{
   height:80px;
   font-size:15px;
+}
+
+.image {
+  zoom: 0.5;
+  width: 100%;
+  height: auto;
+}
+
+.textopt{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }

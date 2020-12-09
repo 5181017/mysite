@@ -21,7 +21,6 @@
   white-space: nowrap;
   /* 幅を指定しないとテキストの長さによって要素の幅が変わるため指定 */
   width: 240px;
-  height: 20px;
   /* オーバーしたテキストを３点リーダーにする */
   text-overflow: ellipsis;
 }

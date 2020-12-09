@@ -19,8 +19,9 @@ class User:
 
     # ユーザの登録
     def register_user(self, userID, name, pw):
-
         user = models.User.objects.filter(userID=userID)
+        obj = User()
+        # a = models.User(userID=userID , name=name , pw=pw , money=0 , address="", instance=obj)
         if user.exists():
             raise models.User.DoesNotExist
         models.User(

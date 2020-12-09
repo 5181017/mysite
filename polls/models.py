@@ -1,8 +1,11 @@
 import uuid
 
+from django.core.validators import MaxLengthValidator , MinLengthValidator
 from django.db import models
-from django.core.validators import MinLengthValidator, RegexValidator
+
 from django.core.exceptions import ValidationError
+
+from polls.views.Class.User import User
 
 
 class Category(models.Model):
@@ -14,7 +17,7 @@ class Category(models.Model):
 
 
 class User(models.Model):
-    userID = models.CharField(primary_key=True, max_length=15 , error_messages={'required': 'Please let us know what to call you!', "max_length" : "ID文字数の上限を突破しています"})
+    userID = models.CharField(primary_key=True, max_length=15)
     name = models.CharField(max_length=50)
     pw = models.CharField(max_length=50)
     money = models.IntegerField(default=0)

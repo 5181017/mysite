@@ -24,8 +24,11 @@
         </div>
       </div>
     </div>
+        {% for r in review %}
+            <p>{{ r.title }}</p>
+            <p>{{ r.comment }}</p>
+        {% endfor %}
 
-    {% for r in review %}
-        <p>{{ r.comment }}</p>
-    {% endfor %}
+
+
 {% endblock %}

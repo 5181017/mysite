@@ -30,11 +30,3 @@ def orderhistory(request):
             return redirect("/polls/exeption")
         return render(request, "polls/orderHistory.html", params)
 
-    # elif request.method == "POST":
-    #     if "logo" in request.POST:
-    #         return render(request, "polls/home.html")
-    #     elif "cart" in request.POST:
-    #         return render(request, "polls/cart.html")
-    #     elif "sarch" in request.POST:
-    #         param = {request.POST.get("searchWord")}
-    #         return render(request, "polls/productList.html", param)

@@ -10,7 +10,7 @@ from polls.views.Class.Product import Product
 
 def home(request):
     # ログインしているユーザ（テスト用）
-    # request.session['userid'] = "1"
+    request.session['userid'] = "1"
 
     try:
         if request.method == "GET":
@@ -50,7 +50,7 @@ def home(request):
         }
         return render(request , "polls/home.html" , params)
     except Exception:
-        return render(request , "polls/exception.html" , "DB接続できませんでした。")
+        return render(request , "polls/exception.html" , {"errorMsg" :"DB接続できませんでした。"})
 
 def logout(request):
     request.session.flush()

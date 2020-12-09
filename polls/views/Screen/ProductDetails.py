@@ -27,10 +27,10 @@ def product_details(request, product_id):
             return render(request, "polls/productDetails.html", params)
         except models.User.DoesNotExist as e:
             print(e)
-            return redirect("/polls/exception")
+            return redirect("/polls/exception" , "あなたのアカウントがありません")
         except Exception as e:
             print(e)
-            return redirect("/polls/exception")
+            return render(request , "polls/exception.html" , {"errorMsg" :"DB接続できませんでした。"})
 
 
 

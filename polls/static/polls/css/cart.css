@@ -14,10 +14,11 @@
   height: 200px;
   margin-top: 15px;
   background-color: aqua;
+  border: 2px solid black;
 }
 
 .checkForm{
-  width: 50px;
+  min-width: 55px;
   text-align: center;
   align-self: center;
 }
@@ -96,4 +97,11 @@ display:flex;
     align-self:center;
     align-items:center;
     font-size: 30px;
+}
+
+.textopt{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }

@@ -40,10 +40,8 @@ def account(request):
                 print(e)
                 return redirect("/polls/login")
             except Exception as e:
-                params = {"errmsg": "DBに接続できませんでした"}
                 print(e)
-                # return render(request, "polls/exception.html", params)
-                return render(request , "polls/account.html" , params)
+                return render(request , "polls/exception.html" , {"errorMsg" :"DB接続できませんでした。"})
 
         else:
             params = {"errmsg": "再入力パスワードが違います"}

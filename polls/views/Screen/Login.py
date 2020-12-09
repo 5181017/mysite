@@ -28,5 +28,4 @@ def login(request):
             return render(request, "polls/login.html", params)
         except Exception as e:
             print(e)
-            params = {"errmsg": "DBに接続できませんでした"}
-            return render(request, "polls/exception.html", params)
+            return render(request, "polls/exception.html", {"errorMsg": "DB接続できませんでした。"})

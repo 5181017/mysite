@@ -5,7 +5,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'polls/css/orderHistory.css' %}">
 {% endblock %}
 
+
 {% block menu %}
+  <div class="mainForm">
     {% for p in productlist %}
       <div class="itemForm">
         <div class="element">
@@ -15,23 +17,23 @@
         </div>
         <div class="ele2">
           <div class="verticalForm" align-self:center;align-items:center;>
-            <div class="priceQuantity" style="background-color: aqua;  text-align: center; vertical-align:middle;">{{ p.0 }}</div>
+            <div class="priceQuantity" style="background-color: white; line-height: 95px;">{{ p.0 }}</div> <!--ling-height:テキストの高さを指定-->
             <div class="priceQuantity textopt" style="background-color: white;">{{ p.1 }}</div>
           </div>
         </div>
         <div class="element">
           <div class="verticalForm">
-            <button class="priceQuantity">レビュー</button>
-            <button class="priceQuantity">再注文</button>
+            <button class="priceQuantity btnColor">レビュー</button>
+            <button class="priceQuantity btnColor">再注文</button>
           </div>
         </div>
       </div>
     {% endfor %}
-
-    <div class="money_form">
+  </div>
+    <!-- <div class="money_form">
       <form class="buy_form_move" action="file:///D:/Users/5181025/FrontEND/htmlひな形/9p.html" method="post">
         <input class="move_form" type="search" placeholder="商品名を入力してください" name="productName"></input>
         <input class="move_form" type="submit" value="購入に進む"style="width:150px; min-width:150px;"></input>
       </form>
-    </div>
+    </div> -->
 {% endblock %}

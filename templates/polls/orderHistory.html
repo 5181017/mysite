@@ -9,12 +9,14 @@
     {% for p in productlist %}
       <div class="itemForm">
         <div class="element">
-          <div class="image_margin" style="background-color: white;">{{image}}</div>
+          <div class="image_margin" style="background-color: white;">
+            <img src="{% static 'polls/images/download1.jpg' %}" class="image">
+          </div>
         </div>
         <div class="ele2">
-          <div class="verticalForm">
-            <div class="priceQuantity" style="background-color: white;">{{ p.0 }}</div>
-            <div class="priceQuantity" style="background-color: white;">{{ p.1 }}</div>
+          <div class="verticalForm" align-self:center;align-items:center;>
+            <div class="priceQuantity" style="background-color: aqua;  text-align: center; vertical-align:middle;">{{ p.0 }}</div>
+            <div class="priceQuantity textopt" style="background-color: white;">{{ p.1 }}</div>
           </div>
         </div>
         <div class="element">

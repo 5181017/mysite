@@ -70,12 +70,11 @@
 }
 
 .image_form{
-  width:500px; 
-  height:550px;
+  width:500px;
+  height:500px;
   overflow:auto;
-  position: absolute; 
-  top: 125px; 
-  left: 15%;
+  position: absolute;
+  top: 125px;
 }
 
 .image {

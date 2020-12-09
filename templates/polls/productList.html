@@ -6,13 +6,13 @@
 {% endblock %}
 
 {% block menu %}
-
-
         <div class="listbox">
           <div class="vert">
             {% for p in product %}
             <div class="vert">
-              <button class="imgsize" src="{{ img }}" id="imgSample" onclick="location.href='productDetails/{{ p.productID }}'"></button>
+              <button class="imgsize" id="imgSample" onclick="location.href='productDetails/{{ p.productID }}'">
+                  <img src="{% static 'polls/images/download1.jpg' %}">
+              </button>
               <div class="textopt">
                   <a href="productDetails/{{ p.productID }}">{{ p.productName }}</a>
               </div>
@@ -20,7 +20,4 @@
             {% endfor %}
           </div>
         </div>
-
-
-
 {% endblock %}

@@ -33,15 +33,13 @@ def review(request, product_id):
             "title": title,
             "comment": comment,
         }
-        print("kajdsflkja;dslkjf;akjsd;fljas;lkdjf;askdjf;kdsj;fjds;")
-        print(productid)
         if not comment.isalnum():
             params["msg"] = "特殊文字を使用しないでください"
             return render(request , "polls/review.html" , params)
         try:
             reviewid = ("000" + user_id + productid + str(datetime.datetime.today().strftime("%M%S")))[-10:]
             rv.register_review(reviewid ,user_id , productid , reviewstar, title, comment)
-        except models.User.DoesNotExist as e:
+        except models.Review.DoesNotExist as e:
             print(e)
             return render(request, 'polls/review.html', params)
         except BaseException as e:

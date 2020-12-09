@@ -8,11 +8,11 @@
 {% block menu %}
     <div>
       <div class="main_form">
-        <div class="image_form">
-          <img src="./a.jpg" class="image">
-        </div>
         <div>
-          <label class="productName">{{ product.productName }}</label>
+          <a class="productName textopt">{{ product.productName }}</a>
+        </div>
+        <div class="image_form">
+          <img src="{% static 'polls/images/download1.jpg' %}" class="image">
         </div>
       </div>
        <form action="review" method="post">
@@ -21,18 +21,15 @@
           <div class="review_form">
             <div class="stars">
               評価
-{#              <button>☆</button><button>☆</button><button>☆</button><button>☆</button><button>☆</button>#}
+              <input type="radio" name="review" value="0" style="margin-left: 25px;"> 満足
+              <input type="radio" name="review" value="1"> 普通
+              <input type="radio" name="review" value="2"> 不満
             </div>
             <div style="position: absolute;top: 820px;left: 30%; color: red;">{{ title_msg }}</div>
-            <div class="reviewTitle">
-
-              レビュータイトル
-              <input type="text" name="title" value="{{ title }}" maxlength="50">
-            </div>
-
+              <input class="reviewTitle" type="text" name="title" value="{{ title }}" maxlength="50" placeholder="レビュータイトル">
             <div class="textArea">
                 <p style="color: red;">{{ msg }}</p>
-              <textarea style="  width: 500px; height: 500px;" placeholder="レビュー内容" name="commnet">{{ comment }}</textarea>
+                <textarea style="  width: 500px; height: 250px;" placeholder="レビュー内容" name="commnet">{{ comment }}</textarea>
               <!-- 大体1300文字 -->
             </div>
             <div>

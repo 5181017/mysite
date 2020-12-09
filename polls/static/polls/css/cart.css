@@ -1,16 +1,16 @@
 .mainForm{
   display: flex;
-  /* overflow-x:auto; */
+  overflow-y:auto;
   flex-flow: column nowrap;
   width: 85%;
-  height: 82%;
+  height: 750px;
   margin-left: 210px;
 }
 
 .itemForm{
   display: flex;
   flex-flow:row nowrap;
-  width: 97%;
+  width: 90%;
   height: 200px;
   margin-top: 15px;
   background-color: rgb(240, 240, 240);
@@ -71,7 +71,7 @@ display:flex;
 }
 
 .buy_form_move{
-  width: 97%;
+  width: 90%;
   flex-grow: 1;
   flex-shrink: 1;
   text-align: right;
@@ -107,7 +107,7 @@ display:flex;
 .textopt{
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   overflow: hidden;
 }
 

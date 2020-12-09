@@ -5,23 +5,8 @@
 
 }
 
-.image_form{
-  width:500px; 
-  height:550px;
-  overflow:auto;
-  position: absolute; 
-  top: 125px; 
-  left: 30%;
-}
-
-.image {
-  zoom: 0.5;
-  width: 100%;
-  height: auto;
-}
-
 .productName{
- font-size: 45px;
+ font-size: 36px;
  position:absolute;
  top: 700px;
  left: 210px;
@@ -33,32 +18,54 @@
   width:98%;
   display:flex;
   flex-flow:row nowrap;
+  margin-left: 210px;
 }
 
 .stars{
   position: absolute;
-  top: 800px;
-  left: 30%;
+  top: 805px;
 }
 
 .reviewTitle{
   position: absolute;
+  border: 1px solid black; 
+  width: 220px;
   top: 840px;
-  left: 30%;
 }
 
 .textArea{
   position: absolute;
   width:500px;
-  height:500px;
+  height:300px;
   top: 880px;
-  left: 30%;
 }
 
 .post{
   position: absolute;
-  top: 1400px;
-  height:100x;
+  top: 1200px;
+  height:25px;
   width:500px;
-  left: 30%;
+  margin-bottom: 15px;
+}
+
+.textopt{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.image {
+  zoom: 0.5;
+  width: 100%;
+  height: auto;
+}
+
+.image_form{
+  width:500px;
+  height:500px;
+  overflow:auto;
+  position: absolute;
+  top: 125px;
+  margin-left: 400px;
 }

@@ -15,13 +15,9 @@ def personal(request):
             user = User().get_user(userid)
             name = user.name.split(" ")
             first_name , last_name = name[0] , name[1]
-
-        except models.User.DoesNotExist as e:
-            print(e)
-            return redirect("/polls/exeption")
         except Exception as e:
             print(e)
-            return redirect("/polls/exeption")
+            return render(request , "polls/exception.html" , {"errorMsg" :"DB接続できませんでした。"})
         params = {
             "first_name" : first_name,
             "last_name" : last_name,

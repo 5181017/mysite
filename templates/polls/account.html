@@ -1,5 +1,6 @@
 {% extends "polls/menu.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block style %}
   <link rel="stylesheet" type="text/css" href="{% static 'polls/css/account.css' %}">
@@ -8,19 +9,20 @@
 {% block menu %}
 
     <form action="account" method="post">
+
         {% csrf_token %}
         <div class="main_form">
           <div class="inputForm">
             ユーザーID　　：
-            <input class="input" type="text" name="userid">
+              {{ form.userID|add_class:"input" }}
           </div>
           <div class="inputForm">
             ユーザーネーム：
-            <input class="input" type="text" name="name">
+            {{ form.name|add_class:"input" }}
           </div>
           <div class="inputForm">
             パスワード　　：
-            <input class="input" type="password" name="password">
+            {{ form.pw|add_class:"input" }}
           </div>
           <div class="inputForm">
             パスワード確認：
@@ -28,9 +30,10 @@
           </div>
         </div>
 
+
         <div style="display: flex; flex-flow:row nowrap; height: 200px; margin-top: 30px;">
           <div class="buttonForm">
-            <input type="button" class="buttonStyle" style="position: absolute; right: 0px;" value="ログインはこちら"></button>
+              <a href="login"><input type="button" class="buttonStyle" style="position: absolute; right: 0px;" value="ログインはこちら"></a>
           </div>
           <div class="errorForm" style="text-align:center;">{{errmsg}}</div>
           <div class="buttonForm">

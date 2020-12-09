@@ -1,5 +1,6 @@
 {% extends "polls/menu.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'polls/css/login.css' %}">
@@ -12,11 +13,11 @@
     <div class="main_form">
       <div class="inputForm">
         ユーザーID　　：
-        <input class="input" type="text" name="id">
+        {{ form.userID|add_class:"input" }}
       </div>
       <div class="inputForm">
         パスワード　　：
-        <input class="input" type="password" name="pw">
+        {{ form.pw|add_class:"input" }}
       </div>
     </div>
 

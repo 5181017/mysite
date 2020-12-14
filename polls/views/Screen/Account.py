@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 
 from polls import models
 from polls.views.Class.User import User
-from polls.views.Forms.UserForms import UserForm
+from polls.views.Forms.UserForm import UserForm
 
 
 def account(request):

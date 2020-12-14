@@ -67,9 +67,9 @@ class PollsCharginghistory(models.Model):
 
 
 class Review(models.Model):
-    reviewID = models.CharField(primary_key=True, max_length=10)
+    reviewID = models.CharField(primary_key=True, max_length=30)
     productID = models.ForeignKey(Products, on_delete=models.CASCADE)
     userID = models.ForeignKey(User, on_delete=models.CASCADE)
     reviewStar = models.IntegerField()
-    title = models.CharField(max_length=50, null=True)
-    comment = models.TextField()
+    title = models.CharField(max_length=50, null=False)
+    comment = models.TextField(max_length=150)

@@ -1,12 +1,22 @@
+.mainForm{
+  display: flex;
+  overflow-y:auto;
+  flex-flow: column nowrap;
+  width: 85%;
+  height: 865px;
+  margin-left: 210px;
+}
+
 
 .itemForm{
   display: flex;
   flex-flow:row nowrap;
-  width: 85%;
+  width: 80%;
+  min-width: 800px;
   height: 200px;
   margin-top: 15px;
-  background-color: gray;
-  margin-left:210px;
+  background-color: rgb(240, 240, 240);
+  margin-left:100px;
 }
 
 .element{
@@ -17,6 +27,7 @@
   }
 
 .ele2{
+  min-width: 400px;
   flex-grow: 1;
   flex-shrink: 1;
 }
@@ -31,7 +42,11 @@
   height: 45%;
   margin: 5px;
   font-size: 30px;
-  text-align: center;
+  text-align: center;  
+}
+
+.btnColor{
+  background-color: rgb(168, 174, 255);
 }
 
 .image_margin{
@@ -40,6 +55,7 @@
   margin-bottom: 5px;
   margin-left: 10px;
   height: 95%; 
+  overflow-y: auto;
 }
 
 
@@ -65,4 +81,17 @@
 .move_form{
   height:80px;
   font-size:15px;
+}
+
+.image {
+  zoom: 0.5;
+  width: 100%;
+  height: auto;
+}
+
+.textopt{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }

@@ -6,13 +6,12 @@
 {% endblock %}
 
 {% block menu %}
-    <div class="mainForm">
     {% for p in productlist %}
       <div class="itemForm">
         <div class="element">
           <div class="image_margin" style="background-color: white;">{{image}}</div>
         </div>
-        <div class="element">
+        <div class="ele2">
           <div class="verticalForm">
             <div class="priceQuantity" style="background-color: white;">{{ p.0 }}</div>
             <div class="priceQuantity" style="background-color: white;">{{ p.1 }}</div>
@@ -26,7 +25,6 @@
         </div>
       </div>
     {% endfor %}
-    </div>
 
     <div class="money_form">
       <form class="buy_form_move" action="file:///D:/Users/5181025/FrontEND/htmlひな形/9p.html" method="post">

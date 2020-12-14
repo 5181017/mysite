@@ -62,7 +62,6 @@ def cart(request):
                 product.quantity = Cart().get_product(userid , product_obj.productID).quantity
                 list.append(product)
 
-            # request.session["buylist"] = buylist
             params = {
                 "product": list,
                 "buylist": buylist,

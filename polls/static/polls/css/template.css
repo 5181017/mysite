@@ -30,9 +30,10 @@
     width:100%;
     height:100%;
     overflow-x:auto;/*はみ出た要素だけ横スクロール*/
+
   }
 
-  .title
+  .title{
     /* background-image: url("./タイトル.png"); */
     background-size: 100% 100%;
   }
@@ -91,6 +92,8 @@
   color: white;
   background-color: #050D67;
 }
+
+
 
 
 

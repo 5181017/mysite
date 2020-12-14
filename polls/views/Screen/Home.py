@@ -46,6 +46,6 @@ def home(request):
         }
         return render(request , "polls/home.html" , params)
     except Exception:
-        return render(request , "polls/exception.html" , "DB接続できませんでした。")
+        return render(request , "polls/exception.html" , {"errorMsg" :"DB接続できませんでした。"})
 
 

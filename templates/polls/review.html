@@ -1,5 +1,6 @@
 {% extends "polls/menu.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block style %}
   <link rel="stylesheet" type="text/css" href="{% static 'polls/css/review.css' %}">
@@ -22,14 +23,14 @@
           <div class="review_form">
             <div class="stars">
               評価
-
-              <input type="radio" name="review" value="0" style="margin-left: 25px;"> 満足
-              <input type="radio" name="review" value="1"> 普通
-              <input type="radio" name="review" value="2"> 不満
+              <input type="radio" name="review" value="0" style="margin-left: 25px;" {% if review == 0 %}checked{% endif %}> 満足
+              <input type="radio" name="review" value="1" {% if review == 1 %}checked{% endif %}> 普通
+              <input type="radio" name="review" value="2" {% if review == 2 %}checked{% endif %}> 不満
             </div>
 
             <div style="position: absolute;top: 820px;left: 30%; color: red;">{{ title_msg }}</div>
-              <input class="reviewTitle" type="text" name="title" value="{{ title }}" maxlength="50" placeholder="レビュータイトル">
+{#              <input class="reviewTitle" type="text" name="title" value="{{ title }}" maxlength="50" placeholder="レビュータイトル">#}
+              {{ form.title|add_class:"reviewTitle"|attr:"value:{title}"|attr:"name:title"}}
             <div class="textArea">
                 <p style="color: red;">{{ msg }}</p>
                 <textarea style="  width: 500px; height: 250px;" placeholder="レビュー内容" name="commnet">{{ comment }}</textarea>

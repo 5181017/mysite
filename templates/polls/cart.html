@@ -82,6 +82,7 @@
             for(let i = 0; i < checkBox.length; i++) {
                 if(checkBox[i].checked){
                     submitBtn.disabled = false
+                    break
                 }else{
                     submitBtn.disabled = true
                 }
@@ -116,7 +117,6 @@
 
             calcMoney(quantity)
         }
-
     </script>
 {% endblock %}
 

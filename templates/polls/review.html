@@ -30,10 +30,11 @@
 
             <div style="position: absolute;top: 820px;left: 30%; color: red;">{{ title_msg }}</div>
 {#              <input class="reviewTitle" type="text" name="title" value="{{ title }}" maxlength="50" placeholder="レビュータイトル">#}
-              {{ form.title|add_class:"reviewTitle"|attr:"value:{title}"|attr:"name:title"}}
+              {{ form.title|add_class:"reviewTitle"|attr:"name:title"}}
             <div class="textArea">
                 <p style="color: red;">{{ msg }}</p>
-                <textarea style="  width: 500px; height: 250px;" placeholder="レビュー内容" name="commnet">{{ comment }}</textarea>
+{#                <textarea style="  width: 500px; height: 250px;" placeholder="レビュー内容" name="commnet">{{ comment }}</textarea>#}
+                {{ form.comment|attr:"name:comment"}}
               <!-- 大体1300文字 -->
             </div>
             <div>

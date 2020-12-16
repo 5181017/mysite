@@ -16,6 +16,7 @@ urlpatterns = [
     path("review/<str:product_id>", Review.review , name="review"),
     path("myPage", MyPage.mypage, name="myPage"),  # htmlない
     path("productDetails/<str:product_id>", ProductDetails.product_details, name="productDetails"),
+    path("reorder" , ProductDetails.re_order , name="reOrder"),
     path("logout" , Home.logout , name="logout"),
     # path("exception" ,  , name="exception")
 ]

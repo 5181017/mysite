@@ -17,11 +17,8 @@ def orderhistory(request):
             history = Settlement().get_settlement(id)
             for d in history:
                 product = Product().get_one_product(d.productID.productID)
-
-                list.append([d.timeStamp.strftime("%Y年%m月%d日"), product.productName])
+                list.append([d.timeStamp.strftime("%Y年%m月%d日"), product.productName , product.productID])
                 print(list[0][0])
-
-            # 前のページに遷移
             params = {"productlist": list}
         except models.PayHistory.DoesNotExist:
             params = {"msg" : "履歴がありません"}

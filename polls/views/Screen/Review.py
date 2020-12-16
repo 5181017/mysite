@@ -21,18 +21,19 @@ def review(request, product_id):
             review = Review().get_one_review(userid+product_id)
             print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             print(review.reviewStar)
+            form = ReviewForm(initial=dict(title=review.title ,comment=review.comment))
             params = {
                 "product" : product,
                 "title" : review.title,
                 "comment" : review.comment,
                 "review" : review.reviewStar,
-                "form" : ReviewForm
+                "form" : form
             }
         except models.Review.DoesNotExist as e:
             params = {
                 "product": product,
                 "review" : 1,
-                # "form": ReviewForm
+                "form": ReviewForm
             }
 
         return render(request, 'polls/review.html', params)
@@ -40,11 +41,11 @@ def review(request, product_id):
         rv = Review()
         productid = request.POST["productid"]
         title = request.POST["title"]
-        comment = request.POST["commnet"]
+        comment = request.POST["comment"]
         review = request.POST["review"]
         user_id = request.session['userid']  # useridだけをとる
         product = Product().get_one_product(productid)
-        form = ReviewForm(request.POST)
+        form = ReviewForm(request.POST , initial=dict(title=title , comment=comment))
 
         if not form.is_valid():
             print("バリデーションエラー:review()")
@@ -55,6 +56,7 @@ def review(request, product_id):
             "product": product,
             "title": title,
             "comment": comment,
+            "form" : form
         }
         check_comment = re.sub("。|、|（|）| " , "" , str(comment))
         if not check_comment.isalnum() and not check_comment.isalpha():

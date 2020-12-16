@@ -6,7 +6,7 @@ from polls.views.Class.Settlement import Settlement
 
 def pay(request):
     # ログインしているか確認する
-    if not request.session.exists("userid"):
+    if not "userid" in request.session:
         return redirect("/polls/login")
 
     # userId = request.POST.get("userid", None)      # userID

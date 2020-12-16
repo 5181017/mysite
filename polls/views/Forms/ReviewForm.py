@@ -9,7 +9,7 @@ class ReviewForm(forms.ModelForm):
         self.fields["comment"].required = True
     reviewStar = forms.IntegerField()
     title = forms.CharField(max_length=50)
-    comment = forms.CharField(max_length=150 , min_length=10)
+    comment = forms.CharField(max_length=150 , min_length=10 , widget=forms.Textarea)
 
     class Meta:
         model = User

@@ -38,7 +38,7 @@
 
 .addCart{
   position: absolute; 
-  top: 600px; 
+  top: 550px; 
   left: 875px;
   width:691.5px; 
   min-width:100px; 
@@ -78,7 +78,21 @@
 }
 
 .image {
-  zoom: 0.5;
-  width: 100%;
+  zoom: 0.35;
+  width: 80%;
   height: auto;
+}
+
+.comment{
+  position: absolute; 
+  top: 700px; 
+  left: 200px;
+  width:1400px; 
+  min-width:100px; 
+  height:250px; 
+  font-size:16px; 
+}
+
+.comment::-webkit-scrollbar {
+  display: none;
 }

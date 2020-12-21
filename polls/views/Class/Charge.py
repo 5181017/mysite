@@ -12,5 +12,5 @@ class Charge:
         all = PollsCharginghistory.objects.filter(userid=userid)
         if all.exists():
             return all
-        raise models.PollsChargingHistory.DoesNotExist
+        raise models.PollsCharginghistory.DoesNotExist
 

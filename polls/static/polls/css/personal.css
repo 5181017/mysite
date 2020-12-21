@@ -75,9 +75,10 @@
 .wakusen{
   background-color: black;
   height: 1px;
-  width: 80%;
+  width: 75%;
   margin: auto;
   margin-top: 1%;
+  margin-right: 200px;
 }
 
 .waku{

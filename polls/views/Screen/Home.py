@@ -10,7 +10,7 @@ from polls.views.Class.Product import Product
 
 def home(request):
     # ログインしているユーザ（テスト用）
-    request.session['userid'] = "1"
+    # request.session['userid'] = "1"
 
     try:
         if request.method == "GET":

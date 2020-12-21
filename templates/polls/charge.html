@@ -18,7 +18,8 @@
 
   <div class="dummy_form"></div>
 
-  <form class="inputMoney_form" name="moneyForm" action="file:///D:/Users/5181025/FrontEND/htmlひな形/9p.html/" method="post">
+  <form class="inputMoney_form" name="moneyForm" action="charge" method="post">
+    {% csrf_token %}
     <input class="inputMoney_spaces" type="number" value="0"readonly name="holder" span id="nums">
     <input class="inputMoney_button" type="button" onclick="btn0()" value="金額クリア"></input>
     <input class="inputMoney_button" type="submit" value="チャージ" ></input>

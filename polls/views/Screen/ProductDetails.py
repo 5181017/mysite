@@ -1,3 +1,6 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from polls import models
@@ -11,9 +14,23 @@ def product_details(request, product_id):
         try:
             product = Product().get_one_product(product_id)
             review = Review().get_review(product_id)
+            cnt = 0.0
+            total = -1
+            if len(review) != 0:
+                for r in review:
+                    cnt += r.reviewStar
+                    print(cnt)
+                total = round(cnt / len(review))
+
+            satisfaction = {0 : "満足" , 1 : "普通" , 2 : "不満"}
+            if total in satisfaction:
+                satisfaction_str = satisfaction[total]
+            else:
+                satisfaction_str = "まだ評価されていません"
             params = {
                 "product": product,
                 "review": review,
+                "total_review" : satisfaction_str,
                 "productIdList" : ""
             }
             if "userid" in request.session:
@@ -40,3 +57,8 @@ def product_details(request, product_id):
         Cart().insert_cart(userid , productid , 1)
         return redirect("/polls/productDetails/" + productid)
 
+def re_order(request):
+    userid = request.session["userid"]
+    Cart().insert_cart(userid, request.GET["product_id"], 1)
+    content = json.dumps({"result": "success"})  # 仮データ
+    return HttpResponse(content)

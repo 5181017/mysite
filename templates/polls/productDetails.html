@@ -17,15 +17,25 @@
                 <input type="submit" class="addCart" value="カートに入れる" disabled>
               {% endif %}
           </form>
-        <p class="all_reviewStars">評価まとめ</p>
-        <a href="/polls/review/{{ product.productID }}" class="addReview"><button style="font-size: 25px; padding: 10px; color: white;">レビュー作成</button></a>
-        <div class="image_form" style="margin-top: 80px; margin-left: 200px;">
+
+
+        <div class="image_form" style="margin-top: 80px; margin-left: 350px;">
             <img src="{% static 'polls/images/download1.jpg' %}" class="image">
         </div>
       </div>
     </div>
-        {% for r in review %}
-            <p>{{ r.title }}</p>
-            <p>{{ r.comment }}</p>
-        {% endfor %}
+    <a style="font-size: 25px; top: 650px; position: absolute; left: 200px; min-width: 500px;"><button style="font-size: 25px; color: white; left: 500px;">レビュー作成</button>　レビュー　総評:{{ total_review }}</a>
+    <div class="comment"  style="display: flex; flex-flow:column nowrap; overflow-y: scroll;">
+      {% for r in review %}
+      <div>
+        <div style="background-color: whitesmoke;">
+            <p>ユーザー: {{ r.userID.name }}</p>
+            <p>タイトル: {{ r.title }}</p>
+            <p>内　容　: {{ r.comment }}</p>
+        </div>
+        <p style="height: 10px;"></p>
+      </div>
+      {% endfor %}
+    </div>
+
 {% endblock %}

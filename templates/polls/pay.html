@@ -13,12 +13,22 @@
 {% csrf_token %}
     <div class="mainForm">
         {% for p in product %}
-          <div class="itemForm">
+        <div class="itemForm">
           <input name="buylist" type="hidden" value="{{ p.productid }}">
-              <div class="element" style="background-color: aquamarine;">{{image}}</div>
-              <div class="ele2" style="background-color: aqua;">{{p.name}}</div>
-              <div class="element" style="background-color: aquamarine;">{{p.price}}円</div>
+        <div class="element">
+          <img src="{% static 'polls/images/download1.jpg' %}" class="image">
+        </div>
+        <div class="plusminus">
+          <div class=" textopt"style="height:100%; width:100%; min-width:400px; text-align: center; vertical-align:middle;">{{ p.name }}</div>
+        </div>
+        <div class="element">
+          <div class="verticalForm">
+
+              <input name="money" type="hidden" value="{{ p.price }}">
+            <div class="plusminus">{{ p.price }}円</div>
           </div>
+        </div>
+      </div>
         {% endfor %}
     </div>
 

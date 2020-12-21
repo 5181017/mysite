@@ -15,14 +15,13 @@
        {% csrf_token %}
       <div class="Input_form" name="seimei">
         <div class="name_form">
-          <label>姓</label>
-          <input name="first-name" type="text" class="name_form_options waku"　id="sei" style="text-align: left;" value="{{ first_name }}">
+          <div>
+            <label>名前</label>
+            <input name="first-name" type="text" class="name_form_options waku"　id="sei" style="text-align: left;" value="{{ first_name }}">
+          </div>
         </div>
 
-        <div class="name_form">
-          <label>名</label>
-          <input name="last-name" type="text" class="name_form_options waku"　id="mei" style="text-align: left;" value="{{ last_name }}">
-        </div>
+        <div class="name_form"></div>
 
       </div>
 
@@ -41,7 +40,7 @@
 
       <div class="Input_form">
         <div class="address_form">
-          <label style="writing-mode: vertical-rl; text-align: center; height: 22.5px;">住所</label>
+          <label>住所</label>
           <input name="address" type="text" class="address_form_options waku" placeholder="※個人情報不可" id="jusyo" style="text-align: left;" value="{{ address }}">
         </div>
       </div>

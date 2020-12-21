@@ -5,8 +5,6 @@
   flex-flow:column nowrap;
 }
 
-
-
 .Input_form{
   width:80%;
   height: 10%;
@@ -49,7 +47,6 @@
 }
 
 .address_form{
-  text-align: right;
   width: 80%;
   margin-left: 15%;
 }
@@ -57,7 +54,7 @@
 .address_form_options{
   text-align: right;
   font-size: large;
-  width: 100%;
+  width: 95%;
   max-width: 1500px;
   max-height: 100px;
   min-width: 500px;

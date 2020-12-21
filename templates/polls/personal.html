@@ -6,6 +6,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="{% static 'polls/js/toast.js' %}"></script>
 
 {% endblock %}
 
@@ -55,14 +56,7 @@
 
     </form>
     {% if toast_flg == "1" %}
-        <script>
-            toastr.options = {
-                "positionClass": "toast-bottom-center",
-                "timeOut": "1000",
-            };
-
-            toastr.success('これはinfo型のトーストです');
-        </script>
+        <script>showToast("再注文しました。")</script>
     {% endif %}
 
 {% endblock %}

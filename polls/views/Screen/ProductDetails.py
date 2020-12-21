@@ -58,8 +58,6 @@ def product_details(request, product_id):
         return redirect("/polls/productDetails/" + productid)
 
 def re_order(request):
-    print("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm")
-    print(request.GET["product_id"])
     userid = request.session["userid"]
     Cart().insert_cart(userid, request.GET["product_id"], 1)
     content = json.dumps({"result": "success"})  # 仮データ

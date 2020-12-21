@@ -4,6 +4,9 @@
 {% block style %}
   <link rel="stylesheet" type="text/css" href="{% static 'polls/css/orderHistory.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="{% static 'polls/js/toast.js' %}"></script>
 {% endblock %}
 
 
@@ -25,7 +28,11 @@
         <div class="element">
           <div class="verticalForm">
             <button class="priceQuantity btnColor" id="{{ p.2 }}" onclick="location.href='/polls/review/{{ p.2 }}'">レビュー</button>
-            <button class="priceQuantity btnColor" id="re-order" onclick="reOrder('{{ p.2 }}')">再注文</button>
+              {% if p.2 in cart %}
+                <button class="priceQuantity btnColor" id="re-order" onclick="reOrder('{{ p.2 }}')" disabled>再注文</button>
+              {% else %}
+                  <button class="priceQuantity btnColor" id="re-order" onclick="reOrder('{{ p.2 }}')">再注文</button>
+              {% endif %}
           </div>
         </div>
       </div>
@@ -40,7 +47,8 @@
             "data": {'product_id': productId},
             "dataType": "json", // ビューが返すデータの種類を指定
             "success": function(json){
-                    console.log(json)
+                    console.log(json);
+                    showToast("再注文しました。");
                     }
                 }
             );

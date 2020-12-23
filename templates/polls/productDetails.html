@@ -18,7 +18,7 @@
               {% csrf_token %}
               <input type="hidden" value="{{ product.productID }}" name="productid">
               {% if "userid" in request.session and not product.productID in productIdList %}
-                <input type="button" class="addCart" value="カートに入れる"  onclick="reOrder('{{ product.productID }}')">
+                <input type="button" id="cartBtn" class="addCart" value="カートに入れる"  onclick="reOrder('{{ product.productID }}')">
               {% else %}
                 <input type="button" class="addCart" value="カートに入れる" disabled>
               {% endif %}
@@ -46,6 +46,7 @@
 
         <script>
         function reOrder(productId) {
+            var cartBtn = document.getElementById("cartBtn");
             console.log(productId)
             $.ajax({
             "url": "/polls/reorder",
@@ -54,8 +55,8 @@
             "dataType": "json", // ビューが返すデータの種類を指定
             "success": function(json){
                     console.log(json);
-                    showToast("再注文しました。");
-
+                    showToast("カートに入りました。");
+                    cartBtn.disabled = true;
                     }
                 }
             );

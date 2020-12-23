@@ -51,11 +51,11 @@ def product_details(request, product_id):
 
 
 
-    if request.method == "POST":
-        userid = request.session["userid"]
-        productid = request.POST["productid"]
-        Cart().insert_cart(userid , productid , 1)
-        return redirect("/polls/productDetails/" + productid)
+    # if request.method == "POST":
+    #     userid = request.session["userid"]
+    #     productid = request.POST["productid"]
+    #     Cart().insert_cart(userid , productid , 1)
+    #     return redirect("/polls/productDetails/" + productid)
 
 def re_order(request):
     userid = request.session["userid"]

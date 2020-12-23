@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <a style="font-size: 25px; top: 650px; position: absolute; left: 200px; min-width: 500px;"><button style="font-size: 25px; color: white; left: 500px;">レビュー作成</button>　レビュー　総評:{{ total_review }}</a>
+    <div style="font-size: 25px; top: 650px; position: absolute; left: 200px; min-width: 500px;"><a href="/polls/review/{{ product.productID }}" style="font-size: 25px;left: 500px;">レビュー作成</a>　レビュー　総評:{{ total_review }}</div>
     <div class="comment"  style="display: flex; flex-flow:column nowrap; overflow-y: scroll;">
       {% for r in review %}
       <div>

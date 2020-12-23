@@ -3,44 +3,99 @@
 .itemForm{
   display: flex;
   flex-flow:row nowrap;
-  width: 85%;
+  width: 83%;
   height: 200px;
   margin-top: 15px;
-  background-color: #ccc;
-   margin-left:210px;
+  margin-left: 210px;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid black;
 }
 
 .element{
   max-width:200px;
-  max-height:200px;
+  max-height:199px;
   min-width:200px;
-  min-height:200px;
-  }
+  min-height:199px;
+  overflow:auto;
+  background-color: white;
+}
 
 .ele2{
+display:flex;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
+.verticalForm{
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
 
-
+.priceQuantity{
+  height: 45%;
+  width:100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  text-align: center;
+  align-self: center;
+}
 
 
 .money_form{
-  width:100%;
+  width:85%;
   display:flex;
   flex-flow:row nowrap;
+  margin-top: 15px;
+  margin-left: 175px;
 }
 
 .buy_form_move{
   width: 50%;
   margin-left: auto;
-  border: 0.1px solid;
+  /* flex-grow: 1;
+  flex-shrink: 1; */
   text-align: right;
   flex-flow:row nowrap;
+  border: 1px solid black;
 }
 
 .move_form{
   height:80px;
   font-size:15px;
+}
+
+.quantSize{
+    font-size:30px;
+    width:50px;
+}
+
+.counter{
+    background: gray;
+    width:30px;
+    height:30px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.plusminus{
+    display: flex;
+    margin:auto;
+    align-self:center;
+    align-items:center;
+    font-size: 30px;
+}
+
+.textopt{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.image {
+  zoom: 0.5;
+  width: 100%;
+  height: auto;
 }

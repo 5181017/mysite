@@ -14,7 +14,6 @@ def pay(request):
     buyList = request.POST.getlist("buylist")    # 購入商品IDリスト
     total = request.POST["total_money"]        # 合計金額
 
-    print(request.POST)
 
     # 購入処理
     if Settlement().get_remaining_money(userId, total):

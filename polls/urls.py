@@ -6,6 +6,7 @@ urlpatterns = [
     path("account", Account.account, name="account"),
     path("cart", Cart.cart, name="cart"),
     path("charge", Charge.charge, name="charge"),
+    path("ajaxCharge" , Charge.ajaxCharge , name="ajaxCharge"),
     path("chargeHistory", ChargeHistory.chargehistory, name="chargeHistory"),
     path("home", Home.home, name="home"),
     path("login", Login.login, name="login"),

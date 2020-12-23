@@ -3,6 +3,7 @@
 
 {% block style %}
    <link rel="stylesheet" type="text/css" href= "{% static 'polls/css/charge.css' %}">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
    <script src="{% static 'polls/js/toast.js' %}"></script>
@@ -25,38 +26,65 @@
     {% csrf_token %}
     <input class="inputMoney_spaces" type="number" value="0"readonly name="holder" span id="nums">
     <input class="inputMoney_button" type="button" onclick="btn0()" value="金額クリア"></input>
-    <input class="inputMoney_button" type="submit" value="チャージ" name="chargebtn"></input>
+    <input class="inputMoney_button" type="button" value="チャージ" name="chargebtn" disabled onclick="ajaxCharge()"></input>
   </form>
 
   <script>
+    var chargeBtn = document.moneyForm.chargebtn;
+    var chargeForm = document.moneyForm.holder;
+
+    {#チャージ金額が0より以下の時ボタンを非活性#}
+    function btnDisabled() {
+        var num = document.moneyForm.holder.value;
+        chargeBtn.disabled = num <= 0;
+     }
+
      function btn0(){
-      var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = 0;
-
-      var chargeBtn = document.moneyForm.chargebtn;
-      if(num < 0){
-          
-      }
-
-
+      btnDisabled()
     }
     function btn1000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 1000;
+      btnDisabled()
     }
     function btn3000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 3000;
+      btnDisabled()
     }
     function btn5000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 5000;
+      btnDisabled()
     }
     function btn10000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 10000;
+      btnDisabled()
     }
 
-
+    function ajaxCharge() {
+            var money = chargeForm.value;
+            console.log(money)
+            $.ajax({
+                "url": "/polls/ajaxCharge",
+                "type": "GET",
+                "data": {'money': money},
+                "dataType": "json", // ビューが返すデータの種類を指定
+                "success": function (json) {
+                    console.log(json);
+                    if (json["flg"]) {
+                        showToast(json["msg"])
+                    } else {
+                        showToastError(json["msg"])
+                    }
+                    btn0()
+                },
+                "error":function (json) {
+                    showToastError("何らかの理由により、チャージできませんでした。")
+                }
+            });
+        }
   </script>
 {% endblock %}

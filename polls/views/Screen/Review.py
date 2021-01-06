@@ -19,8 +19,6 @@ def review(request, product_id):
         userid = request.session["userid"]
         try:
             review = Review().get_one_review(userid+product_id)
-            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-            print(review.reviewStar)
             form = ReviewForm(initial=dict(title=review.title ,comment=review.comment))
             params = {
                 "product" : product,

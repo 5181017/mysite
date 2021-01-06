@@ -21,6 +21,7 @@ def login(request):
         try:
             user = User().auth(userid, pw)
             request.session["userid"] = user.userID
+            request.session["money"] = user.money
             return redirect("/polls/home")
         except models.User.DoesNotExist as e:  # 登録できないエラー
             print(e)

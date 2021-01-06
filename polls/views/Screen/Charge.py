@@ -13,7 +13,7 @@ def charge(request):
         return redirect("/polls/login")
 
     if request.method == "GET":
-        return render(request , "polls/charge.html")
+        return render(request , "polls/charge.html", {"num": 0})
 
     # elif request.method == "POST":
     #     userid = request.session["userid"]
@@ -27,15 +27,15 @@ def charge(request):
     #         return render(request, "polls/charge.html", params)
 
 def ajaxCharge(request):
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    print(request.GET["money"])
     userid = request.session["userid"]
     money = request.GET["money"]
 
     if money.isdigit():
         User().charge_money(userid, int(money))
+        request.session["money"] = User().get_user(userid).money
         content = json.dumps({
             "msg" : "チャージが完了しました。",
+            "money" : request.session["money"],
             "flg" : True
         })
     else:

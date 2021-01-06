@@ -12,21 +12,21 @@
 {% block menu %}
 
     <div class="chargeMoney_form">
-        <input type="button" class="chargeMoney_options" onclick="btn5000()" value="5000">
-        <input type="button" class="chargeMoney_options" onclick="btn10000()"value="10000">
+        <input type="button" class="chargeMoney_options" onclick="btn5000()" value="5000円">
+        <input type="button" class="chargeMoney_options" onclick="btn10000()"value="10000円">
     </div>
     <div class="chargeMoney_form">
-      <input type="button" class="chargeMoney_options" onclick="btn1000()" value="1000">
-      <input type="button" class="chargeMoney_options" onclick="btn3000()" value="3000">
+      <input type="button" class="chargeMoney_options" onclick="btn1000()" value="1000円">
+      <input type="button" class="chargeMoney_options" onclick="btn3000()" value="3000円">
   </div>
 
   <div class="dummy_form"></div>
 
   <form class="inputMoney_form" name="moneyForm" action="charge" method="post">
     {% csrf_token %}
-    <input class="inputMoney_spaces" type="number" value="0"readonly name="holder" span id="nums">
+    <input class="inputMoney_spaces" type="number" value="{{ num }}"readonly name="holder" span id="nums">
     <input class="inputMoney_button" type="button" onclick="btn0()" value="金額クリア"></input>
-    <input class="inputMoney_button" type="button" value="チャージ" name="chargebtn" disabled onclick="ajaxCharge()"></input>
+    <input class="inputMoney_button" type="button" value="チャージ" name="chargebtn" onclick="ajaxCharge()"></input>
   </form>
 
   <script>
@@ -38,6 +38,10 @@
         var num = document.moneyForm.holder.value;
         chargeBtn.disabled = num <= 0;
      }
+
+     window.addEventListener("load" , () => {
+       btnDisabled();
+     })
 
      function btn0(){
       document.moneyForm.holder.value = 0;
@@ -65,17 +69,19 @@
     }
 
     function ajaxCharge() {
-            var money = chargeForm.value;
-            console.log(money)
+            var newmoney = chargeForm.value;
+            var myMoney =  document.getElementById("mymoney");
+            console.log(myMoney)
             $.ajax({
                 "url": "/polls/ajaxCharge",
                 "type": "GET",
-                "data": {'money': money},
+                "data": {'money': newmoney},
                 "dataType": "json", // ビューが返すデータの種類を指定
                 "success": function (json) {
                     console.log(json);
                     if (json["flg"]) {
                         showToast(json["msg"])
+                        myMoney.values = String("aaa")
                     } else {
                         showToastError(json["msg"])
                     }

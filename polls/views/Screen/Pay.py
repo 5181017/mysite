@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 
+from polls import models
 from polls.views.Class.Product import Product
 from polls.views.Class.Settlement import Settlement
+from polls.views.Class.User import User
 
 
 def pay(request):
@@ -14,13 +16,15 @@ def pay(request):
     buyList = request.POST.getlist("buylist")    # 購入商品IDリスト
     total = request.POST["total_money"]        # 合計金額
 
-    print(request.POST)
 
     # 購入処理
     if Settlement().get_remaining_money(userId, total):
         Settlement().buy(total, userId, buyList)
-        return redirect("/polls/home")
+        request.session["money"] = User().get_user(userId).money
+        return redirect("/polls/payed")
     else:
+        user = models.User.objects.get(userID=userId)
+        mm = user.money
         errmsg = "残高が足りません。チャージしてください。"
-        params = {"errmsg": errmsg}
+        params = {"errmsg": errmsg, "num": int(total) - int(mm)}
         return render(request, "polls/charge.html", params)

@@ -3,48 +3,94 @@
 
 {% block style %}
    <link rel="stylesheet" type="text/css" href= "{% static 'polls/css/charge.css' %}">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+   <script src="{% static 'polls/js/toast.js' %}"></script>
 {% endblock %}
 
 {% block menu %}
 
     <div class="chargeMoney_form">
-        <input type="button" class="chargeMoney_options" onclick="btn5000()" value="5000">
-        <input type="button" class="chargeMoney_options" onclick="btn10000()"value="10000">
+        <input type="button" class="chargeMoney_options" onclick="btn5000()" value="5000円">
+        <input type="button" class="chargeMoney_options" onclick="btn10000()"value="10000円">
     </div>
     <div class="chargeMoney_form">
-      <input type="button" class="chargeMoney_options" onclick="btn1000()" value="1000">
-      <input type="button" class="chargeMoney_options" onclick="btn3000()" value="3000">
+      <input type="button" class="chargeMoney_options" onclick="btn1000()" value="1000円">
+      <input type="button" class="chargeMoney_options" onclick="btn3000()" value="3000円">
   </div>
 
   <div class="dummy_form"></div>
 
   <form class="inputMoney_form" name="moneyForm" action="charge" method="post">
     {% csrf_token %}
-    <input class="inputMoney_spaces" type="number" value="0"readonly name="holder" span id="nums">
+    <input class="inputMoney_spaces" type="number" value="{{ num }}"readonly name="holder" span id="nums">
     <input class="inputMoney_button" type="button" onclick="btn0()" value="金額クリア"></input>
-    <input class="inputMoney_button" type="submit" value="チャージ" ></input>
+    <input class="inputMoney_button" type="button" value="チャージ" name="chargebtn" onclick="ajaxCharge()"></input>
   </form>
 
   <script>
+    var chargeBtn = document.moneyForm.chargebtn;
+    var chargeForm = document.moneyForm.holder;
+
+    {#チャージ金額が0より以下の時ボタンを非活性#}
+    function btnDisabled() {
+        var num = document.moneyForm.holder.value;
+        chargeBtn.disabled = num <= 0;
+     }
+
+     window.addEventListener("load" , () => {
+       btnDisabled();
+     })
+
      function btn0(){
-      var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = 0;
+      btnDisabled()
     }
     function btn1000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 1000;
+      btnDisabled()
     }
     function btn3000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 3000;
+      btnDisabled()
     }
     function btn5000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 5000;
+      btnDisabled()
     }
     function btn10000(){
       var num = document.moneyForm.holder.value;
       document.moneyForm.holder.value = Number(num) + 10000;
+      btnDisabled()
     }
+
+    function ajaxCharge() {
+            var newmoney = chargeForm.value;
+            var myMoney =  document.getElementById("mymoney");
+            console.log(myMoney)
+            $.ajax({
+                "url": "/polls/ajaxCharge",
+                "type": "GET",
+                "data": {'money': newmoney},
+                "dataType": "json", // ビューが返すデータの種類を指定
+                "success": function (json) {
+                    console.log(json);
+                    if (json["flg"]) {
+                        showToast(json["msg"])
+                        myMoney.values = String("aaa")
+                    } else {
+                        showToastError(json["msg"])
+                    }
+                    btn0()
+                },
+                "error":function (json) {
+                    showToastError("何らかの理由により、チャージできませんでした。")
+                }
+            });
+        }
   </script>
 {% endblock %}

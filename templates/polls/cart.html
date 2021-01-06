@@ -20,7 +20,7 @@
             <div class="plusminus " >
               <div class=" textopt"style="height:100%; width:100%; min-width:400px; text-align: center; vertical-align:middle;">{{ item.name }}</div>
             </div>
-            <div class="element" style="">
+            <div class="element">
               <div class="verticalForm">
 
                   <input name="{{ item.productid.productID}}" id="{{ item.productid.productID}}" type="hidden" value="{{ item.quantity }}">
@@ -45,9 +45,9 @@
       <div class="buy_form_move">
         <input name="total_money" class="move_form" type="text" placeholder="合計" id="sumMoney" value="0" style="border: 1px solid black;">
         <input id="pay-btn" name="pay_btn" class="move_form" type="submit" value="購入に進む"style="width:150px; min-width:150px;" disabled>
+        <input id="delete-btn" name="delete_btn" class="move_form" type="submit" value="削除"style="width:150px; min-width:150px;" disabled>
       </div>
     </div>
-
 
   </form>
 
@@ -78,13 +78,16 @@
         function checkChecked(){
             var checkBox = document.getElementsByName("checkbox")
             var submitBtn = document.getElementById("pay-btn")
+            var deleteBtn = document.getElementById("delete-btn")
 
             for(let i = 0; i < checkBox.length; i++) {
                 if(checkBox[i].checked){
                     submitBtn.disabled = false
+                    deleteBtn.disabled = false
                     break
                 }else{
                     submitBtn.disabled = true
+                    deleteBtn.disabled = true
                 }
             }
         }

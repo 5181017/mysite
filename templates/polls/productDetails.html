@@ -1,6 +1,12 @@
 {% extends "polls/menu.html" %}
 {% load static %}
-{% block style %}<link rel="stylesheet" type="text/css" href="{% static 'polls/css/productDetails.css' %}">{% endblock %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/productDetails.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+   <script src="{% static 'polls/js/toast.js' %}"></script>
+{% endblock %}
 {% block menu %}
     <p class="productName">"{{product.productName}}"</p>
     <div class="form">
@@ -12,9 +18,9 @@
               {% csrf_token %}
               <input type="hidden" value="{{ product.productID }}" name="productid">
               {% if "userid" in request.session and not product.productID in productIdList %}
-                <input type="submit" class="addCart" value="カートに入れる">
+                <input type="button" id="cartBtn" class="addCart" value="カートに入れる"  onclick="reOrder('{{ product.productID }}')">
               {% else %}
-                <input type="submit" class="addCart" value="カートに入れる" disabled>
+                <input type="button" class="addCart" value="カートに入れる" disabled>
               {% endif %}
           </form>
 
@@ -24,7 +30,7 @@
         </div>
       </div>
     </div>
-    <a style="font-size: 25px; top: 650px; position: absolute; left: 200px; min-width: 500px;"><button style="font-size: 25px; color: white; left: 500px;">レビュー作成</button>　レビュー　総評:{{ total_review }}</a>
+    <div style="font-size: 25px; top: 650px; position: absolute; left: 200px; min-width: 500px;"><a href="/polls/review/{{ product.productID }}" style="font-size: 25px;left: 500px;">レビュー作成</a>　レビュー　総評:{{ total_review }}</div>
     <div class="comment"  style="display: flex; flex-flow:column nowrap; overflow-y: scroll;">
       {% for r in review %}
       <div>
@@ -37,5 +43,24 @@
       </div>
       {% endfor %}
     </div>
+
+        <script>
+        function reOrder(productId) {
+            var cartBtn = document.getElementById("cartBtn");
+            console.log(productId)
+            $.ajax({
+            "url": "/polls/reorder",
+            "type": "GET",
+            "data": {'product_id': productId},
+            "dataType": "json", // ビューが返すデータの種類を指定
+            "success": function(json){
+                    console.log(json);
+                    showToast("カートに入りました。");
+                    cartBtn.disabled = true;
+                    }
+                }
+            );
+        }
+    </script>
 
 {% endblock %}

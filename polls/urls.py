@@ -1,14 +1,16 @@
 from django.urls import path
 from .views.Screen import Home, Cart, Charge, Review, ProductList, Account, ChargeHistory, Login, MyPage, \
-    OrderHistory, Pay, Personal, ProductDetails
+    OrderHistory, Pay, Personal, ProductDetails, Payed
 
 urlpatterns = [
     path("account", Account.account, name="account"),
     path("cart", Cart.cart, name="cart"),
     path("charge", Charge.charge, name="charge"),
+    path("ajaxCharge" , Charge.ajaxCharge , name="ajaxCharge"),
     path("chargeHistory", ChargeHistory.chargehistory, name="chargeHistory"),
     path("home", Home.home, name="home"),
-    path("login", Login.login, name="login"),
+    path("payed", Payed.payed, name="payed"),
+    path("login", Login.login,name="login"),
     path("orderHistory", OrderHistory.orderhistory, name="orderHistory"),
     path("pay", Pay.pay, name="pay"),
     path("personal", Personal.personal, name="personal"),

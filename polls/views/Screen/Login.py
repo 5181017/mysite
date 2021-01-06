@@ -2,30 +2,30 @@ from django.shortcuts import redirect, render
 
 from polls import models
 from polls.views.Class.User import User
+from polls.views.Forms.LoginForm import LoginForm
 
 
 def login(request):
     if request.method == "GET":
-        return render(request, "polls/login.html")
+        return render(request, "polls/login.html", {"form" : LoginForm})
 
     elif request.method == "POST":
-        userid = request.POST.get("id", None)
+        userid = request.POST.get("userID", None)
         pw = request.POST.get("pw", None)
-        # if "login_btn" in request.POST:
-        #     return redirect("/polls/home")
+        login_form = LoginForm(request.POST)
+
+        if not login_form.is_valid():
+            print("バリデーションエラー:login()")
+            print(login_form.errors)
+
         try:
             user = User().auth(userid, pw)
-            # if isinstance(user, str):
-            #     params = {"errmsg": user}
-            #     return render(request, "polls/login.html", params)
-            # else:
-            print(";lakdjfs;lakjds;fljads;lfja;sdlfj;")
             request.session["userid"] = user.userID
-                # return render(request, "polls/home.html")
             return redirect("/polls/home")
-        except models.User.DoesNotExist:  # 登録できないエラー
+        except models.User.DoesNotExist as e:  # 登録できないエラー
+            print(e)
             params = {"errmsg": "ユーザーIDが違います。"}
             return render(request, "polls/login.html", params)
-        except Exception:
-            params = {"errmsg": "DBに接続できませんでした"}
-            return render(request, "polls/exception.html", params)
+        except Exception as e:
+            print(e)
+            return render(request, "polls/exception.html", {"errorMsg": "DB接続できませんでした。"})

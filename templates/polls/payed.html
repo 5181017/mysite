@@ -1,0 +1,10 @@
+{% extends "polls/menu.html" %}
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/home.css' %}">
+{% endblock %}
+
+{% block menu %}
+<div style="position: absolute; top:90px; left: 210px; font-size: 100px;">{{ msg }}</div>
+{% endblock %}

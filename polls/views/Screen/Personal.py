@@ -13,14 +13,12 @@ def personal(request):
         try:
             userid = request.session["userid"]
             user = User().get_user(userid)
-            name = user.name.split(" ")
-            first_name , last_name = name[0] , name[1]
+            name = user.name
         except Exception as e:
             print(e)
             return render(request , "polls/exception.html" , {"errorMsg" :"DB接続できませんでした。"})
         params = {
-            "first_name" : first_name,
-            "last_name" : last_name,
+            "first_name" : name,
             "address" : user.address,
             "toast_flg" : "0"
         }
@@ -29,14 +27,12 @@ def personal(request):
     elif request.method == "POST":
         userid = request.session["userid"]
         first_name = request.POST["first-name"]
-        last_name = request.POST["last-name"]
         new_user_address = request.POST["address"]
-        new_user_name = first_name + " " + last_name
+        new_user_name = first_name
 
         params = {
             "msg": "",
             "first_name" : "",
-            "last_name" : "",
             "address" : "",
             "toast_flg" : "0"
         }
@@ -44,16 +40,14 @@ def personal(request):
         if not (new_user_name.isalnum() or new_user_address.isalnum()):
             params["msg"] = "特殊文字を使用しないでください"
             user = User().get_user(userid)
-            name = user.name.split(" ")
-            params["first_name"], params["last_name"] = name[0], name[1]
+            params["first_name"] = first_name
             params["address"] = user.address
             return render(request, "polls/personal.html", params)
 
         User().update_user(userid, new_user_name, new_user_address)
         user = User().get_user(userid)
-        name = user.name.split(" ")
         params["address"] = user.address
-        params["first_name"], params["last_name"] = name[0], name[1]
+        params["first_name"] = first_name
         params["toast_flg"] = "1"
 
     return render(request, "polls/personal.html", params)

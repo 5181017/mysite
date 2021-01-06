@@ -47,8 +47,11 @@ def cart(request):
                 quantity.append(request.POST[productid])
 
             if "delete_btn" in request.POST:
-                print("sakujo")
-                # Cart.delete_cart(userid, btn)
+                for i in range(len(buylist)):
+                    print(buylist[i])
+                    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                    Cart().delete_cart(userid, buylist[i])
+                return redirect("/polls/cart")
 
             elif "pay_btn" in request.POST:
                 # カートの更新

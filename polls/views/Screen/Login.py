@@ -7,7 +7,7 @@ from polls.views.Forms.LoginForm import LoginForm
 
 def login(request):
     if request.method == "GET":
-        return render(request, "polls/login.html", {"form" : LoginForm})
+        return render(request, "polls/login.html", {"form": LoginForm})
 
     elif request.method == "POST":
         userid = request.POST.get("userID", None)
@@ -20,7 +20,9 @@ def login(request):
 
         try:
             user = User().auth(userid, pw)
+            # セッション作成
             request.session["userid"] = user.userID
+            request.session["money"] = user.money
             return redirect("/polls/home")
         except models.User.DoesNotExist as e:  # 登録できないエラー
             print(e)

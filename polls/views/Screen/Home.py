@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from polls import models
 from polls.views.Class.Category import Category
 
-
 # カテゴリのインスタンスを渡す セッション
 from polls.views.Class.Product import Product
 
@@ -38,14 +37,11 @@ def home(request):
                 "category": category
             }
 
-
         return render(request, "polls/productList.html", param)
     except models.Products.DoesNotExist:
         params = {
-            "msg" : "商品が見つかりませんでした。"
+            "msg": "商品が見つかりませんでした。"
         }
-        return render(request , "polls/home.html" , params)
+        return render(request, "polls/home.html", params)
     except Exception:
-        return render(request , "polls/exception.html" , {"errorMsg" :"DB接続できませんでした。"})
-
-
+        return render(request, "polls/exception.html", {"errorMsg": "DB接続できませんでした。"})

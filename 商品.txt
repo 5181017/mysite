@@ -1,0 +1,10 @@
+insert into polls_products value('B001' , '20代で隠居' , 2000 , 10 ,'polls/images/book/image1.jpg' );
+insert into polls_products value('B002' , '生きる意味' , 2300 , 10 ,'polls/images/book/image2.jpg' );
+
+insert into polls_products value('A001' , '電子レンジ' , 8000 , 5 ,'polls/images/appliances/image(1).jpg' );
+insert into polls_products value('A002' , '洗濯機' , 15000 , 5 ,'polls/images/appliances/images(2).jpg' );
+
+insert into polls_products value('C001' , '使用済み（映画）デロリアン' , 7548000 , 1 ,'polls/images/car-bike/appliances/Back-To-The-Future_DeLorean.jpg');
+insert into polls_products value('C002' , 'ランボルギーニ　アヴェンタドール　ロードスター' , 44000000 , 1 ,'polls/images/car-bike/appliances/Lamborghini_Aventador-S-Roadster.jpg')
+
+

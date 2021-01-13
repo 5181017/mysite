@@ -81,7 +81,7 @@
                     console.log(json);
                     if (json["flg"]) {
                         showToast(json["msg"])
-                        myMoney.values = String("aaa")
+                        myMoney.value = "残高:" + json["money"] + "円"
                     } else {
                         showToastError(json["msg"])
                     }
